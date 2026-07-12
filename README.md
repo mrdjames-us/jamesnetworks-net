@@ -1,15 +1,13 @@
 # James Networks (`www.jamesnetworks.net`)
 
-**James Networks** is the umbrella — a **network of businesses** (the enterprise, without a second brand name).
-
-Front site for the whole network: services, ventures, apps, and launch-pad ideas.
+**James Networks** is the umbrella — a **network of businesses**.
 
 ## Brand structure
 
 | Name | Role |
 |------|------|
 | **James Networks** | Parent brand / network of businesses |
-| **MSP Automation Consulting** | Channel services — full-stack MSP automation (Rewst, n8n, Thread, NinjaOne, Halo, ConnectWise) |
+| **Business Workflow Automation and Agentic Creation** | Primary services — workflows, orchestration, agentic systems |
 | **AI for Missouri** | Education & SMB AI (aiformissouri.com) |
 | **Apps** | APA Captain, Rural Roots Hub, more |
 
@@ -20,6 +18,7 @@ Front site for the whole network: services, ventures, apps, and launch-pad ideas
 | Domain | [www.jamesnetworks.net](https://www.jamesnetworks.net) |
 | Stack | Static HTML / CSS / JS (no build step) |
 | Suggested host | Cloudflare Pages |
+| Logo | `assets/logo.jpg` — geometric J + circuit mark |
 
 ## Local preview
 
@@ -36,4 +35,4 @@ npx --yes serve .
 
 ## Docs
 
-- [BUSINESS-PLAN.md](./BUSINESS-PLAN.md) — MSP Automation Consulting plan
+- [BUSINESS-PLAN.md](./BUSINESS-PLAN.md) — Business Workflow Automation and Agentic Creation plan
