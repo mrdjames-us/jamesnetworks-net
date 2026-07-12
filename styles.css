@@ -525,11 +525,30 @@ a:hover {
 }
 
 .feature-bullets {
-  margin: 1rem 0 1.35rem;
+  margin: 1rem 0 1rem;
   padding: 0;
   list-style: none;
   display: grid;
   gap: 0.45rem;
+}
+
+.system-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.35rem;
+}
+
+.system-chips span {
+  display: inline-block;
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 550;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  letter-spacing: 0.01em;
 }
 
 .feature-bullets li {
