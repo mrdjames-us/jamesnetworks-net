@@ -28,7 +28,7 @@ updated: 2026-07-11
 
 | Layer | Platforms we specialize in |
 |-------|----------------------------|
-| **Orchestration** | Rewst · n8n |
+| **Orchestration** | Rewst ·  |
 | **RMM** | NinjaOne (primary) · multi-RMM patterns |
 | **PSA** | HaloPSA · ConnectWise Manage / Automate / related ecosystem |
 | **Support AI & messaging** | Thread (getthread.com) |
@@ -36,7 +36,7 @@ updated: 2026-07-11
 
 **The problem:** Most MSPs buy powerful tools and still run the business on tribal knowledge, swivel-chair updates, and heroics. Industry signal is loud: nearly all MSPs *plan* to automate with AI; only a small fraction **operationalize** it beyond pilots. Tools alone do not create capacity. **Integrated flows do.**
 
-**The offer:** We sit with the MSP’s ops, service desk, and vCIO leadership; map the real ticket and client lifecycle; then build durable automations in **Rewst and/or n8n**, grounded in **NinjaOne + Halo or ConnectWise**, with **Thread** handling intelligent client conversation and ticket assist — plus AI used *inside* the design process and *inside* the workflows (classification, summarization, decision assist, exception routing).
+**The offer:** We sit with the MSP’s ops, service desk, and vCIO leadership; map the real ticket and client lifecycle; then build durable automations in **orchestration layers and **, grounded in **NinjaOne + Halo or ConnectWise**, with **Thread** handling intelligent client conversation and ticket assist — plus AI used *inside* the design process and *inside* the workflows (classification, summarization, decision assist, exception routing).
 
 **Differentiation:**  
 1. **Operator credibility** — built by someone who has run MSP operations, not a pure software shop guessing at ticket reality.  
@@ -61,7 +61,7 @@ updated: 2026-07-11
 Help businesses **scale capacity without linear headcount** by turning fragmented tools into **coherent workflows and agentic systems** — designed with their team, owned by their team.
 
 ### 2.3 Vision
-Become the default James Networks practice for **business workflow automation and agentic creation** — trusted for n8n/Rewst-class orchestration, production agents with guardrails, and deep ops-stack work (RMM/PSA/support AI) when the client is in the channel.
+Become the default James Networks practice for **business workflow automation and agentic creation** — trusted for Rewst-class orchestration, production agents with guardrails, and deep ops-stack work (RMM/PSA/support AI) when the client is in the channel.
 
 ### 2.4 Values (operating principles)
 - **Research before asking** — we map process before we drag nodes.  
@@ -110,7 +110,7 @@ Without orchestration + AI assist, each tool is a silo. With it, MSPs get:
 ### 3.3 Trends we ride
 - PSA/RMM vendors shipping more native automation — still leave **cross-tool gaps**  
 - Rewst as MSP-native RPA with AI-assisted building (e.g. RoboRewsty-class assistants)  
-- n8n as flexible / self-host / cost-control orchestration with strong API + AI node patterns  
+-  as flexible / self-host / cost-control orchestration with strong API + AI node patterns  
 - Thread-class products changing the **client conversation layer** and ticket assist  
 - HaloPSA growth among modernizing MSPs; ConnectWise still large installed base  
 - NinjaOne strong among RMM-forward MSPs  
@@ -145,7 +145,7 @@ Fixed-scope discovery for MSPs unsure where to start or stuck after tool purchas
 - Ticket / alert / onboarding lifecycle analysis (volume, rework, failure modes)  
 - Maturity score (0–5) across: process clarity, integration health, security of automation, documentation, metrics  
 - 90-day automation roadmap prioritized by **hours saved × risk reduced × revenue protected**  
-- Tool-fit recommendations (Rewst vs n8n vs hybrid; Thread placement; PSA/RMM gaps)
+- Tool-fit recommendations (platform vs hybrid; Thread placement; PSA/RMM gaps)
 
 **Outcome:** Leadership has a board-ready plan and a sequenced backlog — not a tool shopping list.
 
@@ -155,7 +155,7 @@ Time-boxed build for a defined outcome (examples in §5).
 **Includes:**
 - Process workshop with process owners  
 - Design (trigger, happy path, exceptions, human-in-the-loop)  
-- Build in Rewst and/or n8n + native PSA/RMM automation where smarter  
+- Build in orchestration layers and + native PSA/RMM automation where smarter  
 - Thread / AI assist configuration where it touches client conversation  
 - Security review (secrets, least privilege, multi-tenant isolation)  
 - Runbooks + “how to change this safely” docs  
@@ -182,10 +182,10 @@ Ongoing capacity after initial builds:
 - ConnectWise ↔ Halo transitions with automation parity  
 - Dual-running periods (old PSA still billing while new PSA takes tickets)  
 - RMM consolidation onto NinjaOne with ticket bridge integrity  
-- Rewst pack adoption + customization; n8n self-host hardening  
+- Rewst pack adoption + customization;  self-host hardening  
 
 #### F. Training & Enablement (do-it-with-you)
-- Builder workshops (Rewst, n8n) for internal automation champions  
+- Builder workshops (Rewst, ) for internal automation champions  
 - Service desk playbooks for Thread + AI-assisted triage  
 - “Automation office” charter: who owns changes, how PRs/versions work  
 - Executive dashboard: hours automated, tickets deflected, onboarding SLA  
@@ -218,7 +218,7 @@ James Networks does **not** treat tools as a checklist. We treat them as **layer
           │                       │                       │
 ┌─────────▼─────────┐   ┌─────────▼─────────┐   ┌─────────▼─────────┐
 │ Orchestration     │   │ RMM: NinjaOne     │   │ Identity / M365   │
-│ Rewst · n8n       │◄─►│ alerts · devices  │   │ Entra · licenses  │
+│ Rewst ·        │◄─►│ alerts · devices  │   │ Entra · licenses  │
 │ AI decision nodes │   │ scripts · patch   │   │ groups · mail     │
 └─────────┬─────────┘   └───────────────────┘   └───────────────────┘
           │
@@ -241,18 +241,18 @@ James Networks does **not** treat tools as a checklist. We treat them as **layer
 - Every workflow has: owner, purpose, trigger inventory, rollback notes, last-reviewed date  
 - Destructive actions require dual-control or explicit approval tasks  
 
-### 5.2 n8n — flexible / self-host / AI-heavy orchestration
+### 5.2  — flexible / self-host / AI-heavy orchestration
 **Role:** Complementary (or primary for some shops) **open, API-first** automation — especially when:
 - Cost control / self-hosting matters  
 - Custom AI agent patterns, RAG over runbooks, or non-MSP SaaS is heavy  
-- Rewst isn’t licensed yet, or a hybrid model is better (Rewst for tenant-sensitive MSP packs; n8n for internal HQ tools)
+- Rewst isn’t licensed yet, or a hybrid model is better (Rewst for tenant-sensitive MSP packs;  for internal HQ tools)
 
 **Where we use it:**
 - Webhook hubs and transformation layers  
 - AI classification / summarization pipelines before PSA write-back  
 - Integrations outside classic MSP catalogs  
 - Internal “automation HQ” (reporting bots, Slack/Teams ops channels, exec digests)  
-- Prototyping flows that later harden into Rewst packs (or stay in n8n if that’s the standard)
+- Prototyping flows that later harden into Rewst packs (or stay in  if that’s the standard)
 
 **James Networks standards:**
 - Credential vaulting, least-privilege API keys, network isolation for self-host  
@@ -296,7 +296,7 @@ James Networks does **not** treat tools as a checklist. We treat them as **layer
 - Ticket workflows, SLAs, teams, actions, custom fields as **automation contracts**  
 - Agreement / product alignment so automation can ask “is this in scope?”  
 - Project and request types for onboarding packages  
-- Native Halo automation + Rewst Halo packs + n8n API where needed  
+- Native Halo automation + Rewst Halo packs +  API where needed  
 - Clean boards: automation should reduce junk tickets, not flood them  
 
 ### 5.6 ConnectWise — large installed-base PSA / RMM ecosystem
@@ -328,7 +328,7 @@ James Networks does **not** treat tools as a checklist. We treat them as **layer
 ### 6.2 AI *in production flows*
 | Use case | Pattern | Human gate? |
 |----------|---------|-------------|
-| Ticket classification / priority suggestion | Thread + n8n/Rewst → PSA fields | Soft gate (tech can override) |
+| Ticket classification / priority suggestion | Thread + Rewst → PSA fields | Soft gate (tech can override) |
 | Summarize long email threads | AI node → ticket note | No (read-only) |
 | Suggest knowledge base article | AI → Thread reply draft | Yes before send (phase 1) |
 | Detect “out of scope” language | AI flag → sales/vCIO queue | Yes |
@@ -396,7 +396,7 @@ These are the **default menu** we implement and refine into reusable patterns.
 - Risk register (what we will *not* automate yet)
 
 ### Phase 3 — Build (with them)
-- Pair-building sessions (Rewst/n8n screens shared)  
+- Pair-building sessions (Rewst/ screens shared)  
 - AI used for drafts; champion approves logic  
 - Environments and secrets set correctly  
 
@@ -425,13 +425,13 @@ Triggers documented · happy path works · exceptions handled · logging exists 
 | **Foundation Program (Q1)** | $30,000 – $75,000 | Multi-sprint architecture + first lifecycle suite |
 | **Retainer — Care** | $2,500 – $4,500 / mo | Maintenance + 1 small flow / mo + office hours |
 | **Retainer — Build** | $6,000 – $12,000 / mo | Care + dedicated build capacity |
-| **Workshop (team)** | $2,000 – $5,000 / day | Rewst/n8n/Thread enablement |
+| **Workshop (team)** | $2,000 – $5,000 / day | Rewst/Thread enablement |
 | **Rush / migration premium** | +20–40% | Hard deadlines, dual-tool, M&A |
 
 **Commercial principles:**
 - Prefer **outcome packages** over pure hourly (hourly only for true advisory)  
 - Clear change-order process when scope expands (new PSA module, unexpected API limits)  
-- Client pays their own SaaS licenses (Rewst, Thread, NinjaOne, Halo, CW, n8n enterprise if any)  
+- Client pays their own SaaS licenses (Rewst, Thread, NinjaOne, Halo, CW,  enterprise if any)  
 - Optional partner margin only where ethical and disclosed  
 
 ---
@@ -439,13 +439,13 @@ Triggers documented · happy path works · exceptions handled · logging exists 
 ## 10. Go-to-market
 
 ### 10.1 Positioning statement
-For **operators and growing teams** who are **drowning in tool sprawl and manual process**, **Business Workflow Automation and Agentic Creation** (James Networks) is the practice that **wires systems into durable workflows and agents** — including RMM, PSA, Thread, and Rewst/n8n when you’re in the MSP stack — **with your people**, so the automation survives turnover.
+For **operators and growing teams** who are **drowning in tool sprawl and manual process**, **Business Workflow Automation and Agentic Creation** (James Networks) is the practice that **wires systems into durable workflows and agents** — including RMM, PSA, Thread, and Rewst/ when you’re in the MSP stack — **with your people**, so the automation survives turnover.
 
 ### 10.2 Channels
 1. **Direct outbound** — MSPs on NinjaOne + Halo or CW; shops posting about Rewst/Thread underuse  
 2. **Peer network** — MSP owner groups, regional peer boards, Discord/Slack communities (value-first posts)  
 3. **Vendor adjacency** — non-exclusive relationships; implementation partner conversations with orchestration / PSA / RMM ecosystems  
-4. **Content** — deep technical writeups: “Alert-to-resolve patterns on NinjaOne + Halo + n8n”, public architecture diagrams, teardown of bad automation  
+4. **Content** — deep technical writeups: “Alert-to-resolve patterns on NinjaOne + Halo + ”, public architecture diagrams, teardown of bad automation  
 5. **Speaking** — local/regional MSP events; AI for Missouri channel remains separate brand voice  
 6. **James Networks site** — services page + case studies + assessment CTA  
 7. **Referrals** — priced so happy MSPs refer peers (referral thank-you policy)
@@ -460,7 +460,7 @@ For **operators and growing teams** who are **drowning in tool sprawl and manual
 ### 10.4 Ideal first 10 logos
 - Midwestern / Central US MSPs (trust proximity) expanding nationally  
 - 20–50 seat technical teams  
-- At least two of: NinjaOne, Halo, ConnectWise, Rewst, Thread, n8n already in stack  
+- At least two of: NinjaOne, Halo, ConnectWise, Rewst, Thread,  already in stack  
 - Public willingness to be a **reference** after results  
 
 ---
@@ -480,7 +480,7 @@ For **operators and growing teams** who are **drowning in tool sprawl and manual
 - Project delivery in shared workspace (Notion/Linear/ClickUp)  
 - Secure secret handling for client access (password manager + JIT access)  
 - SOW templates, RACI, architecture templates  
-- Own n8n/Rewst lab tenants for demos and pack development  
+- Own Rewst lab tenants for demos and pack development  
 - Website CTA → calendar (Calendly already used under AI for Missouri pattern)
 
 ### 11.3 Quality bar
@@ -583,7 +583,7 @@ Update **jamesnetworks.net** to present **James Networks** as the network of bus
 
 **Suggested site sections (next build):**
 - Services (Assessment / Sprint / Retainer)  
-- Stack expertise grid (Rewst, n8n, Thread, NinjaOne, Halo, ConnectWise)  
+- Stack expertise grid (Rewst, , Thread, NinjaOne, Halo, ConnectWise)  
 - Method (Do it with you)  
 - Case studies (placeholders → real)  
 - CTA: Book a stack assessment  
@@ -595,7 +595,7 @@ Update **jamesnetworks.net** to present **James Networks** as the network of bus
 - [ ] Confirm employment / non-compete / moonlighting rules before public MSP marketing  
 - [ ] Form LLC/DBA structure with accountant if not already under James Networks  
 - [ ] Draft SOW + MSA templates (lawyer review)  
-- [ ] Stand up lab: NinjaOne trial/demo, Halo demo, Rewst sandbox, n8n instance, Thread demo  
+- [ ] Stand up lab: NinjaOne trial/demo, Halo demo, Rewst sandbox,  instance, Thread demo  
 - [ ] Write public one-pager PDF from this plan  
 - [ ] Add MSP services pages to jamesnetworks-net  
 - [ ] Identify 20 ICP MSPs for quiet outreach  
@@ -607,7 +607,7 @@ Update **jamesnetworks.net** to present **James Networks** as the network of bus
 
 ## 18. Summary one-pager (elevator)
 
-**Business Workflow Automation and Agentic Creation** (a James Networks business) helps companies stop drowning in their own tools. We build **workflows** and **agents** — on **n8n, Rewst**, and the systems you already run (including **Thread, NinjaOne, HaloPSA, ConnectWise** for channel clients). We don’t drop a flow and vanish. We **do it with you**: map the real process, build safely, measure capacity gained, and leave your team able to run and extend the system. **James Networks** is the network; www.jamesnetworks.net is the front door.
+**Business Workflow Automation and Agentic Creation** (a James Networks business) helps companies stop drowning in their own tools. We build **workflows** and **agents** — on **, Rewst**, and the systems you already run (including **Thread, NinjaOne, HaloPSA, ConnectWise** for channel clients). We don’t drop a flow and vanish. We **do it with you**: map the real process, build safely, measure capacity gained, and leave your team able to run and extend the system. **James Networks** is the network; www.jamesnetworks.net is the front door.
 
 ---
 
