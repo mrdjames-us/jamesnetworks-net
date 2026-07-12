@@ -2,17 +2,17 @@
 project: James Networks — MSP Automation Consulting Business Plan
 status: draft v1
 type: business plan
-company: James Networks (James Enterprises)
+company: James Networks
 owner: David James
 website: www.jamesnetworks.net
 updated: 2026-07-11
 ---
 
-# James Networks
-## Full Business Plan — MSP Automation Consulting
+# MSP Automation Consulting
+## Full Business Plan · A James Networks business
 
-**Brand:** James Networks  
-**Parent:** James Enterprises  
+**Service brand:** MSP Automation Consulting  
+**Parent network:** **James Networks** — the network of businesses (umbrella; there is no separate “James Enterprises” brand)  
 **Site:** [www.jamesnetworks.net](https://www.jamesnetworks.net)  
 **Founder:** David James — 30 years IT; Director of Operations at an MSP  
 **Location:** Clinton, Missouri · delivery remote-first, nationwide  
@@ -22,7 +22,7 @@ updated: 2026-07-11
 
 ## 1. Executive summary
 
-James Networks is an **MSP automation consultancy** that designs, builds, and operationalizes end-to-end workflows across the modern MSP stack:
+**MSP Automation Consulting** (under James Networks) designs, builds, and operationalizes end-to-end workflows across the modern MSP stack:
 
 | Layer | Platforms we specialize in |
 |-------|----------------------------|
@@ -40,25 +40,25 @@ James Networks is an **MSP automation consultancy** that designs, builds, and op
 1. **Operator credibility** — built by someone who has run MSP operations, not a pure software shop guessing at ticket reality.  
 2. **Full stack, not one tool** — RMM ↔ PSA ↔ orchestration ↔ AI messaging as one system.  
 3. **Do-it-with-you** — co-build, document, train, and hand off so the MSP owns the machine.  
-4. **James Enterprises umbrella** — same philosophy as AI for Missouri: practical AI without the hype or the headache, applied to the channel.
+4. **James Networks network** — same do-it-with-you philosophy as AI for Missouri, applied to the channel under one umbrella brand.
 
-**Year-1 goal (planning target):** Establish James Networks as the go-to partner for mid-market MSPs (roughly 10–80 techs) who already own part of the stack but cannot extract the capacity they paid for. Land recurring **Automation Retainers** plus high-margin **Automation Sprints** and **Stack Assessments**.
+**Year-1 goal (planning target):** Establish **MSP Automation Consulting** as the go-to partner for mid-market MSPs (roughly 10–80 techs) who already own part of the stack but cannot extract the capacity they paid for. Land recurring **Automation Retainers** plus high-margin **Automation Sprints** and **Stack Assessments**.
 
 ---
 
 ## 2. Company description
 
 ### 2.1 Legal / brand structure (recommended)
-- **Brand / DBA:** James Networks  
-- **Parent / holding:** James Enterprises  
-- **Web presence:** www.jamesnetworks.net (front site already scaffolding ventures + apps)  
-- **Sister brand:** AI for Missouri (education / SMB “do it with you”) — complementary, not competitive. James Networks is **channel / MSP B2B**.
+- **Umbrella brand:** **James Networks** — a network of businesses (the enterprise, without a second name)  
+- **This practice:** **MSP Automation Consulting** — channel / MSP B2B automation services  
+- **Web presence:** www.jamesnetworks.net (front door for the whole network)  
+- **Sister node in the network:** AI for Missouri (education / SMB “do it with you”) — complementary, not competitive  
 
 ### 2.2 Mission
 Help MSPs **scale service capacity without linear headcount** by turning fragmented tools into a **coherent automation system** — designed with their team, owned by their team.
 
 ### 2.3 Vision
-Become the default **full-stack MSP automation practice** for shops standardizing on modern RMM/PSA (especially NinjaOne + Halo or ConnectWise) and serious about Rewst/n8n + AI support layers.
+Become the default **full-stack MSP automation practice** under the James Networks brand for shops standardizing on modern RMM/PSA (especially NinjaOne + Halo or ConnectWise) and serious about Rewst/n8n + AI support layers.
 
 ### 2.4 Values (operating principles)
 - **Research before asking** — we map process before we drag nodes.  
@@ -127,7 +127,7 @@ Without orchestration + AI assist, each tool is a silo. With it, MSPs get:
 
 ---
 
-## 4. What James Networks does (services)
+## 4. What MSP Automation Consulting does (services)
 
 ### 4.1 Core promise
 > **We design and implement full-stack MSP automation — RMM, PSA, AI support, and orchestration — with your team, so capacity compounds and tribal knowledge becomes system knowledge.**
@@ -436,7 +436,7 @@ Triggers documented · happy path works · exceptions handled · logging exists 
 ## 10. Go-to-market
 
 ### 10.1 Positioning statement
-For **growing MSPs** who are **drowning in ticket volume and tool sprawl**, James Networks is the **full-stack automation consultancy** that **wires RMM, PSA, Thread, and Rewst/n8n into one operating system** — unlike freelancers or single-vendor PS teams, we **do it with your operators** so the automation survives turnover.
+For **growing MSPs** who are **drowning in ticket volume and tool sprawl**, **MSP Automation Consulting** (James Networks) is the **full-stack automation practice** that **wires RMM, PSA, Thread, and Rewst/n8n into one operating system** — unlike freelancers or single-vendor PS teams, we **do it with your operators** so the automation survives turnover.
 
 ### 10.2 Channels
 1. **Direct outbound** — MSPs on NinjaOne + Halo or CW; shops posting about Rewst/Thread underuse  
@@ -462,7 +462,7 @@ For **growing MSPs** who are **drowning in ticket volume and tool sprawl**, Jame
 
 ---
 
-## 11. Operations of James Networks itself
+## 11. Operations of MSP Automation Consulting
 
 ### 11.1 Delivery roles (start lean)
 | Role | Who (launch) | Later |
@@ -490,7 +490,7 @@ For **growing MSPs** who are **drowning in ticket volume and tool sprawl**, Jame
 - **Conflict of interest:** if concurrent with employment at an MSP, use clear rules: no poaching of employer clients; personal brand services only where allowed; legal/employment review before public launch  
 - **Insurance:** E&O / cyber appropriate for consultancy  
 - **Contracts:** limitation of liability; client remains responsible for their tenants and approvals  
-- **IP:** client owns their workflows; James Networks retains generic framework IP and non-client-specific patterns  
+- **IP:** client owns their workflows; James Networks / MSP Automation Consulting retains generic framework IP and non-client-specific patterns  
 
 ---
 
@@ -572,10 +572,11 @@ For **growing MSPs** who are **drowning in ticket volume and tool sprawl**, Jame
 
 ## 16. Website & brand integration
 
-Update **jamesnetworks.net** to present James Networks as:
+Update **jamesnetworks.net** to present **James Networks** as the network of businesses:
 
-1. **MSP Automation Consulting** (primary B2B offer) — full-stack experts  
-2. Ventures (AI for Missouri) and Apps (APA Captain, Rural Roots) as James Enterprises portfolio  
+1. **MSP Automation Consulting** — primary channel services node (full-stack experts)  
+2. **AI for Missouri** — education / SMB node  
+3. **Apps** (APA Captain, Rural Roots) and launch-pad ideas  
 
 **Suggested site sections (next build):**
 - Services (Assessment / Sprint / Retainer)  
@@ -589,7 +590,7 @@ Update **jamesnetworks.net** to present James Networks as:
 ## 17. Immediate next actions (execution checklist)
 
 - [ ] Confirm employment / non-compete / moonlighting rules before public MSP marketing  
-- [ ] Form LLC/DBA structure with accountant if not already under James Enterprises  
+- [ ] Form LLC/DBA structure with accountant if not already under James Networks  
 - [ ] Draft SOW + MSA templates (lawyer review)  
 - [ ] Stand up lab: NinjaOne trial/demo, Halo demo, Rewst sandbox, n8n instance, Thread demo  
 - [ ] Write public one-pager PDF from this plan  
@@ -603,7 +604,7 @@ Update **jamesnetworks.net** to present James Networks as:
 
 ## 18. Summary one-pager (elevator)
 
-**James Networks** helps MSPs stop drowning in their own tools. We are full-stack automation experts — **Rewst, n8n, Thread, NinjaOne, HaloPSA, ConnectWise** — and we use AI to design and power the flows that connect them. We don’t drop a workflow and vanish. We **do it with you**: map the real process, build safely, measure capacity gained, and leave your team able to run and extend the system. James Networks is the MSP automation practice under James Enterprises; www.jamesnetworks.net is the front door.
+**MSP Automation Consulting** (a James Networks business) helps MSPs stop drowning in their own tools. We are full-stack automation experts — **Rewst, n8n, Thread, NinjaOne, HaloPSA, ConnectWise** — and we use AI to design and power the flows that connect them. We don’t drop a workflow and vanish. We **do it with you**: map the real process, build safely, measure capacity gained, and leave your team able to run and extend the system. **James Networks** is the network; www.jamesnetworks.net is the front door.
 
 ---
 
