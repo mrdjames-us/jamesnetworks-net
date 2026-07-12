@@ -36,7 +36,7 @@ updated: 2026-07-11
 
 **The problem:** Most MSPs buy powerful tools and still run the business on tribal knowledge, swivel-chair updates, and heroics. Industry signal is loud: nearly all MSPs *plan* to automate with AI; only a small fraction **operationalize** it beyond pilots. Tools alone do not create capacity. **Integrated flows do.**
 
-**The offer:** We sit with the MSP’s ops, service desk, and vCIO leadership; map the real ticket and client lifecycle; then build durable automations in **orchestration layers and **, grounded in **NinjaOne + Halo or ConnectWise**, with **Thread** handling intelligent client conversation and ticket assist — plus AI used *inside* the design process and *inside* the workflows (classification, summarization, decision assist, exception routing).
+**The offer:** We sit with the MSP’s ops, service desk, and vCIO leadership; map the real ticket and client lifecycle; then build durable automations in **orchestration layers**, grounded in **NinjaOne + Halo or ConnectWise**, with **Thread** handling intelligent client conversation and ticket assist — plus AI used *inside* the design process and *inside* the workflows (classification, summarization, decision assist, exception routing).
 
 **Differentiation:**  
 1. **Operator credibility** — built by someone who has run MSP operations, not a pure software shop guessing at ticket reality.  
@@ -110,7 +110,7 @@ Without orchestration + AI assist, each tool is a silo. With it, MSPs get:
 ### 3.3 Trends we ride
 - PSA/RMM vendors shipping more native automation — still leave **cross-tool gaps**  
 - Rewst as MSP-native RPA with AI-assisted building (e.g. RoboRewsty-class assistants)  
--  as flexible / self-host / cost-control orchestration with strong API + AI node patterns  
+- Flexible / self-host or cloud orchestration layers with strong API and AI patterns  
 - Thread-class products changing the **client conversation layer** and ticket assist  
 - HaloPSA growth among modernizing MSPs; ConnectWise still large installed base  
 - NinjaOne strong among RMM-forward MSPs  
@@ -155,7 +155,7 @@ Time-boxed build for a defined outcome (examples in §5).
 **Includes:**
 - Process workshop with process owners  
 - Design (trigger, happy path, exceptions, human-in-the-loop)  
-- Build in orchestration layers and + native PSA/RMM automation where smarter  
+- Build in orchestration layers + native PSA/RMM automation where smarter  
 - Thread / AI assist configuration where it touches client conversation  
 - Security review (secrets, least privilege, multi-tenant isolation)  
 - Runbooks + “how to change this safely” docs  
@@ -241,18 +241,18 @@ James Networks does **not** treat tools as a checklist. We treat them as **layer
 - Every workflow has: owner, purpose, trigger inventory, rollback notes, last-reviewed date  
 - Destructive actions require dual-control or explicit approval tasks  
 
-### 5.2  — flexible / self-host / AI-heavy orchestration
+### 5.2 Orchestration layers — flexible / self-host or cloud / AI-heavy
 **Role:** Complementary (or primary for some shops) **open, API-first** automation — especially when:
 - Cost control / self-hosting matters  
 - Custom AI agent patterns, RAG over runbooks, or non-MSP SaaS is heavy  
-- Rewst isn’t licensed yet, or a hybrid model is better (Rewst for tenant-sensitive MSP packs;  for internal HQ tools)
+- A dedicated MSP pack platform isn’t licensed yet, or a hybrid model is better (tenant-sensitive packs vs internal HQ orchestration)
 
 **Where we use it:**
 - Webhook hubs and transformation layers  
 - AI classification / summarization pipelines before PSA write-back  
 - Integrations outside classic MSP catalogs  
 - Internal “automation HQ” (reporting bots, Slack/Teams ops channels, exec digests)  
-- Prototyping flows that later harden into Rewst packs (or stay in  if that’s the standard)
+- Prototyping flows that later harden into platform packs (or stay on the chosen orchestration layer)
 
 **James Networks standards:**
 - Credential vaulting, least-privilege API keys, network isolation for self-host  
