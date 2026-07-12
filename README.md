@@ -28,10 +28,28 @@ npx --yes serve .
 
 ## Deploy (Cloudflare Pages)
 
-1. Connect Git repo `mrdjames-us/jamesnetworks-net`
-2. Production branch: `main`
-3. Build command: *(empty)* · output: `/`
-4. Custom domain: `www.jamesnetworks.net`
+| Item | Value |
+|------|--------|
+| **Project** | `jamesnetworks-net` |
+| **Git** | `mrdjames-us/jamesnetworks-net` → branch `main` (auto-deploy) |
+| **Build** | empty · output: `/` (static) |
+| **Pages URL** | https://jamesnetworks-net.pages.dev |
+| **Custom domains** | `www.jamesnetworks.net`, `jamesnetworks.net` (in CF; DNS must point here) |
+
+### Squarespace DNS (zone is on Squarespace)
+
+Point custom domains at the Pages project:
+
+| Host | Type | Data |
+|------|------|------|
+| `www` | **CNAME** | `jamesnetworks-net.pages.dev` |
+| `@` (apex) | **CNAME** / ALIAS if Squarespace allows | `jamesnetworks-net.pages.dev` |
+
+If apex CNAME isn’t allowed, CNAME `www` only and 301 apex → `www` in Squarespace.
+
+Remove any old `www` record pointing at `ghs.googlehosted.com` (previous host).
+
+SSL is automatic once Cloudflare sees the CNAME (Google CA).
 
 ## Docs
 
