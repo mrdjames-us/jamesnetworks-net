@@ -5,21 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FlowScout — Your Automation Blueprint | James Networks</title>
 <meta name="description" content="FlowScout interviews you about a workflow the way an automation consultant would, then hands back a blueprint: what to automate, how, and which platform to use — n8n, Rewst, Zapier, Make, or Power Automate.">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="icon" type="image/jpeg" href="/assets/badge-j.jpg">
 <style>
   :root{
-    --ink:#0e1512; --ink-2:#16211c; --ink-3:#1e2c25;
-    --paper:#f6f4ee; --mist:#a8b5ae; --mist-2:#6d7c74;
+    --ink:#0a0c10; --ink-2:#141820; --ink-3:#1c1812;
+    --paper:#f3ebe0; --mist:#b8a894; --mist-2:#7d7264;
     --gold:#f2c14e; --gold-soft:#f2c14e33;
-    --green:#1c5a41; --green-bright:#2e8f68;
+    --green:#1a9e92; --green-bright:#2ec4b6;
     --radius:14px; --max:1120px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
-    background:var(--ink); color:var(--paper); line-height:1.6;
+    background-color:var(--ink); color:var(--paper); line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(180deg, rgba(10,12,16,.9), rgba(10,12,16,.96)),
+      radial-gradient(900px 480px at 80% -10%, #2ec4b628, transparent 60%),
+      radial-gradient(700px 400px at 10% 100%, #c4783a22, transparent 55%),
+      url("../assets/bg-steampunk.jpg");
+    background-size:auto,auto,auto,cover;
+    background-attachment:fixed;
   }
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
@@ -44,8 +51,8 @@
   .hero{
     padding:90px 0 70px;
     background:
-      radial-gradient(900px 480px at 75% -10%, #1c5a4155, transparent 65%),
-      radial-gradient(700px 400px at 10% 110%, #f2c14e14, transparent 60%);
+      linear-gradient(110deg, rgba(10,12,16,.92) 0%, rgba(10,12,16,.62) 100%),
+      url("../assets/flowscout-hero.jpg") center/cover no-repeat;
     border-bottom:1px solid #ffffff10;
   }
   .hero h1{font-size:clamp(2.1rem,5vw,3.4rem);max-width:800px;margin-bottom:18px}
