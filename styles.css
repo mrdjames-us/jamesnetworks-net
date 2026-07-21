@@ -45,9 +45,9 @@ body {
   color: var(--text);
   background-color: var(--bg);
   background-image:
-    linear-gradient(180deg, rgba(10, 12, 16, 0.82) 0%, rgba(10, 12, 16, 0.94) 40%, rgba(10, 12, 16, 0.98) 100%),
-    radial-gradient(1000px 500px at 90% -5%, rgba(46, 196, 182, 0.14), transparent 55%),
-    radial-gradient(800px 480px at -5% 30%, rgba(196, 120, 58, 0.12), transparent 50%),
+    linear-gradient(180deg, rgba(10, 12, 16, 0.9) 0%, rgba(10, 12, 16, 0.96) 45%, rgba(10, 12, 16, 0.98) 100%),
+    radial-gradient(1000px 500px at 90% -5%, rgba(46, 196, 182, 0.08), transparent 55%),
+    radial-gradient(800px 480px at -5% 30%, rgba(196, 120, 58, 0.06), transparent 50%),
     url("assets/bg-steampunk.jpg");
   background-size: auto, auto, auto, cover;
   background-attachment: fixed, fixed, fixed, fixed;
@@ -253,8 +253,8 @@ a:hover {
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(105deg, rgba(10, 12, 16, 0.94) 0%, rgba(10, 12, 16, 0.72) 48%, rgba(10, 12, 16, 0.55) 100%),
-    linear-gradient(180deg, rgba(10, 12, 16, 0.2), rgba(10, 12, 16, 0.88)),
+    linear-gradient(105deg, rgba(10, 12, 16, 0.96) 0%, rgba(10, 12, 16, 0.88) 42%, rgba(10, 12, 16, 0.62) 100%),
+    linear-gradient(180deg, rgba(10, 12, 16, 0.35), rgba(10, 12, 16, 0.92)),
     url("assets/hero-steampunk.jpg") center / cover no-repeat;
   pointer-events: none;
 }
@@ -349,17 +349,13 @@ a:hover {
 
 .hero-panel,
 .about-panel {
-  background:
-    linear-gradient(165deg, rgba(28, 24, 18, 0.82), rgba(12, 14, 18, 0.88)),
-    url("assets/panel-agents.jpg") center / cover no-repeat;
+  background: linear-gradient(165deg, rgba(28, 24, 18, 0.9), rgba(12, 14, 18, 0.94));
   border: 1px solid var(--border-strong);
   border-radius: calc(var(--radius) + 4px);
   padding: 1.6rem;
   box-shadow:
     var(--shadow),
-    inset 0 0 0 1px rgba(242, 193, 78, 0.08),
-    0 0 40px rgba(46, 196, 182, 0.08);
-  backdrop-filter: blur(4px);
+    inset 0 0 0 1px rgba(242, 193, 78, 0.08);
 }
 
 .hero-visual {
@@ -397,21 +393,22 @@ a:hover {
 
 .viz-frame img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
   display: block;
 }
 
 .viz-frame.tall img {
-  height: 240px;
+  height: 200px;
 }
 
 .viz-frame.banner {
-  margin: 0 0 1.75rem;
+  margin: 0 0 1.5rem;
 }
 
 .viz-frame.banner img {
-  height: min(32vw, 280px);
+  height: min(22vw, 180px);
+  object-position: center;
 }
 
 .section-visual-split {
@@ -490,8 +487,8 @@ a:hover {
 .section-alt {
   position: relative;
   background:
-    linear-gradient(180deg, rgba(10, 12, 16, 0.88), rgba(18, 14, 10, 0.92)),
-    url("assets/panel-console.jpg") center / cover no-repeat;
+    linear-gradient(180deg, rgba(10, 12, 16, 0.92), rgba(10, 12, 16, 0.96)),
+    url("assets/section-alt-bg.jpg") center / cover no-repeat;
   border-block: 1px solid var(--border);
 }
 
@@ -748,7 +745,7 @@ a:hover {
   border-radius: calc(var(--radius) - 4px);
   overflow: hidden;
   border: 1px solid rgba(242, 193, 78, 0.18);
-  height: 140px;
+  height: 120px;
 }
 
 .app-card .app-thumb img {
