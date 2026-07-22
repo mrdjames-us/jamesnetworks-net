@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="TheCipherLadder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="55%" stop-color="#121a2f"/>
+      <stop offset="100%" stop-color="#1a1040"/>
+    </linearGradient>
+    <linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b7cff"/>
+      <stop offset="100%" stop-color="#6ea8ff"/>
+    </linearGradient>
+    <linearGradient id="rung" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3dcf8e"/>
+      <stop offset="100%" stop-color="#6ea8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="520" cy="70" r="90" fill="#6ea8ff" opacity="0.08"/>
+  <circle cx="100" cy="300" r="120" fill="#8b7cff" opacity="0.07"/>
+  <!-- Ladder tapering upward -->
+  <g transform="translate(320 40)">
+    <!-- rails -->
+    <path d="M-90 280 L-28 20" stroke="url(#rail)" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M90 280 L28 20" stroke="url(#rail)" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <!-- rungs: wider at bottom -->
+    <line x1="-82" y1="250" x2="82" y2="250" stroke="url(#rung)" stroke-width="10" stroke-linecap="round" opacity="0.95"/>
+    <line x1="-70" y1="200" x2="70" y2="200" stroke="url(#rung)" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+    <line x1="-58" y1="150" x2="58" y2="150" stroke="url(#rung)" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+    <line x1="-46" y1="100" x2="46" y2="100" stroke="url(#rung)" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+    <line x1="-36" y1="55" x2="36" y2="55" stroke="url(#rung)" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+    <!-- lock climber -->
+    <text x="52" y="108" font-size="28" text-anchor="middle">🔐</text>
+  </g>
+  <text x="40" y="48" fill="#e8eefc" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="700">TheCipherLadder</text>
+  <text x="40" y="76" fill="#8b9bb8" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-style="italic">How high will you go?</text>
+</svg>

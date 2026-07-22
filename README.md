@@ -9,7 +9,7 @@
 | **James Networks** | Parent brand / network of businesses |
 | **Business Workflow Automation and Agentic Creation** | Primary services — workflows, orchestration, agentic systems |
 | **AI for Missouri** | Education & SMB AI (aiformissouri.com) |
-| **Apps** | APA Captain, 8/9-Ball scorers, Rural Roots Hub, more |
+| **Apps** | TheCipherLadder, FlowScout, APA Captain, 8/9-Ball scorers, Rural Roots Hub, more |
 
 ## Live intent
 

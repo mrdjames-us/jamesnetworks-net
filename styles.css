@@ -90,6 +90,33 @@ a:hover {
   margin-inline: auto;
 }
 
+/* Top promo — Cipher Ladder */
+.top-promo {
+  background: linear-gradient(90deg, rgba(46, 196, 182, 0.16), rgba(242, 193, 78, 0.14), rgba(110, 168, 255, 0.14));
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.top-promo-inner {
+  padding: 0.45rem 1rem;
+}
+
+.top-promo-link {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--brass, #f2c14e);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.15s, opacity 0.15s;
+}
+
+.top-promo-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Header */
 .site-header {
   position: sticky;

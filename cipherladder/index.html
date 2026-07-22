@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="TheCipherLadder — How high will you go? A daily logic climb. Five clues. One secret order. The ladder gets skinnier as it gets harder." />
+  <title>TheCipherLadder — How high will you go?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪜</text></svg>" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <button type="button" class="icon-btn" id="btn-help" aria-label="How to play" title="How to play">?</button>
+      <div class="brand">
+        <h1>TheCipherLadder</h1>
+        <p class="tagline">How high will you go?</p>
+      </div>
+      <button type="button" class="icon-btn" id="btn-stats" aria-label="Stats" title="Stats">▦</button>
+    </header>
+
+    <main>
+      <section class="meta-bar" aria-live="polite">
+        <div class="meta-item">
+          <span class="meta-label">Daily</span>
+          <span class="meta-value" id="date-label">—</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Height</span>
+          <span class="meta-value" id="height-label">0</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Rung</span>
+          <span class="meta-value" id="rung-label">1</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Attempts</span>
+          <span class="meta-value" id="attempts-label">0 / 3</span>
+        </div>
+      </section>
+
+      <button type="button" class="ladder-peek" id="btn-ladder-peek" title="View ladder">
+        <span class="peek-label">Ladder</span>
+        <span class="peek-bar" id="peek-bar"></span>
+        <span class="peek-diff" id="peek-diff">Easy</span>
+      </button>
+
+      <section class="clues-panel">
+        <h2 class="panel-title">Clues <span class="panel-sub" id="diff-chip">Easy</span></h2>
+        <ol class="clues" id="clues-list"></ol>
+      </section>
+
+      <section class="board-panel">
+        <h2 class="panel-title">Your arrangement</h2>
+        <p class="hint-line" id="hint-line">Tap a slot, then an item — or drag items into place.</p>
+        <div class="slots" id="slots" role="list" aria-label="Arrangement slots"></div>
+        <div class="tray" id="tray" aria-label="Available items"></div>
+        <div class="actions">
+          <button type="button" class="btn ghost" id="btn-clear" disabled>Clear</button>
+          <button type="button" class="btn primary" id="btn-submit" disabled>Submit</button>
+        </div>
+      </section>
+
+      <section class="history-panel" id="history-panel" hidden>
+        <h2 class="panel-title">Attempts this rung</h2>
+        <div class="history" id="history"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span>New ladder at midnight · higher rungs get skinnier</span>
+    </footer>
+  </div>
+
+  <!-- How to play -->
+  <dialog class="modal" id="modal-help">
+    <form method="dialog" class="modal-card">
+      <h2>How to play</h2>
+      <ol class="help-list">
+        <li>Climb <strong>TheCipherLadder</strong>. Each rung is a logic cipher: five items, one secret order.</li>
+        <li>Arrange items so every clue is true, then <strong>Submit</strong>.</li>
+        <li>After every submit you see the <strong>ladder</strong> — your height, your rung, and how skinny it’s getting.</li>
+        <li>Clear a rung → climb higher. Difficulty rises and the ladder <strong>narrows</strong>. Fall → that’s your height for the day.</li>
+        <li>Same daily ladder for everyone. Streaks reward coming back.</li>
+      </ol>
+      <p class="help-tip">Early rungs are wide and forgiving. How high will you go?</p>
+      <button type="submit" class="btn primary wide">Climb</button>
+    </form>
+  </dialog>
+
+  <!-- Stats -->
+  <dialog class="modal" id="modal-stats">
+    <form method="dialog" class="modal-card">
+      <h2>Stats</h2>
+      <div class="stats-grid" id="stats-grid"></div>
+      <button type="submit" class="btn primary wide">Close</button>
+    </form>
+  </dialog>
+
+  <!-- Ladder after every submit -->
+  <dialog class="modal ladder-modal" id="modal-ladder">
+    <div class="modal-card ladder-card">
+      <h2 id="ladder-title">The Ladder</h2>
+      <p class="result-sub" id="ladder-sub"></p>
+      <div id="ladder-view" class="ladder-view" aria-live="polite"></div>
+      <div class="result-actions" id="ladder-actions">
+        <button type="button" class="btn primary wide" id="btn-ladder-continue">Continue</button>
+        <button type="button" class="btn ghost wide" id="btn-ladder-share" hidden>Share height</button>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
