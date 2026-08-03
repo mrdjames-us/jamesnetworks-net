@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="James Networks Pool Hub — APA Captain, 8-Ball & 9-Ball scorers, one Google account." />
+  <meta name="theme-color" content="#0a0c10" />
+  <title>Pool Hub | James Networks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/assets/badge-j.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="pool.css" />
+</head>
+<body class="pool-hub">
+  <div id="demoEnvBanner" hidden class="demo-banner">
+    DEMO ENVIRONMENT — data &amp; links target demo scorers · not production
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="James Networks home">
+        <img class="brand-logo" src="/assets/badge-j.jpg" width="44" height="44" alt="James Networks" />
+        <span class="brand-text">
+          <strong>Pool Hub</strong>
+          <span>Captain · Scorers · History</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/">James Networks</a>
+        <a href="#apps">Apps</a>
+        <a href="#dashboard">Dashboard</a>
+        <button type="button" class="btn btn-sm btn-primary" id="navAuthBtn">Sign in</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero pool-hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">James Networks · Pool suite</p>
+          <h1>One account.<br /><span class="accent-text">Captain + scorers.</span></h1>
+          <p class="lead">
+            Sign in with the same Google account as APA Captain. See your teams, upcoming matches,
+            and recent Equalizer sessions — then jump into the right tool for the night.
+          </p>
+          <div class="hero-actions" id="heroAuthArea">
+            <button type="button" class="btn btn-primary" id="heroSignInBtn">Sign in with Google</button>
+            <a class="btn btn-ghost" href="#apps">Browse apps</a>
+          </div>
+          <div id="heroUser" class="hero-user hidden">
+            <img id="heroAvatar" class="hero-avatar" alt="" width="48" height="48" />
+            <div>
+              <div class="hero-user-name" id="heroName">—</div>
+              <div class="hero-user-email" id="heroEmail">—</div>
+            </div>
+            <button type="button" class="btn btn-ghost btn-sm" id="heroSignOutBtn">Sign out</button>
+          </div>
+          <p class="auth-status" id="authStatus"></p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="/assets/app-apacaptain.jpg" width="640" height="480" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apps">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Apps</p>
+          <h2>Open a tool</h2>
+          <p class="section-lead">Same Google session works on Captain and both scorers (after Firebase authorized domains are set).</p>
+        </header>
+        <div class="card-grid apps pool-apps">
+          <article class="app-card app-featured">
+            <div class="app-thumb"><img src="/assets/app-apacaptain.jpg" alt="" /></div>
+            <div class="app-top">
+              <span class="app-badge">Live</span>
+              <span class="app-domain" id="linkCaptainDomain">apacaptain.jamesnetworks.net</span>
+            </div>
+            <h3>APA Captain</h3>
+            <p>Lineups, Rule of 23, roster &amp; schedule sync from poolplayers.com, scouting.</p>
+            <a class="btn btn-primary" id="linkCaptain" href="https://apacaptain.jamesnetworks.net" target="_blank" rel="noopener">Open Captain</a>
+          </article>
+          <article class="app-card">
+            <div class="app-thumb"><img src="/assets/app-9ball.jpg" alt="" /></div>
+            <div class="app-top">
+              <span class="app-badge">Live</span>
+              <span class="app-domain" id="link9Domain">9ballscores…</span>
+            </div>
+            <h3>9-Ball Scorer</h3>
+            <p>Equalizer points race, defenses, history — sign in to sync to your Google account.</p>
+            <a class="btn btn-primary" id="link9" href="#">Open 9-Ball</a>
+          </article>
+          <article class="app-card">
+            <div class="app-thumb"><img src="/assets/app-8ball.jpg" alt="" /></div>
+            <div class="app-top">
+              <span class="app-badge">Live</span>
+              <span class="app-domain" id="link8Domain">8ballscores…</span>
+            </div>
+            <h3>8-Ball Scorer</h3>
+            <p>Games race, fouls &amp; runs, cloud scorebook — same Google account as Captain.</p>
+            <a class="btn btn-primary" id="link8" href="#">Open 8-Ball</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="dashboard">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Dashboard</p>
+          <h2>My pool</h2>
+          <p class="section-lead" id="dashLead">Sign in to load Captain roster/schedule and recent scorer matches.</p>
+        </header>
+
+        <div id="dashSignedOut" class="panel-card">
+          <p class="muted">You’re signed out. Use the button above to connect with Google.</p>
+        </div>
+
+        <div id="dashSignedIn" class="hidden">
+          <div class="dash-grid">
+            <div class="panel-card">
+              <h3 class="panel-title">Roster <span class="count" id="rosterCount"></span></h3>
+              <div id="rosterList" class="list-block"><p class="muted">Loading…</p></div>
+            </div>
+            <div class="panel-card">
+              <h3 class="panel-title">Upcoming schedule</h3>
+              <div id="scheduleList" class="list-block"><p class="muted">Loading…</p></div>
+            </div>
+          </div>
+
+          <div class="dash-grid mt-lg">
+            <div class="panel-card">
+              <h3 class="panel-title">Recent 9-ball sessions</h3>
+              <div id="nineList" class="list-block"><p class="muted">Loading…</p></div>
+              <a class="text-link" id="link9History" href="#">Open 9-ball history →</a>
+            </div>
+            <div class="panel-card">
+              <h3 class="panel-title">Recent 8-ball sessions</h3>
+              <div id="eightList" class="list-block"><p class="muted">Loading…</p></div>
+              <a class="text-link" id="link8History" href="#">Open 8-ball history →</a>
+            </div>
+          </div>
+
+          <div class="panel-card mt-lg" id="scoreTonightCard">
+            <h3 class="panel-title">Score a match</h3>
+            <p class="muted">Pick two roster players and a format. Opens the demo/prod scorer with names &amp; skill levels pre-filled.</p>
+            <div class="score-form">
+              <label>Player 1
+                <select id="scoreP1"></select>
+              </label>
+              <label>Player 2
+                <select id="scoreP2"></select>
+              </label>
+              <label>Format
+                <select id="scoreFormat">
+                  <option value="9">9-Ball</option>
+                  <option value="8">8-Ball</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-primary" id="scoreOpenBtn">Open scorer</button>
+            </div>
+            <p class="auth-status" id="scoreStatus"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© <span id="year"></span> James Networks · Pool Hub (Phase 2)</p>
+      <a href="/">← Back to James Networks</a>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+  <script src="pool.js"></script>
+</body>
+</html>
