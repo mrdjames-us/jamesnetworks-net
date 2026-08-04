@@ -139,11 +139,20 @@
         "Roster & schedule from APA Captain · recent sessions from scorers" +
         (IS_DEMO ? " (demo Firestore paths)." : ".");
       setStatus("Signed in.", "ok");
+      prefillFeedbackFromUser();
     } else {
       $("navAuthBtn").textContent = "Sign in";
       $("dashLead").textContent = "Sign in to load Captain roster/schedule and recent scorer matches.";
       setStatus("");
     }
+  }
+
+  function prefillFeedbackFromUser() {
+    if (!user) return;
+    var nameEl = $("fbName");
+    var emailEl = $("fbEmail");
+    if (nameEl && !nameEl.value && user.displayName) nameEl.value = user.displayName;
+    if (emailEl && !emailEl.value && user.email) emailEl.value = user.email;
   }
 
   async function signIn() {
@@ -438,4 +447,62 @@
   });
   $("heroSignOutBtn").addEventListener("click", signOut);
   $("scoreOpenBtn").addEventListener("click", openScorerPrefill);
+
+  function setFbStatus(msg, kind) {
+    var el = $("fbStatus");
+    if (!el) return;
+    el.textContent = msg || "";
+    el.className = "auth-status" + (kind ? " " + kind : "");
+  }
+
+  var fbForm = $("feedbackForm");
+  if (fbForm) {
+    fbForm.addEventListener("submit", async function (ev) {
+      ev.preventDefault();
+      var msg = ($("fbMessage").value || "").trim();
+      if (msg.length < 5) {
+        setFbStatus("Add a short note before sending.", "err");
+        return;
+      }
+      var btn = $("fbSubmit");
+      if (btn) btn.disabled = true;
+      setFbStatus("Sending…");
+      try {
+        var res = await fetch("/api/pool-feedback", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            name: ($("fbName").value || "").trim(),
+            email: ($("fbEmail").value || "").trim(),
+            app: $("fbApp").value || "all",
+            message: msg,
+            website_url: ($("fbWebsite") && $("fbWebsite").value) || "",
+          }),
+        });
+        var data = {};
+        try {
+          data = await res.json();
+        } catch (e) {
+          data = {};
+        }
+        if (!res.ok) {
+          setFbStatus(
+            data.error ||
+              "Couldn't send. Email david.james@jamesnetworks.net instead.",
+            "err"
+          );
+          return;
+        }
+        setFbStatus(data.message || "Thanks — feedback sent.", "ok");
+        $("fbMessage").value = "";
+      } catch (e) {
+        setFbStatus(
+          "Network error. Email david.james@jamesnetworks.net instead.",
+          "err"
+        );
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  }
 })();

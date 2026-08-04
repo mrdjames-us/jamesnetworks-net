@@ -31,6 +31,7 @@
         <a href="/">James Networks</a>
         <a href="#apps">Apps</a>
         <a href="#dashboard">Dashboard</a>
+        <a href="#feedback">Feedback</a>
         <button type="button" class="btn btn-sm btn-primary" id="navAuthBtn">Sign in</button>
       </nav>
     </div>
@@ -41,11 +42,11 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">James Networks · Pool suite</p>
+          <p class="eyebrow">James Networks · Pool Hub</p>
           <h1>One account.<br /><span class="accent-text">Captain + scorers.</span></h1>
           <p class="lead">
-            Sign in with the same Google account as APA Captain. See your teams, upcoming matches,
-            and recent Equalizer sessions — then jump into the right tool for the night.
+            Pool Hub is the home for APA Captain, 9-Ball, and 8-Ball. Sign in with the same Google
+            account, see teams and recent sessions, then jump into the right tool for the night.
           </p>
           <div class="hero-actions" id="heroAuthArea">
             <button type="button" class="btn btn-primary" id="heroSignInBtn">Sign in with Google</button>
@@ -71,8 +72,8 @@
       <div class="container">
         <header class="section-head">
           <p class="eyebrow">Apps</p>
-          <h2>Open a tool</h2>
-          <p class="section-lead">Same Google session works on Captain and both scorers (after Firebase authorized domains are set).</p>
+          <h2>Pool Hub apps</h2>
+          <p class="section-lead">Three tools, one suite. Same Google session works on Captain and both scorers.</p>
         </header>
         <div class="card-grid apps pool-apps">
           <article class="app-card app-featured">
@@ -166,6 +167,56 @@
             </div>
             <p class="auth-status" id="scoreStatus"></p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="feedback">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Feedback</p>
+          <h2>Leave feedback for the apps</h2>
+          <p class="section-lead">
+            Ideas, bugs, or “I wish it did…” for Pool Hub — APA Captain, 9-Ball, or 8-Ball.
+            Notes go straight to David at James Networks.
+          </p>
+        </header>
+        <div class="panel-card feedback-card">
+          <form id="feedbackForm" class="feedback-form" novalidate>
+            <!-- honeypot -->
+            <label class="hp" aria-hidden="true">
+              Website
+              <input type="text" name="website_url" id="fbWebsite" tabindex="-1" autocomplete="off" />
+            </label>
+            <div class="feedback-grid">
+              <label>Your name <span class="opt">(optional)</span>
+                <input type="text" id="fbName" name="name" maxlength="80" autocomplete="name" placeholder="Name" />
+              </label>
+              <label>Email <span class="opt">(optional — for a reply)</span>
+                <input type="email" id="fbEmail" name="email" maxlength="120" autocomplete="email" placeholder="you@example.com" />
+              </label>
+              <label>Which app?
+                <select id="fbApp" name="app">
+                  <option value="all">All / general</option>
+                  <option value="hub">Pool Hub</option>
+                  <option value="captain">APA Captain</option>
+                  <option value="nine">9-Ball Scorer</option>
+                  <option value="eight">8-Ball Scorer</option>
+                </select>
+              </label>
+            </div>
+            <label class="feedback-msg">Suggestion or issue
+              <textarea id="fbMessage" name="message" rows="5" maxlength="4000" required placeholder="What should we fix or add?"></textarea>
+            </label>
+            <div class="feedback-actions">
+              <button type="submit" class="btn btn-primary" id="fbSubmit">Send feedback</button>
+              <p class="auth-status" id="fbStatus" aria-live="polite"></p>
+            </div>
+            <p class="muted feedback-alt">
+              Prefer mail?
+              <a class="text-link" href="mailto:david.james@jamesnetworks.net?subject=Pool%20Hub%20feedback">david.james@jamesnetworks.net</a>
+            </p>
+          </form>
         </div>
       </div>
     </section>

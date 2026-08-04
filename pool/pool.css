@@ -196,3 +196,88 @@
 .site-footer a {
   color: var(--text-muted, #b8a894);
 }
+
+/* Feedback */
+.feedback-card {
+  max-width: 720px;
+}
+
+.feedback-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #b8a894);
+}
+
+.feedback-form label .opt {
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border, rgba(196, 149, 78, 0.28));
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text, #f3ebe0);
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.feedback-form textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.45;
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 720px) {
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feedback-msg {
+  margin-bottom: 12px;
+}
+
+.feedback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.feedback-actions .auth-status {
+  margin: 0;
+  flex: 1;
+  min-width: 12rem;
+}
+
+.feedback-alt {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+}
+
+.feedback-alt .text-link {
+  margin-top: 0;
+  display: inline;
+}
+
+.feedback-form .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
