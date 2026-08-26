@@ -2,7 +2,7 @@
    POST /api/pool-feedback
 
    Emails suggestions to david.james@jamesnetworks.net via Resend
-   (same RESEND_API_KEY as NetNudge / Golden Bench).
+   (same RESEND_API_KEY as NetNudge).
 
    Optional env:
      RESEND_API_KEY
