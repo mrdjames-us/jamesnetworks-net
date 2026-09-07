@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.jamesnetworks.net/sitemap.xml
+Sitemap: https://www.henrycountyconsulting.com/sitemap.xml
