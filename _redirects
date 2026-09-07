@@ -1,4 +1,16 @@
-# Golden Bench retired — Agents as a Service is the primary offer
+# No SPA fallback. Unknown paths must 404 via /404.html.
+# Never splat-rewrite missing paths to the homepage with a 200.
+
+# Apex → www cannot be expressed here (Pages does not support
+# domain-level redirects). See functions/_middleware.js.
+
+# Golden Bench retired
 /goldenbench / 301
 /goldenbench/ / 301
 /goldenbench/* / 301
+
+# Lab apps do not belong on the HCC host. Host-aware 301s live in
+# functions/_middleware.js so jamesnetworks.net keeps serving them.
+# These path rules are a belt-and-suspenders fallback if middleware
+# is skipped for a request (they also fire on the lab host — avoid
+# that by keeping middleware as the source of truth).

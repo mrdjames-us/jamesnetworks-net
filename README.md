@@ -1,46 +1,50 @@
-# James Networks (`www.jamesnetworks.net`)
+# Henry County Consulting (`henrycountyconsulting.com`)
 
-**James Networks is a Managed Intelligence Provider (MIP).**
+**AI-first consulting** for workflows, agents, and automations — led by David James in Henry County / Clinton, Missouri.
 
-Primary offer: **Agents as a Service** — design, deploy, and operate Grok Bot digital labor for Clinton / Missouri businesses.
+Short brand: **HCC**. Method: **Assess → Simplify → Automate → Train** (do-it-with-you).
 
-## Brand structure
-
-| Name | Role |
-|------|------|
-| **James Networks** | MIP (front door) |
-| **Agents as a Service** | Productized packages — Assess → Deploy → Operate |
-| **AI for Missouri** | Education & SMB AI (aiformissouri.com) — lead feeder |
-| **NetNudge** | Local SMB websites |
-| **Billiards / Pool Hub** | APA Captain, 8/9-Ball scorers; markers via DJ Prints 3D |
-| **Apps (lab)** | FlowScout, TheCipherLadder, Rural Roots Hub |
-
-**Retired:** Golden Bench (PC repair / custom PCs) — removed Aug 2026.
-
-## Live intent
+## Positioning
 
 | Item | Value |
 |------|--------|
-| Domain | [www.jamesnetworks.net](https://www.jamesnetworks.net) |
+| Brand | Henry County Consulting (HCC) |
+| Domain | henrycountyconsulting.com (also served via jamesnetworks.net Pages) |
+| Offer | AI consulting — process assessment, agents/automations, team training |
+| Who | David James · 30 years IT · MSP Dir of Ops background |
+| Geography | Henry County / Clinton / west-central Missouri |
+| CTA | [calendly.com/david-p-james/30min](https://calendly.com/david-p-james/30min) |
+| Contact | david@henrycountyconsulting.com |
 | Stack | Static HTML / CSS / JS (no build step) |
-| Host | Cloudflare Pages |
-| Logo | `assets/badge-j.jpg` |
+| Host | Cloudflare Pages project `jamesnetworks-net` |
+
+Adjacent side doors (footer): AI for Missouri, NetNudge, FlowScout, Pool Hub (league scoring apps).
 
 ## Local preview
+
+From this folder:
 
 ```bash
 npx --yes serve .
 ```
 
-UX mocks (landing / customer portal / JN ops + unit econ): `mocks/`
+Or open `index.html` directly in a browser.
 
-## Deploy
+## Deploy (Cloudflare Pages)
+
+Static site — `wrangler.toml` sets `pages_build_output_dir = "."`.
 
 ```powershell
-.\deploy-demo.ps1   # demo only
-.\deploy-prod.ps1   # type PROD — live www
+$env:CLOUDFLARE_ACCOUNT_ID = "180f457e46d097180035f855959ee95a"
+npx wrangler pages deploy . --project-name=jamesnetworks-net --branch=main --commit-dirty=true
 ```
 
-## Docs
+## Key files
 
-- [BUSINESS-PLAN.md](./BUSINESS-PLAN.md) — services plan (Ops Agents / MSP vertical)
+- `index.html` — consulting homepage
+- `ai-consulting-clinton-mo/`, `services/`, `workflow-automation/`, `about/`, `faq/`, `privacy/` — unique HTML pages
+- `404.html` — real 404s (kills Cloudflare Pages SPA fallback)
+- `functions/_middleware.js` — apex → www on HCC; lab apps 301 off the HCC host
+- `robots.txt` / `sitemap.xml` — this host only
+- `styles.css` / `script.js`
+- `assets/hcc-mark.png` — logo / favicon on this domain
