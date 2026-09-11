@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Default file. Host-aware middleware serves robots-hcc.txt or robots-lab.txt.
 Sitemap: https://www.henrycountyconsulting.com/sitemap.xml

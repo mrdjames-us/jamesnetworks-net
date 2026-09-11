@@ -1,0 +1,24 @@
+# Henry County Consulting
+
+> Paid, do-it-with-you workflow and agent consulting in Clinton, Henry County, Missouri. Led by David James. Assess → Simplify → Automate → Train. Humans approve money, access, and deletes.
+
+Henry County Consulting is the consulting front door. It is not AI for Missouri (statewide workshops) and not James Networks (the product lab).
+
+## Site
+- [Home](https://www.henrycountyconsulting.com/): AI consulting in Clinton, MO
+- [Local consulting](https://www.henrycountyconsulting.com/ai-consulting-clinton-mo/): Clinton, Henry County, west-central Missouri
+- [Services](https://www.henrycountyconsulting.com/services/): discovery, agents, ops patterns, enablement
+- [Workflow automation](https://www.henrycountyconsulting.com/workflow-automation/): inbox, quotes, tickets, human gates
+- [About David James](https://www.henrycountyconsulting.com/about/)
+- [FAQ](https://www.henrycountyconsulting.com/faq/)
+- [Privacy](https://www.henrycountyconsulting.com/privacy/)
+
+## Related
+- [AI for Missouri — workshops](https://www.aiformissouri.com/)
+- [James Networks — the lab](https://www.jamesnetworks.net/)
+
+## Contact
+- Clinton, MO 64735
+- (660) 869-2868
+- david@henrycountyconsulting.com
+- Book: https://calendly.com/david-p-james/30min

@@ -5,7 +5,8 @@
  * (domain-level redirects are unsupported). This middleware:
  *   1. 301 apex henrycountyconsulting.com → www
  *   2. 301 lab apps off the HCC host onto jamesnetworks.net
- *   3. Leaves jamesnetworks.net paths alone
+ *   3. Serves host-aware robots.txt
+ *   4. Leaves jamesnetworks.net paths alone
  *
  * Unknown paths are NOT rewritten to index.html. 404.html handles those.
  */
@@ -21,6 +22,18 @@ const LAB_PREFIXES = [
   "/flowscout",
   "/mocks",
 ];
+
+const ROBOTS_HCC = `User-agent: *
+Allow: /
+
+Sitemap: https://www.henrycountyconsulting.com/sitemap.xml
+`;
+
+const ROBOTS_LAB = `User-agent: *
+Allow: /
+
+Sitemap: https://www.jamesnetworks.net/sitemap-lab.xml
+`;
 
 function isHccHost(host) {
   return host === HCC_APEX || host === HCC_WWW;
@@ -47,6 +60,16 @@ export async function onRequest(context) {
 
   if (isHccHost(host) && isLabPath(url.pathname)) {
     return Response.redirect(`${LAB_ORIGIN}${url.pathname}${url.search}`, 301);
+  }
+
+  if (url.pathname === "/robots.txt") {
+    const body = isHccHost(host) ? ROBOTS_HCC : ROBOTS_LAB;
+    return new Response(body, {
+      headers: {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "public, max-age=3600",
+      },
+    });
   }
 
   return context.next();
