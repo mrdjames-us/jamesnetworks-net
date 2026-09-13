@@ -25,7 +25,7 @@
 
   // Prefer custom domains; fall back to pages.dev if needed
   if (!IS_DEMO) {
-    URLS.nine = "https://9ballscores.pages.dev";
+    URLS.nine = "https://www.9ballscores.com";
     URLS.eight = "https://8ballscores.pages.dev";
   }
 
