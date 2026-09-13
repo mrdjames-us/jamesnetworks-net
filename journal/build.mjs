@@ -604,19 +604,6 @@ function personLd() {
 
 function renderHome(posts) {
   const home = loadPage("home");
-  const latest = posts
-    .slice(0, 5)
-    .map(
-      (p) => `<li>
-        <a href="${p.path}">
-          <time datetime="${p.date}">${formatDate(p.date)}</time>
-          <span class="post-title">${escapeHtml(p.title)}</span>
-          ${renderPostBuildLine(p)}
-          <span class="post-sum">${escapeHtml(p.summary)}</span>
-        </a>
-      </li>`
-    )
-    .join("\n        ");
 
   const extraHead = jsonLd({
     "@context": "https://schema.org",
@@ -647,14 +634,7 @@ function renderHome(posts) {
       <p class="eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
       <div class="prose">${home.html}</div>
     </section>
-    ${renderHomeDoors()}
-    <section class="post-index" aria-labelledby="latest-heading">
-      <h2 id="latest-heading" class="index-heading">Latest writing</h2>
-      <ol class="post-list">
-        ${latest}
-      </ol>
-      <p class="more"><a href="/writing/">All writing</a> · <a href="/writing/msp/">MSP writing</a> · <a href="/rss.xml">RSS</a></p>
-    </section>`;
+    ${renderHomeDoors()}`;
 
   return layout({
     title: SITE.name,
