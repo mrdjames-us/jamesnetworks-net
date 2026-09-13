@@ -19,7 +19,7 @@
       }
     : {
         captain: "https://apacaptain.jamesnetworks.net",
-        nine: "https://9ballscores.jamesnetworks.net",
+        nine: "https://www.9ballscores.com",
         eight: "https://8ballscores.jamesnetworks.net",
       };
 
