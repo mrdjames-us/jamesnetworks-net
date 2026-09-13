@@ -614,3 +614,5 @@ body.page-home .post-index {
 }
 .built-more { margin-top: 1.25rem; }
 .page-prose { margin-bottom: 2rem; }
+
+.empty-shelf { opacity: 0.85; font-style: italic; }

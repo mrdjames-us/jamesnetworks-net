@@ -372,15 +372,18 @@ function renderCards(items, extraClass = "") {
       </div>`;
 }
 
-function renderShelf(id, heading, lead, items, gridClass) {
-  if (!items || !items.length) return "";
+function renderShelf(id, heading, lead, items, gridClass, emptyNote = "") {
+  const body =
+    items && items.length
+      ? renderCards(items, gridClass)
+      : `<p class="empty-shelf">${escapeHtml(emptyNote || "Nothing here yet.")}</p>`;
   return `
     <section class="built" id="${id}" aria-labelledby="${id}-heading">
       <header class="section-head">
         <h2 id="${id}-heading">${escapeHtml(heading)}</h2>
         <p class="section-lead">${escapeHtml(lead)}</p>
       </header>
-      ${renderCards(items, gridClass)}
+      ${body}
     </section>`;
 }
 
@@ -401,9 +404,10 @@ function renderBuiltBlock(mode = "home") {
     return renderShelf(
       "msp-built",
       "MSP highlights",
-      "Placeholder lead — David will rewrite. MSP workflows, consulting tools, automations.",
+      "Placeholder — structure only until emailed MSP updates arrive.",
       msp,
-      "three"
+      "three",
+      "No MSP cards yet."
     );
   }
   return `
@@ -418,9 +422,10 @@ function renderBuiltBlock(mode = "home") {
       ${renderShelf(
         "msp",
         "MSP work",
-        "Placeholder — MSP workflows and automations. Full list on /msp/.",
+        "Placeholder — MSP content arrives later via email. Nothing from the current site was moved here.",
         msp,
-        "three"
+        "three",
+        "No MSP highlights yet."
       )}
       <p class="more built-more"><a href="/work/">All personal &amp; lab</a> · <a href="/msp/">MSP highlights</a> · <a href="/writing/msp/">MSP writing</a></p>
     </div>`;
