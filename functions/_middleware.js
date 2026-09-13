@@ -77,6 +77,7 @@ function mapJournalPath(pathname) {
   if (pathname === "/favicon.ico" || pathname === "/favicon.svg") return "/journal/favicon.svg";
   if (pathname === "/" || pathname === "") return "/journal/";
   if (pathname.startsWith("/journal/") || pathname === "/journal") return pathname;
+  // Explicit pretty routes (incl. MSP) → journal/ tree
   let mapped = `/journal${pathname}`;
   if (!mapped.includes(".") && !mapped.endsWith("/")) mapped += "/";
   return mapped;
@@ -114,11 +115,25 @@ function siteCookie(url) {
   return "";
 }
 
+/**
+ * Serve a journal static path without re-entering this middleware.
+ * context.next() can re-invoke onRequest and pretty-redirect /journal/msp/ → /msp/,
+ * which breaks demo ?site=journal rewrites (and can 404 / loop).
+ */
 async function fetchMapped(context, pathname) {
   const dest = new URL(context.request.url);
   dest.pathname = pathname;
   dest.searchParams.delete("site");
-  return context.next(new Request(dest.toString(), context.request));
+  const req = new Request(dest.toString(), context.request);
+  if (context.env && context.env.ASSETS && typeof context.env.ASSETS.fetch === "function") {
+    return context.env.ASSETS.fetch(req);
+  }
+  return context.next(req);
+}
+
+function redirectWithCookie(location, cookie) {
+  const res = Response.redirect(location, 301);
+  return withOptionalCookie(res, cookie);
 }
 
 export async function onRequest(context) {
@@ -175,7 +190,8 @@ export async function onRequest(context) {
       const dest = new URL(pretty, url);
       dest.search = url.search;
       dest.searchParams.delete("site");
-      return Response.redirect(dest.toString(), 301);
+      // Keep journal mode on demo after stripping ?site=journal
+      return redirectWithCookie(dest.toString(), cookie || "jn_site=journal; Path=/; Max-Age=86400; SameSite=Lax");
     }
     return withOptionalCookie(await context.next(), cookie);
   }
@@ -184,7 +200,20 @@ export async function onRequest(context) {
   let res = await fetchMapped(context, mapped);
 
   if (res.status === 404) {
+    // Try index.html explicitly (some runtimes 404 on directory URLs via ASSETS)
+    if (mapped.endsWith("/") && !mapped.endsWith("/index.html")) {
+      const indexed = await fetchMapped(context, `${mapped}index.html`);
+      if (indexed.status === 200) {
+        res = indexed;
+      }
+    }
+  }
+
+  if (res.status === 404) {
     let notFound = await fetchMapped(context, "/journal/not-found/");
+    if (notFound.status === 404) {
+      notFound = await fetchMapped(context, "/journal/not-found/index.html");
+    }
     if (notFound.status >= 300 && notFound.status < 400) {
       const loc = notFound.headers.get("Location");
       if (loc) {
