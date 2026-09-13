@@ -297,6 +297,41 @@ function loadPage(name) {
   };
 }
 
+
+function renderHomeDoors() {
+  return `
+    <section class="doors" aria-label="Site doors">
+      <article class="door-card">
+        <h2>Personal builds</h2>
+        <p>Projects I've shipped — education, chips, league tools, lab apps.</p>
+        <a class="btn btn-primary" href="/work/">See the shelf</a>
+      </article>
+      <article class="door-card">
+        <h2>MSP resource hub</h2>
+        <p>For people who work in MSPs — prompts, skills, short videos, notes.</p>
+        <a class="btn btn-primary" href="/msp/">Open the hub</a>
+      </article>
+    </section>`;
+}
+
+function renderMspLibraryPage(page, emptyLabel) {
+  return layout({
+    title: page.title,
+    description: page.description,
+    path: page.path,
+    bodyClass: "page-msp-library",
+    content: `
+    <header class="page-head">
+      <p class="eyebrow"><a href="/msp/">MSP</a></p>
+      <h1>${escapeHtml(page.title)}</h1>
+      <p class="deck">${escapeHtml(page.description)}</p>
+    </header>
+    <div class="prose page-prose">${page.html}</div>
+    <p class="empty-shelf">${escapeHtml(emptyLabel)}</p>
+    <p class="more"><a href="/msp/">Back to MSP hub</a> · <a href="/writing/msp/">MSP writing</a></p>`,
+  });
+}
+
 function loadBuilt() {
   return JSON.parse(read(path.join(CONTENT, "built.json")));
 }
@@ -568,7 +603,9 @@ function personLd() {
 }
 
 function renderHome(posts) {
+  const home = loadPage("home");
   const latest = posts
+    .slice(0, 5)
     .map(
       (p) => `<li>
         <a href="${p.path}">
@@ -606,14 +643,13 @@ function renderHome(posts) {
   });
 
   const content = `
-    <section class="intro">
+    <section class="intro home-about">
       <p class="eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
-      <p class="lede">I'm David James. Thirty years in IT. This is the notebook — and the shelf of things I've actually shipped.</p>
-      <p>Consulting has its own door. Education has its own door. The apps I needed for league night have theirs. Here I write about the work, the learning, pool, fishing, and whatever I'm actually doing.</p>
+      <div class="prose">${home.html}</div>
     </section>
-    ${renderBuiltBlock()}
+    ${renderHomeDoors()}
     <section class="post-index" aria-labelledby="latest-heading">
-      <h1 id="latest-heading" class="index-heading">Latest</h1>
+      <h2 id="latest-heading" class="index-heading">Latest writing</h2>
       <ol class="post-list">
         ${latest}
       </ol>
@@ -622,7 +658,7 @@ function renderHome(posts) {
 
   return layout({
     title: SITE.name,
-    description: SITE.description,
+    description: home.description || SITE.description,
     path: "/",
     extraHead,
     bodyClass: "page-home",
@@ -832,7 +868,13 @@ const now = loadPage("now");
 const work = loadPage("work");
 const privacy = loadPage("privacy");
 const msp = loadPage("msp");
-const pages = [about, now, work, privacy, msp];
+const mspPrompts = loadPage("msp-prompts");
+mspPrompts.path = "/msp/prompts/";
+const mspSkills = loadPage("msp-skills");
+mspSkills.path = "/msp/skills/";
+const mspVideos = loadPage("msp-videos");
+mspVideos.path = "/msp/videos/";
+const pages = [about, now, work, privacy, msp, mspPrompts, mspSkills, mspVideos];
 
 cleanGenerated();
 
@@ -873,9 +915,17 @@ write(
     description: msp.description,
     path: "/msp/",
     bodyClass: "page-msp",
-    content: `${msp.html ? `<div class="prose page-prose">${msp.html}</div>` : ""}${renderBuiltBlock("msp")}<p class="more"><a href="/writing/msp/">MSP writing</a></p>`,
+    content: `
+    <header class="page-head">
+      <h1>${escapeHtml(msp.title)}</h1>
+      <p class="deck">${escapeHtml(msp.description)}</p>
+    </header>
+    <div class="prose page-prose">${msp.html}</div>`,
   })
 );
+write(path.join(ROOT, "msp", "prompts", "index.html"), renderMspLibraryPage(mspPrompts, "No prompts yet."));
+write(path.join(ROOT, "msp", "skills", "index.html"), renderMspLibraryPage(mspSkills, "No skills yet."));
+write(path.join(ROOT, "msp", "videos", "index.html"), renderMspLibraryPage(mspVideos, "No videos yet."));
 write(path.join(ROOT, "privacy", "index.html"), renderStaticPage(privacy));
 write(path.join(ROOT, "not-found", "index.html"), render404());
 write(path.join(ROOT, "rss.xml"), renderRss(posts));

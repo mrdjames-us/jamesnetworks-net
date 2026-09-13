@@ -616,3 +616,26 @@ body.page-home .post-index {
 .page-prose { margin-bottom: 2rem; }
 
 .empty-shelf { opacity: 0.85; font-style: italic; }
+
+.doors {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 2rem 0 2.5rem;
+}
+.door-card {
+  border: 1px solid rgba(196, 163, 90, 0.35);
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+.door-card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+.door-card p {
+  margin: 0 1rem 1rem 0;
+}
+.home-about .prose {
+  max-width: 42rem;
+}
