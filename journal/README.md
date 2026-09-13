@@ -1,6 +1,6 @@
 # Personal journal (jamesnetworks.net)
 
-David James — notes from Clinton, Missouri.
+David James â€” notes from Clinton, Missouri.
 
 Henry County Consulting stays on `henrycountyconsulting.com`. This folder is the
 personal site. Host-aware middleware in `functions/_middleware.js` serves it on
@@ -62,3 +62,14 @@ Always run `node journal/build.mjs` before deploy.
 | `/rss.xml` | Feed |
 
 Lab apps (`/pool`, `/flowscout`, `/netnudge`, `/cipherladder`) still live on this host.
+
+## Posting from Grok Bot later
+
+Keep this stack. No CMS. No blog subdomain.
+
+1. Add `journal/content/posts/YYYY-MM-DD-slug.md` with frontmatter (`title`, `date`, `summary`, `build`, `build_url` required).
+2. Run `node journal/build.mjs` (refuses posts missing a hosted build).
+3. Open a PR on `jamesnetworks-net` — do not push straight to main.
+4. Maker deploys demo (`.\deploy-demo.ps1`), then prod (`.\deploy-prod.ps1`) only after CoS / David OK.
+
+Optional automation later: a Grok Bot skill that writes the markdown + opens the PR. Human approval still gates merge and deploy.

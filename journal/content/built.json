@@ -44,22 +44,22 @@
     },
     {
       "title": "APA 9-Ball Scorer",
-      "badge": "Live",
+      "badge": "Demo",
       "domain": "9ballscores.jamesnetworks.net",
       "href": "https://9ballscores.jamesnetworks.net/",
       "image": "/assets/app-9ball.jpg",
       "alt": "Nine ball on the felt",
-      "blurb": "Mobile Equalizer 9-ball scorekeeper — points race by skill level, defenses, dead balls, 9-on-the-snap, match points, cloud history.",
+      "blurb": "Mobile Equalizer 9-ball scorekeeper — points race by skill level, defenses, dead balls, 9-on-the-snap, match points, cloud history. Still on demo data.",
       "tags": ["Points race", "Match history", "Cloud"]
     },
     {
       "title": "APA 8-Ball Scorer",
-      "badge": "Live",
+      "badge": "Demo",
       "domain": "8ballscores.jamesnetworks.net",
       "href": "https://8ballscores.jamesnetworks.net/",
       "image": "/assets/app-8ball.jpg",
       "alt": "Eight ball on the felt",
-      "blurb": "Equalizer 8-ball scorekeeper — games race, solids/stripes, fouls, runs, 8-on-the-break, guest opponents, shared cloud scorebooks.",
+      "blurb": "Equalizer 8-ball scorekeeper — games race, solids/stripes, fouls, runs, 8-on-the-break, guest opponents, shared cloud scorebooks. Still on demo data.",
       "tags": ["Games race", "Fouls & runs", "Cloud"]
     },
     {
@@ -79,7 +79,7 @@
       "href": "/flowscout/",
       "image": "/assets/flowscout-hero.jpg",
       "alt": "FlowScout workflow intake",
-      "blurb": "AI-guided workflow intake that interviews you like an automation consultant, then hands back a blueprint: process map, honest verdict, platform pick, build plan.",
+      "blurb": "Walk through one painful workflow. Get a plain-language map, what to keep human, which tool fits, and the build steps.",
       "tags": ["Interview", "Blueprint", "Platform pick"]
     },
     {
