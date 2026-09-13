@@ -627,10 +627,45 @@ body.page-home .post-index {
   margin: 0 0 1rem;
 }
 
+
+@media (max-width: 640px) {
+  .crawl-stage {
+    min-height: 18rem;
+    padding: 1rem 0.5rem 0;
+    perspective: 320px;
+  }
+  .crawl-perspective {
+    height: 15.5rem;
+  }
+  .crawl-track {
+    width: min(22rem, 94vw);
+    transform: translateX(-50%) rotateX(52deg);
+  }
+  .crawl-copy {
+    font-size: clamp(0.88rem, 4.2vw, 1.05rem);
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    padding: 0 0.35rem;
+  }
+  .crawl-copy p {
+    margin: 0 0 0.95rem;
+    max-width: 18ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .crawl-copy p:last-child {
+    max-width: 22ch;
+  }
+  @keyframes crawl-rise {
+    0% { transform: translateX(-50%) translateY(45%) rotateX(52deg); }
+    100% { transform: translateX(-50%) translateY(-130%) rotateX(52deg); }
+  }
+}
+
 .doors {
   display: grid;
   gap: 1.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 2.25rem 0 3rem;
   max-width: 52rem;
   margin-left: auto;
@@ -787,7 +822,7 @@ body.page-home .post-index {
   position: absolute;
   left: 50%;
   bottom: -10%;
-  width: min(34rem, 92vw);
+  width: min(34rem, 88vw);
   transform: translateX(-50%) rotateX(58deg);
   transform-origin: 50% 100%;
   animation: crawl-rise 28s linear infinite;
@@ -796,7 +831,7 @@ body.page-home .post-index {
   text-align: center;
   color: #ffe81f;
   font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  font-size: clamp(0.95rem, 3.6vw, 1.45rem);
   font-weight: 600;
   line-height: 1.55;
   text-shadow: 0 0 18px rgba(255, 200, 40, 0.35);
@@ -825,5 +860,27 @@ body.page-home .post-index {
     min-height: 12rem;
     mask-image: none;
     overflow: visible;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .doors {
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 1.5rem 0 2rem;
+    max-width: 100%;
+  }
+  .golden-door-caption {
+    padding: 0.65rem 0.55rem 0.75rem;
+  }
+  .golden-door-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  .golden-door-hint {
+    font-size: 0.7rem;
+    line-height: 1.25;
   }
 }
