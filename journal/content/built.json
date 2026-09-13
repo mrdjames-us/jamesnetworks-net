@@ -1,0 +1,105 @@
+{
+  "personal": [
+    {
+      "title": "Henry County Consulting",
+      "badge": "Live",
+      "domain": "henrycountyconsulting.com",
+      "href": "https://www.henrycountyconsulting.com/",
+      "image": "/assets/hcc-desk-still.png",
+      "alt": "Brass calipers and a workflow on the bench",
+      "blurb": "Paid do-it-with-you consulting. Assess → Simplify → Automate → Train, with human approvals on money, access, and deletes.",
+      "tags": ["Consulting", "Workflows", "Agents"]
+    },
+    {
+      "title": "AI for Missouri",
+      "badge": "Live",
+      "domain": "aiformissouri.com",
+      "href": "https://www.aiformissouri.com/",
+      "image": "/assets/panel-education.jpg",
+      "alt": "Quiet brass lamp and notebook",
+      "blurb": "AI without the hype or the headache. Workshops, coaching, and done-with-you setups for Missouri shops, farms, and curious beginners.",
+      "tags": ["Workshops", "Coaching", "Education"]
+    },
+    {
+      "title": "DJ Prints 3D",
+      "badge": "Live",
+      "domain": "djprints3d.com",
+      "href": "https://www.djprints3d.com/",
+      "image": "/assets/pocket-marker-smooth-baby-smooth.jpg",
+      "alt": "Smooth Baby Smooth pocket marker",
+      "blurb": "Custom chips, coins, and pocket markers. Solid PETG, not stickers. Pool, golf, lodge, poker, corporate.",
+      "tags": ["Chips", "Markers", "Made here"]
+    },
+    {
+      "title": "APA Captain",
+      "badge": "Live",
+      "domain": "apacaptain.jamesnetworks.net",
+      "href": "https://apacaptain.jamesnetworks.net/",
+      "image": "/assets/app-apacaptain.jpg",
+      "alt": "APA Captain lineup still life",
+      "blurb": "Lineup planning under the Rule of 23, roster and schedule sync from poolplayers.com, opponent scouting — built for captains chasing better match nights (and Vegas).",
+      "tags": ["Match planner", "APA sync", "Scouting"]
+    },
+    {
+      "title": "APA 9-Ball Scorer",
+      "badge": "Demo",
+      "domain": "www.9ballscores.com",
+      "href": "https://www.9ballscores.com/",
+      "image": "/assets/app-9ball.jpg",
+      "alt": "Nine ball on the felt",
+      "blurb": "Mobile Equalizer 9-ball scorekeeper — points race by skill level, defenses, dead balls, 9-on-the-snap, match points, cloud history. Still on demo data.",
+      "tags": ["Points race", "Match history", "Cloud"]
+    },
+    {
+      "title": "APA 8-Ball Scorer",
+      "badge": "Demo",
+      "domain": "8ballscores.jamesnetworks.net",
+      "href": "https://8ballscores.jamesnetworks.net/",
+      "image": "/assets/app-8ball.jpg",
+      "alt": "Eight ball on the felt",
+      "blurb": "Equalizer 8-ball scorekeeper — games race, solids/stripes, fouls, runs, 8-on-the-break, guest opponents, shared cloud scorebooks. Still on demo data.",
+      "tags": ["Games race", "Fouls & runs", "Cloud"]
+    },
+    {
+      "title": "Pool Hub",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/pool",
+      "href": "/pool/",
+      "image": "/assets/league-hero.jpg",
+      "alt": "League night on the felt",
+      "blurb": "One door for the league tools — APA Captain plus the 8-ball and 9-ball scorers, one account.",
+      "tags": ["Captain", "Scorers", "League"]
+    },
+    {
+      "title": "FlowScout",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/flowscout",
+      "href": "/flowscout/",
+      "image": "/assets/flowscout-hero.jpg",
+      "alt": "FlowScout workflow intake",
+      "blurb": "Walk through one painful workflow. Get a plain-language map, what to keep human, which tool fits, and the build steps.",
+      "tags": ["Interview", "Blueprint", "Platform pick"]
+    },
+    {
+      "title": "TheCipherLadder",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/cipherladder",
+      "href": "/cipherladder/",
+      "image": "/assets/app-cipherladder.svg",
+      "alt": "TheCipherLadder logic climb",
+      "blurb": "Daily logic climb — five clues, one secret order. Clear a rung to go higher. The ladder gets skinnier as it gets harder.",
+      "tags": ["Daily climb", "Logic", "Share height"]
+    },
+    {
+      "title": "NetNudge",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/netnudge",
+      "href": "/netnudge/",
+      "image": "/assets/panel-network.jpg",
+      "alt": "Connected brass nodes",
+      "blurb": "New website or a redesign of the one that isn't working. We build a real site first. Free to see. $79/month if you keep it.",
+      "tags": ["Websites", "Clinton", "See it first"]
+    }
+  ],
+  "msp": []
+}
