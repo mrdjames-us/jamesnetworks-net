@@ -61,6 +61,8 @@ Always run `node journal/build.mjs` before deploy.
 | `/writing/` | Archive |
 | `/writing/<slug>/` | A post |
 | `/about/` `/now/` `/work/` `/privacy/` | Pages |
+| `/msp/` | MSP education hub |
+| `/msp/prompts/` `/msp/skills/` `/msp/videos/` | Libraries |
 | `/rss.xml` | Feed |
 
 Lab apps (`/pool`, `/flowscout`, `/netnudge`, `/cipherladder`) still live on this host.
@@ -78,8 +80,19 @@ Optional automation later: a Grok Bot skill that writes the markdown + opens the
 
 ## MSP vs personal
 
-- Home renders two shelves from `journal/content/built.json`: `personal` and `msp`.
-- AI for Missouri is on the **personal** shelf.
-- `/msp/` — MSP highlights (`content/pages/msp.md` + `msp` cards).
-- `/writing/msp/` — posts with `section: msp` (or files under `content/posts/msp/`).
+- Home doors: Personal Portfolio → `/work/`, MSP Education → `/msp/`.
+- Built shelf (`content/built.json` `personal`) stays on `/work/`. Do not move HCC / FlowScout / lab apps onto MSP.
+- `/msp/` — education hub with cards into prompts, skills, videos, and MSP writing.
+- `/msp/prompts/`, `/msp/skills/`, `/msp/videos/` — libraries from `content/msp/{prompts,skills,videos}/*.md`.
+- `/writing/msp/` — posts with `section: msp` (or files under `content/posts/msp/`). Empty until a real post lands.
 - Email intake (CoS): `[JN MSP POST]` → MSP post; `[JN MSP PAGE]` → `msp.md` / msp cards.
+
+### Add an MSP library entry
+
+Copy `content/msp/<library>/_sample.md` to `short-name.md` (drop the underscore), fill frontmatter, rebuild.
+
+**YouTube channel URL (one value):** `content/msp/config.json` → `youtubeChannelUrl`.
+
+Videos need a `youtube` field (watch URL, Shorts URL, or 11-character id). Index cards never autoplay. Detail pages use a click-to-play `youtube-nocookie` embed after a click.
+
+Recording playbook (OBS, talking-head ↔ desktop PiP, flare): `docs/msp-recording-obs.md`.

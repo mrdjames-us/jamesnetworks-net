@@ -1,15 +1,10 @@
 ---
-title: MSP
-description: Resource hub for people who work in MSPs — prompts, skills, short videos, and notes.
+title: MSP Education
+description: Prompts, skills, short videos, and notes for people who work in MSPs — from Clinton, Missouri.
 ---
 
-This door is for **MSP practitioners** — techs, owners, and operators who want practical AI/workflow help without the hype.
+This door is for people who **actually work in an MSP** — techs, owners, operators. Practical AI and workflow help. No brochure.
 
-Libraries are empty on purpose for now. We'll fill them as useful pieces are ready (including via email intake).
+I sit in Clinton, Missouri and do this work. What's on these shelves is what I'd hand a teammate on a Tuesday: prompts that survive a ticket queue, skills you can drop into a tool, short videos, and notes from the shop.
 
-- [Prompt library](/msp/prompts/) — reusable prompts for MSP work
-- [Skill library](/msp/skills/) — packaged skills / playbooks
-- [Videos](/msp/videos/) — short (~2 min) AI how-tos
-- [MSP writing](/writing/msp/) — notes and posts
-
-Personal projects stay on [Built](/work/).
+Personal projects stay on [Built](/work/). They don't move over here.
