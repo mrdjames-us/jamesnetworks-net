@@ -1,6 +1,6 @@
 # Personal journal (jamesnetworks.net)
 
-David James — notes from Clinton, Missouri.
+David James â€” notes from Clinton, Missouri.
 
 **This folder IS the blog** for jamesnetworks.net (Latest on the home page, Writing archive). Not a separate product or subdomain.
 
@@ -71,7 +71,15 @@ Keep this stack. No CMS. No blog subdomain.
 
 1. Add `journal/content/posts/YYYY-MM-DD-slug.md` with frontmatter (`title`, `date`, `summary`, `build`, `build_url` required).
 2. Run `node journal/build.mjs` (refuses posts missing a hosted build).
-3. Open a PR on `jamesnetworks-net` — do not push straight to main.
+3. Open a PR on `jamesnetworks-net` â€” do not push straight to main.
 4. Maker deploys demo (`.\deploy-demo.ps1`), then prod (`.\deploy-prod.ps1`) only after CoS / David OK.
 
 Optional automation later: a Grok Bot skill that writes the markdown + opens the PR. Human approval still gates merge and deploy.
+
+## MSP vs personal
+
+- Home renders two shelves from `journal/content/built.json`: `personal` and `msp`.
+- AI for Missouri is on the **personal** shelf.
+- `/msp/` — MSP highlights (`content/pages/msp.md` + `msp` cards).
+- `/writing/msp/` — posts with `section: msp` (or files under `content/posts/msp/`).
+- Email intake (CoS): `[JN MSP POST]` → MSP post; `[JN MSP PAGE]` → `msp.md` / msp cards.

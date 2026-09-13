@@ -598,3 +598,19 @@ body.page-home .post-index {
   .card-grid.three { grid-template-columns: 1fr; }
   .app-card:hover { transform: none; }
 }
+
+
+.post-section {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--gold, #c4a35a);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold, #c4a35a);
+}
+.built-more { margin-top: 1.25rem; }
+.page-prose { margin-bottom: 2rem; }

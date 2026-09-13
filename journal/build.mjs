@@ -234,20 +234,38 @@ function slugFromFilename(file) {
   return path.basename(file, ".md").replace(/^\d{4}-\d{2}-\d{2}-/, "");
 }
 
+function listPostFiles(dir, prefix = "") {
+  if (!fs.existsSync(dir)) return [];
+  const out = [];
+  for (const name of fs.readdirSync(dir)) {
+    const full = path.join(dir, name);
+    const rel = prefix ? `${prefix}/${name}` : name;
+    const st = fs.statSync(full);
+    if (st.isDirectory()) {
+      if (name === "msp") out.push(...listPostFiles(full, "msp"));
+      continue;
+    }
+    if (!name.endsWith(".md") || name.toLowerCase() === "readme.md") continue;
+    out.push({ file: full, rel, fromMspDir: prefix === "msp" });
+  }
+  return out;
+}
+
 function loadPosts() {
-  if (!fs.existsSync(POSTS_DIR)) return [];
-  return fs
-    .readdirSync(POSTS_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map((file) => {
-      const { meta, body } = parseFrontmatter(read(path.join(POSTS_DIR, file)));
+  return listPostFiles(POSTS_DIR)
+    .map(({ file, rel, fromMspDir }) => {
+      const { meta, body } = parseFrontmatter(read(file));
       if (meta.draft === "true" || meta.draft === true) return null;
-      const slug = meta.slug || slugFromFilename(file);
+      const slug = meta.slug || slugFromFilename(path.basename(file));
       if (!meta.build || !meta.build_url) {
         throw new Error(
-          `${file} is missing build / build_url. Weekly posts always highlight a hosted build.`
+          `${rel} is missing build / build_url. Weekly posts always highlight a hosted build.`
         );
       }
+      const sectionRaw = (meta.section || (fromMspDir ? "msp" : "personal"))
+        .toString()
+        .toLowerCase();
+      const section = sectionRaw === "msp" ? "msp" : "personal";
       return {
         slug,
         title: meta.title || slug,
@@ -256,6 +274,7 @@ function loadPosts() {
         build: meta.build,
         build_url: meta.build_url,
         build_note: meta.build_note || "",
+        section,
         body,
         html: markdownToHtml(body),
         path: `/writing/${slug}/`,
@@ -288,7 +307,12 @@ function isExternalHref(href) {
 
 function matchBuiltItem(post) {
   const built = loadBuilt();
-  const all = [...(built.network || []), ...(built.apps || [])];
+  const all = [
+    ...(built.personal || []),
+    ...(built.msp || []),
+    ...(built.network || []),
+    ...(built.apps || []),
+  ];
   return (
     all.find((item) => item.href === post.build_url || item.title === post.build) ||
     null
@@ -314,7 +338,9 @@ function renderWeekBuild(post) {
 }
 
 function renderPostBuildLine(post) {
-  return `<span class="post-build">Build · ${escapeHtml(post.build)}</span>`;
+  const msp =
+    post.section === "msp" ? `<span class="post-section">MSP</span>` : "";
+  return `${msp}<span class="post-build">Build · ${escapeHtml(post.build)}</span>`;
 }
 
 function renderCards(items, extraClass = "") {
@@ -346,37 +372,74 @@ function renderCards(items, extraClass = "") {
       </div>`;
 }
 
-function renderBuiltBlock() {
-  const built = loadBuilt();
+function renderShelf(id, heading, lead, items, gridClass) {
+  if (!items || !items.length) return "";
   return `
-    <section class="built" id="built" aria-labelledby="built-heading">
+    <section class="built" id="${id}" aria-labelledby="${id}-heading">
       <header class="section-head">
-        <p class="eyebrow">The network</p>
-        <h2 id="built-heading">What I've built</h2>
-        <p class="section-lead">Real doors. Each one shipped — consulting, education, chips, league tools, and the lab apps. I keep them labeled on purpose.</p>
+        <h2 id="${id}-heading">${escapeHtml(heading)}</h2>
+        <p class="section-lead">${escapeHtml(lead)}</p>
       </header>
-      <h3 class="built-kicker">Businesses</h3>
-      ${renderCards(built.network, "three")}
-      <h3 class="built-kicker">Apps</h3>
-      ${renderCards(built.apps, "apps")}
+      ${renderCards(items, gridClass)}
     </section>`;
+}
+
+function renderBuiltBlock(mode = "home") {
+  const built = loadBuilt();
+  const personal = built.personal || built.apps || [];
+  const msp = built.msp || built.network || [];
+  if (mode === "personal") {
+    return renderShelf(
+      "built",
+      "Personal & lab",
+      "Placeholder lead — David will rewrite. Personal projects and lab apps.",
+      personal,
+      "apps"
+    );
+  }
+  if (mode === "msp") {
+    return renderShelf(
+      "msp-built",
+      "MSP highlights",
+      "Placeholder lead — David will rewrite. MSP workflows, consulting tools, automations.",
+      msp,
+      "three"
+    );
+  }
+  return `
+    <div class="built-split" id="built">
+      ${renderShelf(
+        "personal",
+        "Personal & lab",
+        "Placeholder — personal projects and lab apps. David edits this.",
+        personal,
+        "apps"
+      )}
+      ${renderShelf(
+        "msp",
+        "MSP work",
+        "Placeholder — MSP workflows and automations. Full list on /msp/.",
+        msp,
+        "three"
+      )}
+      <p class="more built-more"><a href="/work/">All personal &amp; lab</a> · <a href="/msp/">MSP highlights</a> · <a href="/writing/msp/">MSP writing</a></p>
+    </div>`;
 }
 
 function nav(current) {
   const items = [
     ["/", "Home"],
-    ["/#built", "Built"],
+    ["/work/", "Built"],
+    ["/msp/", "MSP"],
     ["/writing/", "Writing"],
     ["/about/", "About"],
     ["/now/", "Now"],
-    ["/work/", "Work"],
   ];
   return items
     .map(([href, label]) => {
       const active =
         (href === "/" && current === "/") ||
-        (href === "/#built" && (current === "/work/" || current === "/#built")) ||
-        (href !== "/" && href !== "/#built" && current.startsWith(href));
+        (href !== "/" && current.startsWith(href));
       const aria = active ? ' aria-current="page"' : "";
       return `<a href="${href}"${aria}>${label}</a>`;
     })
@@ -460,11 +523,11 @@ function layout({
     <div class="footer-inner">
       <p class="footer-id">James Networks · Clinton, Missouri</p>
       <nav aria-label="Footer">
-        <a href="/#built">Built</a>
+        <a href="/work/">Built</a>
+        <a href="/msp/">MSP</a>
         <a href="/writing/">Writing</a>
         <a href="/about/">About</a>
         <a href="/now/">Now</a>
-        <a href="/work/">Work</a>
         <a href="/rss.xml">RSS</a>
         <a href="/privacy/">Privacy</a>
         <a href="mailto:${SITE.email}">Email</a>
@@ -549,7 +612,7 @@ function renderHome(posts) {
       <ol class="post-list">
         ${latest}
       </ol>
-      <p class="more"><a href="/writing/">All writing</a> · <a href="/rss.xml">RSS</a></p>
+      <p class="more"><a href="/writing/">All writing</a> · <a href="/writing/msp/">MSP writing</a> · <a href="/rss.xml">RSS</a></p>
     </section>`;
 
   return layout({
@@ -562,7 +625,16 @@ function renderHome(posts) {
   });
 }
 
-function renderArchive(posts) {
+function renderArchive(posts, opts = {}) {
+  const title = opts.title || "Writing";
+  const description =
+    opts.description || "All notes from David James — Clinton, Missouri.";
+  const pathName = opts.path || "/writing/";
+  const deck =
+    opts.deck || "Weekly. Each note highlights a hosted build you can open.";
+  const extra =
+    opts.extraLinks ||
+    `<p class="more"><a href="/writing/msp/">MSP writing</a> · <a href="/rss.xml">RSS</a></p>`;
   const items = posts
     .map(
       (p) => `<li>
@@ -577,17 +649,18 @@ function renderArchive(posts) {
     .join("\n        ");
 
   return layout({
-    title: "Writing",
-    description: "All notes from David James — Clinton, Missouri.",
-    path: "/writing/",
+    title,
+    description,
+    path: pathName,
     content: `
     <header class="page-head">
-      <h1>Writing</h1>
-      <p class="deck">Weekly. Each note highlights a hosted build you can open.</p>
+      <h1>${escapeHtml(title)}</h1>
+      <p class="deck">${escapeHtml(deck)}</p>
     </header>
     <ol class="post-list">
-      ${items}
-    </ol>`,
+      ${items || "<li><p>No posts in this section yet.</p></li>"}
+    </ol>
+    ${extra}`,
   });
 }
 
@@ -748,16 +821,28 @@ function cleanGenerated() {
 }
 
 const posts = loadPosts();
+const mspPosts = posts.filter((p) => p.section === "msp");
 const about = loadPage("about");
 const now = loadPage("now");
 const work = loadPage("work");
 const privacy = loadPage("privacy");
-const pages = [about, now, work, privacy];
+const msp = loadPage("msp");
+const pages = [about, now, work, privacy, msp];
 
 cleanGenerated();
 
 write(path.join(ROOT, "index.html"), renderHome(posts));
 write(path.join(ROOT, "writing", "index.html"), renderArchive(posts));
+write(
+  path.join(ROOT, "writing", "msp", "index.html"),
+  renderArchive(mspPosts, {
+    title: "MSP writing",
+    description: "MSP workflow and automation notes — Clinton, Missouri.",
+    path: "/writing/msp/",
+    deck: "Placeholder deck — David will rewrite. Posts with section: msp land here.",
+    extraLinks: `<p class="more"><a href="/writing/">All writing</a> · <a href="/msp/">MSP highlights</a> · <a href="/rss.xml">RSS</a></p>`,
+  })
+);
 for (const post of posts) {
   write(path.join(ROOT, "writing", post.slug, "index.html"), renderPost(post, posts));
 }
@@ -773,14 +858,27 @@ write(
     description: work.description,
     path: "/work/",
     bodyClass: "page-work",
-    content: renderBuiltBlock(),
+    content: `${work.html ? `<div class="prose page-prose">${work.html}</div>` : ""}${renderBuiltBlock("personal")}`,
+  })
+);
+write(
+  path.join(ROOT, "msp", "index.html"),
+  layout({
+    title: msp.title,
+    description: msp.description,
+    path: "/msp/",
+    bodyClass: "page-msp",
+    content: `${msp.html ? `<div class="prose page-prose">${msp.html}</div>` : ""}${renderBuiltBlock("msp")}<p class="more"><a href="/writing/msp/">MSP writing</a></p>`,
   })
 );
 write(path.join(ROOT, "privacy", "index.html"), renderStaticPage(privacy));
 write(path.join(ROOT, "not-found", "index.html"), render404());
 write(path.join(ROOT, "rss.xml"), renderRss(posts));
-write(path.join(ROOT, "sitemap.xml"), renderSitemap(posts, pages));
+write(
+  path.join(ROOT, "sitemap.xml"),
+  renderSitemap(posts, [...pages, { path: "/writing/msp/" }])
+);
 write(path.join(ROOT, "robots.txt"), renderRobots());
 
-console.log(`Built ${posts.length} posts, ${pages.length} pages.`);
-for (const p of posts) console.log(`  ${p.date}  ${p.path}  ${p.title}`);
+console.log(`Built ${posts.length} posts (${mspPosts.length} MSP), ${pages.length} pages.`);
+for (const p of posts) console.log(`  ${p.date}  [${p.section}]  ${p.path}  ${p.title}`);

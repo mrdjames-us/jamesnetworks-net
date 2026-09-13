@@ -31,6 +31,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.jamesnetworks.net/msp/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.jamesnetworks.net/writing/msp/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.jamesnetworks.net/writing/starting-here/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

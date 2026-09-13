@@ -1,6 +1,6 @@
 ---
 title: Built
-description: What David James has shipped — consulting, education, chips, league tools, and the lab apps.
+description: Personal and lab projects David has shipped — chips, league tools, education, and side doors.
 ---
 
-The roster is generated from `built.json` onto this page and the home shelf.
+Personal and lab shelf. MSP highlights live on [/msp/](/msp/).
