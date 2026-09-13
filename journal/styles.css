@@ -617,25 +617,116 @@ body.page-home .post-index {
 
 .empty-shelf { opacity: 0.85; font-style: italic; }
 
+
+.home-about .prose {
+  max-width: 36rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+.home-about .prose p {
+  margin: 0 0 1rem;
+}
 .doors {
   display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  margin: 2rem 0 2.5rem;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin: 2.5rem 0 3rem;
+  perspective: 900px;
 }
-.door-card {
-  border: 1px solid rgba(196, 163, 90, 0.35);
+.golden-door {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  min-height: 280px;
+  border-radius: 18px;
+  isolation: isolate;
+  transition: transform 0.35s ease;
+}
+.golden-door:hover,
+.golden-door:focus-visible {
+  transform: translateY(-6px) rotateX(2deg);
+  outline: none;
+}
+.golden-door-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255, 214, 120, 0.55), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(196, 163, 90, 0.35), transparent 60%);
+  filter: blur(14px);
+  opacity: 0.75;
+  z-index: -1;
+  animation: door-pulse 3.6s ease-in-out infinite;
+}
+.golden-door:hover .golden-door-glow,
+.golden-door:focus-visible .golden-door-glow {
+  opacity: 1;
+  filter: blur(18px);
+}
+.golden-door-frame {
+  display: block;
+  height: 100%;
+  min-height: 280px;
+  padding: 10px;
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, #f6e2a2 0%, #c4a35a 28%, #8a6a28 55%, #e8c56a 78%, #b8923a 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 230, 160, 0.35),
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 245, 210, 0.65);
+}
+.golden-door-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  height: 100%;
+  min-height: 260px;
+  padding: 1.5rem 1.35rem 1.6rem;
   border-radius: 12px;
-  padding: 1.25rem 1.35rem;
-  background: rgba(255, 255, 255, 0.02);
+  background:
+    linear-gradient(180deg, rgba(20, 16, 8, 0.15) 0%, rgba(10, 8, 4, 0.55) 45%, rgba(8, 6, 2, 0.82) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 220, 140, 0.06) 0 12px,
+      rgba(0, 0, 0, 0.08) 12px 24px
+    );
+  border: 1px solid rgba(255, 230, 170, 0.35);
+  box-shadow: inset 0 0 40px rgba(255, 200, 80, 0.12);
 }
-.door-card h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+.golden-door-knob {
+  position: absolute;
+  top: 48%;
+  right: 1.1rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff4c8, #d4a84a 45%, #7a5a1e 80%);
+  box-shadow:
+    0 0 12px rgba(255, 210, 100, 0.8),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.35);
 }
-.door-card p {
-  margin: 0 1rem 1rem 0;
+.golden-door-label {
+  font-family: Cinzel, Georgia, serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: #ffe9a8;
+  text-shadow: 0 0 18px rgba(255, 200, 80, 0.45);
 }
-.home-about .prose {
-  max-width: 42rem;
+.golden-door-hint {
+  font-size: 0.95rem;
+  color: rgba(255, 236, 190, 0.78);
+}
+@keyframes door-pulse {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 0.95; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .golden-door-glow { animation: none; }
+  .golden-door { transition: none; }
 }

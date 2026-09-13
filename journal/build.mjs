@@ -300,17 +300,27 @@ function loadPage(name) {
 
 function renderHomeDoors() {
   return `
-    <section class="doors" aria-label="Site doors">
-      <article class="door-card">
-        <h2>Personal builds</h2>
-        <p>Projects I've shipped — education, chips, league tools, lab apps.</p>
-        <a class="btn btn-primary" href="/work/">See the shelf</a>
-      </article>
-      <article class="door-card">
-        <h2>MSP resource hub</h2>
-        <p>For people who work in MSPs — prompts, skills, short videos, notes.</p>
-        <a class="btn btn-primary" href="/msp/">Open the hub</a>
-      </article>
+    <section class="doors" aria-label="Choose your path">
+      <a class="golden-door" href="/work/">
+        <span class="golden-door-glow" aria-hidden="true"></span>
+        <span class="golden-door-frame">
+          <span class="golden-door-panel">
+            <span class="golden-door-knob" aria-hidden="true"></span>
+            <span class="golden-door-label">Personal Portfolio</span>
+            <span class="golden-door-hint">Projects I've shipped</span>
+          </span>
+        </span>
+      </a>
+      <a class="golden-door" href="/msp/">
+        <span class="golden-door-glow" aria-hidden="true"></span>
+        <span class="golden-door-frame">
+          <span class="golden-door-panel">
+            <span class="golden-door-knob" aria-hidden="true"></span>
+            <span class="golden-door-label">MSP Education</span>
+            <span class="golden-door-hint">Prompts, skills, short videos</span>
+          </span>
+        </span>
+      </a>
     </section>`;
 }
 

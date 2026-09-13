@@ -1,6 +1,10 @@
 ---
 title: Home
-description: David James — notes from Clinton, Missouri. Personal builds and an MSP resource hub.
+description: Choose your path - Personal Portfolio or MSP Education. Notes from David James, Clinton, Missouri.
 ---
 
-I'm **David James**. I live in Clinton, Missouri. Thirty years in IT, MSP ops background. This site is my notebook — and two clear doors.
+1 man, with a dream and plan to solve our work lives nagging problems, and create solutions people have only imagined.
+
+Using AI the way it was meant to be used.
+
+**Choose your path for the mind of David James.**
