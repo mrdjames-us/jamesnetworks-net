@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NetNudge — We build the website first | James Networks</title>
+  <meta name="description" content="New website or a redesign of the one that isn't working. We build a real site first. Free to see. $79/month if you keep it. Clinton, Missouri." />
+  <meta name="theme-color" content="#0a0c10" />
+  <link rel="icon" type="image/jpeg" href="/assets/badge-j.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="NetNudge — We build the website first" />
+  <meta property="og:description" content="New site or redesign. We build it first. You decide after you've seen it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.jamesnetworks.net/netnudge/" />
+  <script defer src="https://stats.aiformissouri.com/script.js" data-website-id="33b9a318-245a-4fe9-9d53-0f30e0b25c1c"></script>
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --text: #f3ebe0;
+      --muted: #b8a894;
+      --soft: #7d7264;
+      --accent: #2ec4b6;
+      --gold: #f2c14e;
+      --brass: #d4a84b;
+      --border: rgba(196, 149, 78, 0.22);
+      --border-strong: rgba(242, 193, 78, 0.38);
+      --radius: 14px;
+      --max: 720px;
+      --wide: 960px;
+      --font: "Inter", system-ui, -apple-system, sans-serif;
+      --display: "Cinzel", Georgia, serif;
+      --serif: "Source Serif 4", Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background-color: var(--bg);
+      background-image:
+        linear-gradient(180deg, rgba(10, 12, 16, 0.92), rgba(10, 12, 16, 0.97)),
+        radial-gradient(900px 420px at 85% -10%, rgba(46, 196, 182, 0.1), transparent 55%),
+        radial-gradient(700px 360px at 0% 100%, rgba(196, 120, 58, 0.08), transparent 50%),
+        url("../assets/bg-steampunk.jpg");
+      background-size: auto, auto, auto, cover;
+      background-attachment: fixed;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #7dd3fc; }
+    .wrap { width: min(100% - 2.5rem, var(--wide)); margin-inline: auto; }
+    .narrow { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 1rem;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.65rem;
+      color: inherit; font-weight: 600;
+    }
+    .brand:hover { color: inherit; }
+    .brand img { width: 32px; height: 32px; border-radius: 7px; }
+    .brand strong { font-family: var(--display); font-weight: 600; letter-spacing: 0.02em; }
+    .brand small {
+      display: block; font-size: 0.68rem; font-weight: 500;
+      color: var(--soft); font-family: var(--font);
+    }
+    .nav a.top { color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+    .nav a.top:hover { color: var(--gold); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.7rem 1.25rem; border-radius: 999px; font-weight: 600;
+      font-size: 0.95rem; border: 1px solid transparent; cursor: pointer;
+      font-family: inherit; transition: 0.15s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--brass));
+      color: #1a1408; box-shadow: 0 6px 20px rgba(242, 193, 78, 0.18);
+    }
+    .btn-primary:hover { transform: translateY(-1px); color: #1a1408; }
+    .btn-primary:disabled { opacity: 0.6; cursor: default; transform: none; }
+    .btn-lg { padding: 0.9rem 1.6rem; font-size: 1rem; width: 100%; }
+
+    .eyebrow {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin: 0 0 0.85rem;
+    }
+    h1 {
+      font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 4.5vw, 2.85rem);
+      line-height: 1.18; letter-spacing: 0.01em; margin: 0 0 1rem;
+    }
+    h2 {
+      font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+      margin: 0 0 0.65rem; letter-spacing: 0.01em;
+    }
+    h3 { font-size: 1.05rem; font-weight: 650; margin: 0 0 0.4rem; }
+    .lede {
+      color: var(--muted); font-family: var(--serif); font-size: 1.1rem;
+      max-width: 34rem; margin: 0;
+    }
+    .accent {
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .hero { padding: 4rem 0 3rem; }
+    .hero .lede { margin-bottom: 1.5rem; }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 1.5rem 2rem;
+      margin-top: 2rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--soft); font-size: 0.9rem;
+    }
+    .hero-meta strong { color: var(--gold); font-weight: 650; margin-right: 0.35rem; }
+
+    section { padding: 2.75rem 0; }
+    .section-label { margin-bottom: 1.25rem; }
+
+    .steps {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 1rem;
+    }
+    @media (min-width: 720px) {
+      .steps { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    }
+    .steps li {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.15rem;
+      background: rgba(18, 22, 28, 0.45);
+    }
+    .steps .n {
+      display: inline-block; color: var(--gold); font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.06em; margin-bottom: 0.5rem;
+    }
+    .steps p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    .plans {
+      display: grid; gap: 1rem;
+    }
+    @media (min-width: 720px) {
+      .plans { grid-template-columns: repeat(3, 1fr); }
+    }
+    .plan {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.2rem;
+      background: rgba(18, 22, 28, 0.4);
+    }
+    .plan.hot { border-color: var(--border-strong); }
+    .plan .amt {
+      font-family: var(--display); font-size: 1.75rem; font-weight: 600;
+      margin: 0.35rem 0 0.15rem;
+    }
+    .plan .amt small {
+      font-family: var(--font); font-size: 0.85rem; font-weight: 500; color: var(--soft);
+    }
+    .plan .sub { color: var(--soft); font-size: 0.85rem; margin-bottom: 0.85rem; }
+    .plan ul {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 0.4rem; color: var(--muted); font-size: 0.9rem;
+    }
+    .plan ul li::before { content: "· "; color: var(--brass); }
+
+    .form-shell {
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      background: linear-gradient(160deg, rgba(46, 196, 182, 0.06), rgba(18, 22, 28, 0.7));
+    }
+    @media (min-width: 600px) { .form-shell { padding: 2rem; } }
+    .field { margin-bottom: 1rem; }
+    .field label {
+      display: block; font-size: 0.88rem; font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .field label .opt { font-weight: 500; color: var(--soft); font-size: 0.8rem; }
+    .field input, .field textarea {
+      width: 100%; padding: 0.7rem 0.85rem; border-radius: 10px;
+      background: rgba(10, 12, 16, 0.85); border: 1px solid var(--border);
+      color: var(--text); font: inherit; font-size: 0.98rem;
+    }
+    .field input:focus, .field textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.12);
+    }
+    .field textarea { min-height: 88px; resize: vertical; }
+    .hint { font-size: 0.8rem; color: var(--soft); margin-top: 0.35rem; }
+    .row2 { display: grid; gap: 1rem; }
+    @media (min-width: 560px) { .row2 { grid-template-columns: 1fr 1fr; } }
+    .radios { display: grid; gap: 0.45rem; }
+    .radio {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.65rem 0.85rem; border-radius: 10px;
+      border: 1px solid var(--border); background: rgba(10, 12, 16, 0.5);
+      cursor: pointer; font-size: 0.94rem;
+    }
+    .radio:hover { border-color: var(--border-strong); }
+    .radio.on { border-color: var(--accent); background: rgba(46, 196, 182, 0.08); }
+    .radio input { accent-color: var(--accent); }
+    #siteUrlWrap { display: none; margin-top: 0.55rem; }
+    #siteUrlWrap.show { display: block; }
+    .hp { position: absolute !important; left: -9999px !important; opacity: 0; height: 0; width: 0; }
+    .note { font-size: 0.84rem; color: var(--soft); margin-top: 0.9rem; line-height: 1.5; }
+    .msg {
+      display: none; padding: 0.75rem 0.9rem; border-radius: 10px;
+      margin-bottom: 1rem; font-size: 0.94rem;
+    }
+    .msg.err {
+      display: block; background: rgba(196, 120, 58, 0.12);
+      border: 1px solid rgba(196, 120, 58, 0.4); color: #f0c9a5;
+    }
+    .success { text-align: center; padding: 1rem 0; display: none; }
+    .success h3 { font-family: var(--display); font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .success p { color: var(--muted); margin: 0.4rem 0; }
+
+    details {
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+    }
+    details:first-of-type { border-top: 1px solid var(--border); }
+    details summary {
+      cursor: pointer; font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; gap: 1rem;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; color: var(--gold); font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { color: var(--muted); margin: 0.65rem 0 0; font-size: 0.95rem; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0 3rem;
+      color: var(--soft); font-size: 0.88rem;
+    }
+    footer .row {
+      display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem;
+      justify-content: space-between; align-items: center;
+    }
+    footer strong { color: var(--text); font-family: var(--display); font-weight: 600; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <img src="/assets/badge-j.jpg" width="32" height="32" alt="" />
+        <span>
+          <strong>NetNudge</strong>
+          <small>a James Networks company</small>
+        </span>
+      </a>
+      <a class="top" href="#start">Get a free mockup</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Clinton, Missouri</p>
+        <h1>
+          We build the website <span class="accent">first</span>.<br />
+          Then you decide.
+        </h1>
+        <p class="lede">
+          New site or a redesign of the one that isn’t earning its keep — same offer.
+          You get a real, working page you can open on your phone. Free to look at.
+          Keep it only if it’s right.
+        </p>
+        <a class="btn btn-primary" href="#start">Get a free mockup</a>
+        <div class="hero-meta">
+          <span><strong>Free</strong> to see</span>
+          <span><strong>~2 days</strong> form to finished</span>
+          <span><strong>$79/mo</strong> if you keep it</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="n">01</span>
+            <h3>Tell us about the business</h3>
+            <p>Ninety seconds. Include your current site URL if you have one — that’s how we know this is a redesign.</p>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <h3>We build it</h3>
+            <p>Five pages, phone-first, form that works. If you already have a site, we look at it first and rebuild from there.</p>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <h3>You decide</h3>
+            <p>Link on your phone. Like it? We put it on your domain. Don’t? We take it down. No pressure either way.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-label">
+          <p class="eyebrow">Pricing</p>
+          <h2>Same price either path</h2>
+          <p class="lede" style="font-size: 1rem;">New site or redesign — you see the mockup before you pay.</p>
+        </div>
+        <div class="plans">
+          <div class="plan">
+            <h3>Starter</h3>
+            <div class="amt">$79<small>/mo</small></div>
+            <div class="sub">Most small shops</div>
+            <ul>
+              <li>5-page site</li>
+              <li>Domain, hosting, SSL</li>
+              <li>Email forwarding + form</li>
+              <li>2 updates a year</li>
+            </ul>
+          </div>
+          <div class="plan hot">
+            <h3>Standard</h3>
+            <div class="amt">$149<small>/mo</small></div>
+            <div class="sub">If you want to be found</div>
+            <ul>
+              <li>Everything in Starter</li>
+              <li>Up to 12 pages</li>
+              <li>Google Business managed</li>
+              <li>Monthly updates + report</li>
+            </ul>
+          </div>
+          <div class="plan">
+            <h3>Build &amp; Go</h3>
+            <div class="amt">$1,499<small> once</small></div>
+            <div class="sub">+ $19/mo hosting</div>
+            <ul>
+              <li>You own the files</li>
+              <li>Domain, hosting, SSL</li>
+              <li>Email forwarding + form</li>
+              <li>Changes billed hourly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="start">
+      <div class="narrow">
+        <div class="section-label" style="text-align: center;">
+          <p class="eyebrow">Get started</p>
+          <h2>Tell us about your business</h2>
+          <p class="lede" style="margin-inline: auto; font-size: 1rem;">
+            New site or redesign — same form.
+          </p>
+        </div>
+        <div class="form-shell">
+          <div id="formMsg" class="msg" role="alert"></div>
+          <form id="nudgeForm" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="business">Business name</label>
+                <input type="text" id="business" name="business" autocomplete="organization" maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" autocomplete="name" maxlength="80" />
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30" placeholder="(660) 555-0134" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength="120" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="does">What do you do?</label>
+              <input type="text" id="does" name="does" maxlength="200" placeholder="Plumbing and drain work, residential mostly" />
+            </div>
+            <div class="field">
+              <label>Do you have a website now?</label>
+              <div class="radios">
+                <label class="radio"><input type="radio" name="hasSite" value="none" /> No, nothing</label>
+                <label class="radio"><input type="radio" name="hasSite" value="facebook" /> Just a Facebook page</label>
+                <label class="radio"><input type="radio" name="hasSite" value="yes" /> Yes — redesign / replace it</label>
+              </div>
+              <div id="siteUrlWrap">
+                <input type="text" id="siteUrl" name="siteUrl" maxlength="200" placeholder="yourbusiness.com" />
+                <div class="hint">We’ll look at it before we build.</div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="want">One thing you want the site to do <span class="opt">— optional</span></label>
+              <textarea id="want" name="want" maxlength="1200" placeholder="Get the phone to ring. Or fix the old site that doesn’t work on a phone."></textarea>
+            </div>
+            <input type="text" class="hp" name="website_url" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Build my free mockup</button>
+            <p class="note">
+              No credit card. Prefer to talk?
+              <a href="mailto:david.james@jamesnetworks.net">david.james@jamesnetworks.net</a>
+            </p>
+          </form>
+          <div id="successBox" class="success">
+            <h3>Got it.</h3>
+            <p id="successMsg"></p>
+            <p style="color: var(--soft); font-size: 0.9rem;">Check your email for a note from David.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="narrow">
+        <p class="eyebrow">FAQ</p>
+        <h2 style="margin-bottom: 1rem;">Quick answers</h2>
+        <details>
+          <summary>I already have a website. Is this for me?</summary>
+          <p>Yes. Tell us the URL — we look at it, rebuild a cleaner version, and you decide after you’ve seen the mockup. Your old site stays up until you switch.</p>
+        </details>
+        <details>
+          <summary>Why is the mockup free?</summary>
+          <p>Because showing beats selling. You see what you’d pay for before you pay. If it’s not right, you’ve lost a few minutes on a form.</p>
+        </details>
+        <details>
+          <summary>Do I own it?</summary>
+          <p>Domain is yours. Monthly plans: we maintain the site. Build &amp; Go: you own the files outright. We never hold your domain hostage.</p>
+        </details>
+        <details>
+          <summary>What if I don’t like it?</summary>
+          <p>Tell us what’s off and we fix it, or say no and we take it down. No invoice, no chase.</p>
+        </details>
+        <details>
+          <summary>Are you local?</summary>
+          <p>Clinton, Missouri. David James — James Networks. You’re welcome to call.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap row">
+      <div>
+        <strong>NetNudge</strong>
+        · a <a href="/">James Networks</a> company · Clinton, MO
+      </div>
+      <div>© <span id="yr"></span> James Networks</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.getElementById("yr").textContent = new Date().getFullYear();
+      var radios = document.querySelectorAll('input[name="hasSite"]');
+      var urlWrap = document.getElementById("siteUrlWrap");
+      radios.forEach(function (r) {
+        r.addEventListener("change", function () {
+          document.querySelectorAll(".radio").forEach(function (el) {
+            el.classList.remove("on");
+          });
+          if (r.checked) r.closest(".radio").classList.add("on");
+          urlWrap.classList.toggle("show", r.value === "yes");
+          if (r.value !== "yes") document.getElementById("siteUrl").value = "";
+        });
+      });
+
+      var form = document.getElementById("nudgeForm");
+      var btn = document.getElementById("submitBtn");
+      var msgBox = document.getElementById("formMsg");
+      var successBox = document.getElementById("successBox");
+
+      function showErr(text) {
+        msgBox.className = "msg err";
+        msgBox.textContent = text;
+        msgBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        msgBox.className = "msg";
+        var checked = form.querySelector('input[name="hasSite"]:checked');
+        var data = {
+          business: form.business.value.trim(),
+          name: form.name.value.trim(),
+          phone: form.phone.value.trim(),
+          email: form.email.value.trim(),
+          does: form.does.value.trim(),
+          hasSite: checked ? checked.value : "",
+          siteUrl: form.siteUrl.value.trim(),
+          want: form.want.value.trim(),
+          website_url: form.website_url.value,
+        };
+        if (!data.business || !data.name || !data.phone || !data.email || !data.does) {
+          return showErr("Looks like something above is still blank.");
+        }
+        if (!data.hasSite) return showErr("Just need to know whether you have a website right now.");
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
+          return showErr("That email doesn’t look quite right.");
+        }
+        if (data.phone.replace(/\D/g, "").length < 10) {
+          return showErr("Need a full phone number with area code.");
+        }
+        if (data.hasSite === "yes" && !data.siteUrl) {
+          return showErr("Drop the current site address so we can look at it.");
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        try {
+          var res = await fetch("/api/netnudge", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          var out = await res.json().catch(function () { return {}; });
+          if (!res.ok) throw new Error(out.error || "Something went wrong on our end.");
+          form.style.display = "none";
+          document.getElementById("successMsg").textContent =
+            out.message ||
+            ("Thanks, " + (data.name.split(" ")[0] || "") + ". David will look at " + data.business + " today.");
+          successBox.style.display = "block";
+          successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = "Build my free mockup";
+          showErr(
+            (err && err.message ? err.message + " " : "") +
+              "Or email david.james@jamesnetworks.net."
+          );
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

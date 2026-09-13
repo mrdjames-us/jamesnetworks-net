@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>James Networks</title>
+    <link>https://www.jamesnetworks.net/</link>
+    <description>David James writes from Clinton, Missouri — IT, AI, the work, pool, fishing, and whatever he's actually doing.</description>
+    <language>en-us</language>
+    <atom:link href="https://www.jamesnetworks.net/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Starting here</title>
+      <link>https://www.jamesnetworks.net/writing/starting-here/</link>
+      <guid>https://www.jamesnetworks.net/writing/starting-here/</guid>
+      <pubDate>Sun, 13 Sep 2026 17:00:00 GMT</pubDate>
+      <description>This week's build: James Networks — https://www.jamesnetworks.net/. This domain is my notebook now. Consulting stays on its own site. I'll write weekly — and every weekly post highlights a hosted build you can open.</description>
+    </item>
+    <item>
+      <title>The work, in plain language</title>
+      <link>https://www.jamesnetworks.net/writing/the-work/</link>
+      <guid>https://www.jamesnetworks.net/writing/the-work/</guid>
+      <pubDate>Sun, 13 Sep 2026 17:00:00 GMT</pubDate>
+      <description>This week's build: Henry County Consulting — https://www.henrycountyconsulting.com/. A map of what I actually run — consulting, education, chips, league apps — and why each one gets its own door.</description>
+    </item>
+  </channel>
+</rss>
