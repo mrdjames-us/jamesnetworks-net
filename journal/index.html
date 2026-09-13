@@ -79,19 +79,6 @@
 </head>
 <body class="page-home">
   <a class="skip-link" href="#main">Skip to content</a>
-  <div id="demoEnvBanner" hidden class="demo-banner">DEMO ENVIRONMENT — not production</div>
-  <script>
-    (function () {
-      var demo = /(?:^|\.)jamesnetworks-net-demo\.pages\.dev$/i.test(location.hostname)
-        || /^demo\./i.test(location.hostname)
-        || /[?&]demo=1(?:&|$)/i.test(location.search);
-      if (demo) {
-        var b = document.getElementById("demoEnvBanner");
-        if (b) b.hidden = false;
-        document.title = "[DEMO] " + document.title;
-      }
-    })();
-  </script>
 
   <header class="site-header">
     <div class="header-inner">

@@ -1,6 +1,8 @@
 # Personal journal (jamesnetworks.net)
 
-David James â€” notes from Clinton, Missouri.
+David James — notes from Clinton, Missouri.
+
+**This folder IS the blog** for jamesnetworks.net (Latest on the home page, Writing archive). Not a separate product or subdomain.
 
 Henry County Consulting stays on `henrycountyconsulting.com`. This folder is the
 personal site. Host-aware middleware in `functions/_middleware.js` serves it on
@@ -63,7 +65,7 @@ Always run `node journal/build.mjs` before deploy.
 
 Lab apps (`/pool`, `/flowscout`, `/netnudge`, `/cipherladder`) still live on this host.
 
-## Posting from Grok Bot later
+## Posting / updating (Grok Bot or human)
 
 Keep this stack. No CMS. No blog subdomain.
 
