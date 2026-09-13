@@ -505,6 +505,7 @@ function layout({
   extraHead = "",
   bodyClass = "",
   content,
+  logoOnly = false,
 }) {
   const fullTitle = path === "/" ? `${SITE.name} — ${SITE.tagline}` : `${title} — ${SITE.name}`;
   const url = `${SITE.origin}${canonical || path}`;
@@ -547,21 +548,21 @@ function layout({
 <body${bodyClass ? ` class="${bodyClass}"` : ""}>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header${logoOnly ? " site-header-logo-only" : ""}">
     <div class="header-inner">
       <a class="brand" href="/" aria-label="${SITE.name} home">
         <img class="brand-logo" src="/assets/badge-j.jpg" width="44" height="44" alt="James Networks" />
-        <span class="brand-text">
+        ${logoOnly ? "" : `<span class="brand-text">
           <strong>James Networks</strong>
           <span>David James · notes</span>
-        </span>
+        </span>`}
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      ${logoOnly ? "" : `<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
         ${nav(path)}
-      </nav>
+      </nav>`}
     </div>
   </header>
 
@@ -640,9 +641,14 @@ function renderHome(posts) {
   });
 
   const content = `
-    <section class="intro home-about">
-      <p class="eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
-      <div class="prose">${home.html}</div>
+    <section class="crawl-stage" aria-label="Opening crawl">
+      <div class="crawl-stars" aria-hidden="true"></div>
+      <p class="crawl-eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
+      <div class="crawl-perspective">
+        <div class="crawl-track">
+          <div class="crawl-copy prose">${home.html}</div>
+        </div>
+      </div>
     </section>
     ${renderHomeDoors()}`;
 
@@ -653,6 +659,7 @@ function renderHome(posts) {
     extraHead,
     bodyClass: "page-home",
     content,
+    logoOnly: true,
   });
 }
 

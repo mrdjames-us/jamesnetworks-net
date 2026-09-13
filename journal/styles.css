@@ -730,3 +730,104 @@ body.page-home .post-index {
   .golden-door-glow { animation: none; }
   .golden-door { transition: none; }
 }
+
+/* Home: logo only */
+.site-header-logo-only .header-inner {
+  justify-content: center;
+}
+.site-header-logo-only .brand-logo {
+  width: 56px;
+  height: 56px;
+}
+.page-home .site-header {
+  border-bottom: none;
+  background: transparent;
+}
+
+/* Star Wars–style crawl */
+.crawl-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  margin: 0.5rem 0 1rem;
+  padding: 1.5rem 1rem 0;
+  perspective: 420px;
+}
+.crawl-stars {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 236, 180, 0.9), transparent),
+    radial-gradient(1px 1px at 28% 62%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 48% 22%, rgba(255, 220, 140, 0.85), transparent),
+    radial-gradient(1px 1px at 67% 74%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 82% 36%, rgba(255, 236, 180, 0.8), transparent),
+    radial-gradient(1px 1px at 91% 58%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 8% 80%, rgba(255, 210, 120, 0.7), transparent),
+    radial-gradient(1px 1px at 55% 48%, rgba(255, 255, 255, 0.45), transparent);
+  opacity: 0.85;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 92%);
+}
+.crawl-eyebrow {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: 0 0 1.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c4a35a;
+}
+.crawl-perspective {
+  position: relative;
+  z-index: 1;
+  height: 18rem;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 72%, transparent 100%);
+}
+.crawl-track {
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  width: min(34rem, 92vw);
+  transform: translateX(-50%) rotateX(58deg);
+  transform-origin: 50% 100%;
+  animation: crawl-rise 28s linear infinite;
+}
+.crawl-copy {
+  text-align: center;
+  color: #ffe81f;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.55;
+  text-shadow: 0 0 18px rgba(255, 200, 40, 0.35);
+}
+.crawl-copy p {
+  margin: 0 0 1.35rem;
+}
+.crawl-copy strong,
+.crawl-copy b {
+  color: #fff3a0;
+  font-weight: 700;
+}
+@keyframes crawl-rise {
+  0% { transform: translateX(-50%) translateY(55%) rotateX(58deg); }
+  100% { transform: translateX(-50%) translateY(-120%) rotateX(58deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crawl-track {
+    animation: none;
+    bottom: auto;
+    top: 10%;
+    transform: translateX(-50%) rotateX(48deg);
+  }
+  .crawl-perspective {
+    height: auto;
+    min-height: 12rem;
+    mask-image: none;
+    overflow: visible;
+  }
+}
