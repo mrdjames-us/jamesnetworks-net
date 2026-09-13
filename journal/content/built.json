@@ -1,6 +1,16 @@
 {
   "personal": [
     {
+      "title": "Henry County Consulting",
+      "badge": "Live",
+      "domain": "henrycountyconsulting.com",
+      "href": "https://www.henrycountyconsulting.com/",
+      "image": "/assets/hcc-desk-still.png",
+      "alt": "Brass calipers and a workflow on the bench",
+      "blurb": "Paid do-it-with-you consulting. Assess → Simplify → Automate → Train, with human approvals on money, access, and deletes.",
+      "tags": ["Consulting", "Workflows", "Agents"]
+    },
+    {
       "title": "AI for Missouri",
       "badge": "Live",
       "domain": "aiformissouri.com",
@@ -61,6 +71,16 @@
       "tags": ["Captain", "Scorers", "League"]
     },
     {
+      "title": "FlowScout",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/flowscout",
+      "href": "/flowscout/",
+      "image": "/assets/flowscout-hero.jpg",
+      "alt": "FlowScout workflow intake",
+      "blurb": "Walk through one painful workflow. Get a plain-language map, what to keep human, which tool fits, and the build steps.",
+      "tags": ["Interview", "Blueprint", "Platform pick"]
+    },
+    {
       "title": "TheCipherLadder",
       "badge": "Live",
       "domain": "jamesnetworks.net/cipherladder",
@@ -81,26 +101,5 @@
       "tags": ["Websites", "Clinton", "See it first"]
     }
   ],
-  "msp": [
-    {
-      "title": "Henry County Consulting",
-      "badge": "Live",
-      "domain": "henrycountyconsulting.com",
-      "href": "https://www.henrycountyconsulting.com/",
-      "image": "/assets/hcc-desk-still.png",
-      "alt": "Brass calipers and a workflow on the bench",
-      "blurb": "Paid do-it-with-you consulting. Assess → Simplify → Automate → Train, with human approvals on money, access, and deletes.",
-      "tags": ["Consulting", "Workflows", "Agents"]
-    },
-    {
-      "title": "FlowScout",
-      "badge": "Live",
-      "domain": "jamesnetworks.net/flowscout",
-      "href": "/flowscout/",
-      "image": "/assets/flowscout-hero.jpg",
-      "alt": "FlowScout workflow intake",
-      "blurb": "Walk through one painful workflow. Get a plain-language map, what to keep human, which tool fits, and the build steps.",
-      "tags": ["Interview", "Blueprint", "Platform pick"]
-    }
-  ]
+  "msp": []
 }
