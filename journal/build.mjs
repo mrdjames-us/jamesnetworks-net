@@ -297,6 +297,350 @@ function loadPage(name) {
   };
 }
 
+const YT_ID = /^[a-zA-Z0-9_-]{11}$/;
+
+function parseYouTube(input) {
+  if (!input) return null;
+  const raw = String(input).trim();
+  if (YT_ID.test(raw)) {
+    const watchUrl = `https://www.youtube.com/watch?v=${raw}`;
+    return { id: raw, watchUrl, shareUrl: watchUrl, kind: "watch" };
+  }
+  let url;
+  try {
+    url = new URL(raw);
+  } catch {
+    return null;
+  }
+  const host = url.hostname.replace(/^www\./, "").toLowerCase();
+  const parts = url.pathname.split("/").filter(Boolean);
+  const pack = (id, kind, shareUrl) => {
+    if (!id) return null;
+    const clean = String(id).replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 11);
+    if (!YT_ID.test(clean)) return null;
+    const watchUrl = `https://www.youtube.com/watch?v=${clean}`;
+    const share =
+      shareUrl ||
+      (kind === "short" ? `https://www.youtube.com/shorts/${clean}` : watchUrl);
+    return { id: clean, watchUrl, shareUrl: share, kind };
+  };
+  if (host === "youtu.be") return pack(parts[0], "watch", `https://youtu.be/${parts[0]}`);
+  if (
+    host === "youtube.com" ||
+    host === "m.youtube.com" ||
+    host === "youtube-nocookie.com"
+  ) {
+    if (parts[0] === "shorts") return pack(parts[1], "short");
+    if (parts[0] === "embed" || parts[0] === "live") return pack(parts[1], "watch");
+    if (url.searchParams.get("v")) return pack(url.searchParams.get("v"), "watch");
+  }
+  return null;
+}
+
+function assertYouTubeParse() {
+  const cases = [
+    ["dQw4w9WgXcQ", "dQw4w9WgXcQ", "watch"],
+    ["https://www.youtube.com/watch?v=dQw4w9WgXcQ", "dQw4w9WgXcQ", "watch"],
+    ["https://youtu.be/dQw4w9WgXcQ", "dQw4w9WgXcQ", "watch"],
+    ["https://www.youtube.com/shorts/dQw4w9WgXcQ", "dQw4w9WgXcQ", "short"],
+    ["https://m.youtube.com/watch?v=dQw4w9WgXcQ&t=12s", "dQw4w9WgXcQ", "watch"],
+  ];
+  for (const [input, id, kind] of cases) {
+    const got = parseYouTube(input);
+    if (!got || got.id !== id || got.kind !== kind) {
+      throw new Error(`YouTube parse failed for ${input}: ${JSON.stringify(got)}`);
+    }
+  }
+  if (
+    parseYouTube("nope") ||
+    parseYouTube("https://example.com/watch?v=dQw4w9WgXcQ")
+  ) {
+    throw new Error("YouTube parse accepted junk");
+  }
+}
+
+function loadMspConfig() {
+  const file = path.join(CONTENT, "msp", "config.json");
+  const defaults = {
+    youtubeChannelUrl: "",
+    youtubeChannelLabel: "YouTube channel",
+  };
+  if (!fs.existsSync(file)) return defaults;
+  return { ...defaults, ...JSON.parse(read(file)) };
+}
+
+function channelUrl(config) {
+  const url = String(config.youtubeChannelUrl || "").trim();
+  if (!url || /REPLACE_ME/i.test(url) || url === "#") return "";
+  return url;
+}
+
+function asTags(val) {
+  if (Array.isArray(val)) return val.filter(Boolean);
+  if (!val) return [];
+  return String(val)
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+function isLibraryMarkdown(name) {
+  if (!name.endsWith(".md")) return false;
+  const lower = name.toLowerCase();
+  if (lower === "readme.md") return false;
+  if (name.startsWith("_") || name.startsWith(".")) return false;
+  return true;
+}
+
+function sortEntries(a, b) {
+  if (a.date && b.date && a.date !== b.date) return a.date < b.date ? 1 : -1;
+  if (a.date && !b.date) return -1;
+  if (!a.date && b.date) return 1;
+  return a.title.localeCompare(b.title);
+}
+
+function loadMspLibrary(kind) {
+  const dir = path.join(CONTENT, "msp", kind);
+  const route = `/msp/${kind}/`;
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter(isLibraryMarkdown)
+    .map((name) => {
+      const file = path.join(dir, name);
+      const { meta, body } = parseFrontmatter(read(file));
+      if (meta.draft === "true" || meta.draft === true) return null;
+      const slug = meta.slug || path.basename(name, ".md");
+      const entry = {
+        kind,
+        file: name,
+        slug,
+        title: meta.title || slug,
+        summary: meta.summary || "",
+        tags: asTags(meta.tags),
+        date: meta.date || "",
+        body,
+        html: body ? markdownToHtml(body) : "",
+        path: `${route}${slug}/`,
+      };
+      if (kind === "videos") {
+        const yt = parseYouTube(meta.youtube || meta.youtube_id || meta.youtubeId);
+        if (!yt) {
+          throw new Error(
+            `MSP video ${name} needs a youtube URL or 11-character id (watch or Shorts).`
+          );
+        }
+        entry.youtubeId = yt.id;
+        entry.youtubeUrl = yt.shareUrl;
+        entry.youtubeKind = yt.kind;
+        entry.duration = meta.duration || "";
+        entry.thumb =
+          meta.thumb ||
+          meta.image ||
+          `https://i.ytimg.com/vi/${yt.id}/hqdefault.jpg`;
+      }
+      return entry;
+    })
+    .filter(Boolean)
+    .sort(sortEntries);
+}
+
+function countLabel(n, noun) {
+  if (!n) return "Empty for now — ready when the first one is.";
+  return n === 1 ? `1 ${noun} on the shelf` : `${n} ${noun}s on the shelf`;
+}
+
+function renderTags(tags) {
+  if (!tags || !tags.length) return "";
+  return `<ul class="app-meta">${tags
+    .map((t) => `<li>${escapeHtml(t)}</li>`)
+    .join("")}</ul>`;
+}
+
+function renderHubCards(prompts, skills, videos, writingCount) {
+  const cards = [
+    {
+      kicker: "Library",
+      title: "Prompts",
+      blurb:
+        "Reusable prompts for ticket work, client updates, and the sentences you type twenty times a week.",
+      href: "/msp/prompts/",
+      status: countLabel(prompts.length, "prompt"),
+      cta: "Open prompts",
+    },
+    {
+      kicker: "Library",
+      title: "Skills",
+      blurb: "Playbooks you can run the same way twice — not product pages.",
+      href: "/msp/skills/",
+      status: countLabel(skills.length, "skill"),
+      cta: "Open skills",
+    },
+    {
+      kicker: "Library",
+      title: "Videos",
+      blurb:
+        "Short (~2 min) AI how-tos. Thumbnail, a blurb, and a link out to YouTube.",
+      href: "/msp/videos/",
+      status: countLabel(videos.length, "video"),
+      cta: "Open videos",
+    },
+    {
+      kicker: "Notes",
+      title: "MSP writing",
+      blurb:
+        "Longer notes from the shop. Empty until a post lands with section: msp.",
+      href: "/writing/msp/",
+      status: countLabel(writingCount, "post"),
+      cta: "Open MSP writing",
+    },
+  ];
+  return `<div class="lib-grid">
+      ${cards
+        .map(
+          (c) => `<article class="lib-card">
+        <p class="lib-kicker">${escapeHtml(c.kicker)}</p>
+        <h2>${escapeHtml(c.title)}</h2>
+        <p>${escapeHtml(c.blurb)}</p>
+        <p class="lib-status">${escapeHtml(c.status)}</p>
+        <a class="btn btn-primary" href="${escapeHtml(c.href)}">${escapeHtml(c.cta)}</a>
+      </article>`
+        )
+        .join("\n      ")}
+    </div>`;
+}
+
+function renderMspHub(page, prompts, skills, videos, writingCount) {
+  return layout({
+    title: page.title,
+    description: page.description,
+    path: "/msp/",
+    bodyClass: "page-msp",
+    content: `
+    <header class="page-head">
+      <h1>${escapeHtml(page.title)}</h1>
+      <p class="deck">${escapeHtml(page.description)}</p>
+    </header>
+    <div class="prose page-prose">${page.html}</div>
+    ${renderHubCards(prompts, skills, videos, writingCount)}`,
+  });
+}
+
+function renderChannelLine(config) {
+  const url = channelUrl(config);
+  if (!url) return "";
+  const label = config.youtubeChannelLabel || "YouTube channel";
+  return `<p class="channel-link"><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></p>`;
+}
+
+function renderVideoCard(entry) {
+  const duration = entry.duration
+    ? `<span class="video-duration">${escapeHtml(entry.duration)}</span>`
+    : "";
+  return `<article class="video-card">
+        <a class="video-thumb" href="${entry.path}">
+          <img src="${escapeHtml(entry.thumb)}" width="480" height="360" alt="" />
+          ${duration}
+        </a>
+        <h3><a href="${entry.path}">${escapeHtml(entry.title)}</a></h3>
+        <p>${escapeHtml(entry.summary)}</p>
+        ${renderTags(entry.tags)}
+        <a class="btn btn-primary" href="${escapeHtml(entry.youtubeUrl)}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+      </article>`;
+}
+
+function renderPromptSkillCard(entry) {
+  return `<article class="lib-card">
+        <h3><a href="${entry.path}">${escapeHtml(entry.title)}</a></h3>
+        <p>${escapeHtml(entry.summary)}</p>
+        ${renderTags(entry.tags)}
+        <a class="btn btn-primary" href="${entry.path}">Open</a>
+      </article>`;
+}
+
+function renderLibraryIndex({ page, entries, emptyLabel, extra = "", grid }) {
+  let shelf;
+  if (!entries.length) {
+    shelf = `<p class="empty-shelf">${emptyLabel}</p>`;
+  } else if (grid === "videos") {
+    shelf = `<div class="video-grid">
+      ${entries.map(renderVideoCard).join("\n      ")}
+    </div>`;
+  } else {
+    shelf = `<div class="lib-grid">
+      ${entries.map(renderPromptSkillCard).join("\n      ")}
+    </div>`;
+  }
+  return layout({
+    title: page.title,
+    description: page.description,
+    path: page.path,
+    bodyClass: "page-msp-library",
+    content: `
+    <header class="page-head">
+      <p class="eyebrow"><a href="/msp/">MSP</a></p>
+      <h1>${escapeHtml(page.title)}</h1>
+      <p class="deck">${escapeHtml(page.description)}</p>
+    </header>
+    <div class="prose page-prose">${page.html}</div>
+    ${extra}
+    ${shelf}
+    <p class="more"><a href="/msp/">Back to MSP hub</a> · <a href="/writing/msp/">MSP writing</a></p>`,
+  });
+}
+
+function renderYoutubePoster(entry) {
+  return `<div class="yt-embed">
+      <button type="button" class="yt-poster" data-youtube-id="${escapeHtml(entry.youtubeId)}" data-youtube-title="${escapeHtml(entry.title)}" aria-label="Play ${escapeHtml(entry.title)}">
+        <img src="${escapeHtml(entry.thumb)}" width="1280" height="720" alt="" />
+        <span class="yt-play" aria-hidden="true">Play</span>
+      </button>
+    </div>`;
+}
+
+function renderLibraryDetail(entry, extras = "") {
+  const dateLine = entry.date
+    ? `<time datetime="${escapeHtml(entry.date)}">${formatDate(entry.date)}</time>`
+    : "";
+  const videoBits =
+    entry.kind === "videos"
+      ? `${renderYoutubePoster(entry)}
+      <p class="watch-row"><a class="btn btn-primary" href="${escapeHtml(entry.youtubeUrl)}" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>`
+      : "";
+  const extraHead =
+    entry.kind === "videos"
+      ? jsonLd({
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: entry.title,
+          description: entry.summary,
+          thumbnailUrl: entry.thumb,
+          embedUrl: `https://www.youtube-nocookie.com/embed/${entry.youtubeId}`,
+          url: `${SITE.origin}${entry.path}`,
+        })
+      : "";
+  return layout({
+    title: entry.title,
+    description: entry.summary || SITE.description,
+    path: entry.path,
+    extraHead,
+    bodyClass: "page-msp-library page-msp-entry",
+    content: `
+    <article class="post">
+      <header class="page-head">
+        <p class="eyebrow"><a href="/msp/${entry.kind}/">${entry.kind === "videos" ? "Videos" : entry.kind === "prompts" ? "Prompts" : "Skills"}</a></p>
+        ${dateLine}
+        <h1>${escapeHtml(entry.title)}</h1>
+        ${entry.summary ? `<p class="deck">${escapeHtml(entry.summary)}</p>` : ""}
+        ${renderTags(entry.tags)}
+      </header>
+      ${videoBits}
+      ${entry.html ? `<div class="prose">${entry.html}</div>` : ""}
+    </article>
+    <p class="more"><a href="/msp/${entry.kind}/">Back to ${entry.kind}</a> · <a href="/msp/">MSP hub</a>${extras}</p>`,
+  });
+}
+
 
 function renderHomeDoors() {
   return `
@@ -322,24 +666,6 @@ function renderHomeDoors() {
         </span>
       </a>
     </section>`;
-}
-
-function renderMspLibraryPage(page, emptyLabel) {
-  return layout({
-    title: page.title,
-    description: page.description,
-    path: page.path,
-    bodyClass: "page-msp-library",
-    content: `
-    <header class="page-head">
-      <p class="eyebrow"><a href="/msp/">MSP</a></p>
-      <h1>${escapeHtml(page.title)}</h1>
-      <p class="deck">${escapeHtml(page.description)}</p>
-    </header>
-    <div class="prose page-prose">${page.html}</div>
-    <p class="empty-shelf">${escapeHtml(emptyLabel)}</p>
-    <p class="more"><a href="/msp/">Back to MSP hub</a> · <a href="/writing/msp/">MSP writing</a></p>`,
-  });
 }
 
 function loadBuilt() {
@@ -811,12 +1137,13 @@ ${items}
 `;
 }
 
-function renderSitemap(posts, pages) {
+function renderSitemap(posts, pages, extras = []) {
   const urls = [
     ["/", "weekly", "1.0"],
     ["/writing/", "weekly", "0.9"],
     ...pages.map((p) => [p.path, "monthly", "0.6"]),
     ...posts.map((p) => [p.path, "monthly", "0.8"]),
+    ...extras.map((loc) => [loc, "monthly", "0.7"]),
   ];
   const body = urls
     .map(
@@ -851,12 +1178,15 @@ function cleanGenerated() {
     "og.jpg",
     "README.md",
     "content",
+    "docs",
   ]);
   for (const name of fs.readdirSync(ROOT)) {
     if (keep.has(name)) continue;
     fs.rmSync(path.join(ROOT, name), { recursive: true, force: true });
   }
 }
+
+assertYouTubeParse();
 
 const posts = loadPosts();
 const mspPosts = posts.filter((p) => p.section === "msp");
@@ -872,6 +1202,11 @@ mspSkills.path = "/msp/skills/";
 const mspVideos = loadPage("msp-videos");
 mspVideos.path = "/msp/videos/";
 const pages = [about, now, work, privacy, msp, mspPrompts, mspSkills, mspVideos];
+const mspConfig = loadMspConfig();
+const mspPromptEntries = loadMspLibrary("prompts");
+const mspSkillEntries = loadMspLibrary("skills");
+const mspVideoEntries = loadMspLibrary("videos");
+const mspEntries = [...mspPromptEntries, ...mspSkillEntries, ...mspVideoEntries];
 
 cleanGenerated();
 
@@ -884,7 +1219,7 @@ write(
     description: "MSP workflow and automation notes — Clinton, Missouri.",
     path: "/writing/msp/",
     deck: "Placeholder deck — David will rewrite. Posts with section: msp land here.",
-    extraLinks: `<p class="more"><a href="/writing/">All writing</a> · <a href="/msp/">MSP highlights</a> · <a href="/rss.xml">RSS</a></p>`,
+    extraLinks: `<p class="more"><a href="/writing/">All writing</a> · <a href="/msp/">MSP hub</a> · <a href="/rss.xml">RSS</a></p>`,
   })
 );
 for (const post of posts) {
@@ -907,30 +1242,58 @@ write(
 );
 write(
   path.join(ROOT, "msp", "index.html"),
-  layout({
-    title: msp.title,
-    description: msp.description,
-    path: "/msp/",
-    bodyClass: "page-msp",
-    content: `
-    <header class="page-head">
-      <h1>${escapeHtml(msp.title)}</h1>
-      <p class="deck">${escapeHtml(msp.description)}</p>
-    </header>
-    <div class="prose page-prose">${msp.html}</div>`,
+  renderMspHub(msp, mspPromptEntries, mspSkillEntries, mspVideoEntries, mspPosts.length)
+);
+write(
+  path.join(ROOT, "msp", "prompts", "index.html"),
+  renderLibraryIndex({
+    page: mspPrompts,
+    entries: mspPromptEntries,
+    emptyLabel:
+      "This shelf is empty on purpose. Real prompts from the shop will show up here — no filler, no invented library.",
   })
 );
-write(path.join(ROOT, "msp", "prompts", "index.html"), renderMspLibraryPage(mspPrompts, "No prompts yet."));
-write(path.join(ROOT, "msp", "skills", "index.html"), renderMspLibraryPage(mspSkills, "No skills yet."));
-write(path.join(ROOT, "msp", "videos", "index.html"), renderMspLibraryPage(mspVideos, "No videos yet."));
+write(
+  path.join(ROOT, "msp", "skills", "index.html"),
+  renderLibraryIndex({
+    page: mspSkills,
+    entries: mspSkillEntries,
+    emptyLabel:
+      "No skills on the shelf yet. A playbook lands here when it's something you can run the same way twice.",
+  })
+);
+write(
+  path.join(ROOT, "msp", "videos", "index.html"),
+  renderLibraryIndex({
+    page: mspVideos,
+    entries: mspVideoEntries,
+    extra: renderChannelLine(mspConfig),
+    grid: "videos",
+    emptyLabel:
+      "Nothing on the shelf yet. When the first ~2 minute how-to is up, it'll land here — a thumbnail, a short blurb, and a link out to YouTube.",
+  })
+);
+for (const entry of mspEntries) {
+  write(
+    path.join(ROOT, "msp", entry.kind, entry.slug, "index.html"),
+    renderLibraryDetail(entry)
+  );
+}
 write(path.join(ROOT, "privacy", "index.html"), renderStaticPage(privacy));
 write(path.join(ROOT, "not-found", "index.html"), render404());
 write(path.join(ROOT, "rss.xml"), renderRss(posts));
 write(
   path.join(ROOT, "sitemap.xml"),
-  renderSitemap(posts, [...pages, { path: "/writing/msp/" }])
+  renderSitemap(
+    posts,
+    [...pages, { path: "/writing/msp/" }],
+    mspEntries.map((e) => e.path)
+  )
 );
 write(path.join(ROOT, "robots.txt"), renderRobots());
 
-console.log(`Built ${posts.length} posts (${mspPosts.length} MSP), ${pages.length} pages.`);
+console.log(
+  `Built ${posts.length} posts (${mspPosts.length} MSP), ${pages.length} pages, ${mspVideoEntries.length} videos, ${mspPromptEntries.length} prompts, ${mspSkillEntries.length} skills.`
+);
 for (const p of posts) console.log(`  ${p.date}  [${p.section}]  ${p.path}  ${p.title}`);
+for (const e of mspEntries) console.log(`  [msp/${e.kind}]  ${e.path}  ${e.title}`);

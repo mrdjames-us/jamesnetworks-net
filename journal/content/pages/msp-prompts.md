@@ -1,6 +1,6 @@
 ---
 title: Prompt library
-description: Prompts for MSP work — empty for now.
+description: Reusable prompts for MSP work — ticket updates, triage, and the sentences you type twenty times a week.
 ---
 
-Nothing here yet. Prompt entries will show up as markdown in this library later.
+Prompts I'd actually paste. When the first real one is ready, it lands here. No filler entries.

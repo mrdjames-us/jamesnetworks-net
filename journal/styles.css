@@ -936,19 +936,19 @@ body.page-home .post-index {
   background: transparent;
 }
 
-/* Star Wars–style crawl — full-bleed, centered */
+/* Star Wars–style crawl — Safari-safe (no 100vw breakout) */
+body.page-home {
+  overflow-x: hidden;
+}
 .crawl-stage {
   position: relative;
-  left: 50%;
-  right: auto;
-  width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
   min-height: 22rem;
-  padding: 1.5rem 1rem 0;
-  perspective: 420px;
-  perspective-origin: 50% 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 1.25rem 0 0;
+  box-sizing: border-box;
 }
 .crawl-stars {
   pointer-events: none;
@@ -970,7 +970,8 @@ body.page-home .post-index {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
+  padding: 0 0.75rem;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -982,36 +983,40 @@ body.page-home .post-index {
   width: 100%;
   height: 18rem;
   overflow: hidden;
-  transform-style: preserve-3d;
-  perspective: 420px;
+  perspective: 480px;
   perspective-origin: 50% 100%;
-  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 72%, transparent 100%);
+  transform-style: preserve-3d;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 78%, transparent 100%);
 }
 .crawl-track {
   position: absolute;
-  left: 50%;
-  bottom: -10%;
-  width: min(36rem, 92vw);
-  margin: 0;
-  transform: translate3d(-50%, 0, 0) rotateX(58deg);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  transform: rotateX(48deg);
   transform-origin: 50% 100%;
   animation: crawl-rise 28s linear infinite;
   will-change: transform;
 }
 .crawl-copy {
   width: 100%;
+  max-width: 28rem;
   margin: 0 auto;
   text-align: center;
   color: #ffe81f;
   font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(1rem, 2.8vw, 1.45rem);
+  font-size: clamp(1rem, 2.6vw, 1.4rem);
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.45;
   text-shadow: 0 0 18px rgba(255, 200, 40, 0.35);
+  box-sizing: border-box;
 }
 .crawl-copy p {
-  margin: 0 auto 1.15rem;
-  max-width: 28ch;
+  margin: 0 0 1rem;
+  padding: 0 0.25rem;
 }
 .crawl-copy strong,
 .crawl-copy b {
@@ -1019,49 +1024,54 @@ body.page-home .post-index {
   font-weight: 700;
 }
 @keyframes crawl-rise {
-  0% { transform: translate3d(-50%, 55%, 0) rotateX(58deg); }
-  100% { transform: translate3d(-50%, -120%, 0) rotateX(58deg); }
+  0% { transform: translateY(45%) rotateX(48deg); }
+  100% { transform: translateY(-125%) rotateX(48deg); }
 }
 @media (max-width: 640px) {
   .crawl-stage {
-    min-height: 18rem;
-    padding: 1rem 0.75rem 0;
-    perspective: 340px;
+    min-height: 17rem;
+    padding-top: 0.75rem;
   }
   .crawl-perspective {
-    height: 15.5rem;
-    perspective: 340px;
+    height: 15rem;
+    /* gentler tilt — aggressive rotateX clips glyphs on iOS */
+    perspective: 900px;
   }
   .crawl-track {
-    width: min(24rem, 94vw);
-    left: 50%;
-    transform: translate3d(-50%, 0, 0) rotateX(52deg);
+    padding: 0 1.1rem;
+    transform: rotateX(28deg);
     transform-origin: 50% 100%;
   }
   .crawl-copy {
-    font-size: clamp(0.92rem, 3.8vw, 1.1rem);
-    line-height: 1.42;
+    max-width: 100%;
+    font-size: clamp(0.95rem, 4.2vw, 1.12rem);
+    line-height: 1.4;
   }
   .crawl-copy p {
-    margin: 0 auto 0.9rem;
-    max-width: 22ch;
+    margin: 0 0 0.85rem;
+  }
+  @keyframes crawl-rise {
+    0% { transform: translateY(40%) rotateX(28deg); }
+    100% { transform: translateY(-130%) rotateX(28deg); }
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .crawl-track {
     animation: none;
+    position: relative;
     bottom: auto;
-    top: 12%;
-    left: 50%;
-    transform: translate3d(-50%, 0, 0) rotateX(48deg);
+    padding: 0 1rem 1rem;
+    transform: none;
   }
   .crawl-perspective {
     height: auto;
-    min-height: 12rem;
-    mask-image: none;
+    min-height: 0;
     overflow: visible;
+    mask-image: none;
+    perspective: none;
   }
 }
+
 
 
 
