@@ -983,7 +983,7 @@ body.page-home {
   width: 100%;
   height: 18rem;
   overflow: hidden;
-  perspective: 480px;
+  perspective: 900px;
   perspective-origin: 50% 100%;
   transform-style: preserve-3d;
   mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 78%, transparent 100%);
@@ -996,7 +996,7 @@ body.page-home {
   width: 100%;
   padding: 0 1rem;
   box-sizing: border-box;
-  transform: rotateX(48deg);
+  transform: rotateX(22deg);
   transform-origin: 50% 100%;
   animation: crawl-rise 28s linear infinite;
   will-change: transform;
@@ -1024,8 +1024,8 @@ body.page-home {
   font-weight: 700;
 }
 @keyframes crawl-rise {
-  0% { transform: translateY(45%) rotateX(48deg); }
-  100% { transform: translateY(-125%) rotateX(48deg); }
+  0% { transform: translateY(45%) rotateX(22deg); }
+  100% { transform: translateY(-125%) rotateX(22deg); }
 }
 @media (max-width: 640px) {
   .crawl-stage {
