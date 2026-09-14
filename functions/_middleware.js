@@ -177,7 +177,13 @@ export async function onRequest(context) {
     return Response.redirect(withoutSiteParam(`${HCC_ORIGIN}${url.pathname}${url.search}`).toString(), 301);
   }
 
-  if (isLabPath(url.pathname) || isApiPath(url.pathname) || url.pathname.startsWith("/assets/")) {
+  if (
+    isLabPath(url.pathname) ||
+    isApiPath(url.pathname) ||
+    url.pathname.startsWith("/assets/") ||
+    url.pathname === "/msp" ||
+    url.pathname.startsWith("/msp/")
+  ) {
     return withOptionalCookie(await context.next(), cookie);
   }
 
