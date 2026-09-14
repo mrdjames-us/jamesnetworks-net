@@ -1039,7 +1039,7 @@ body.page-home {
   }
   .crawl-track {
     padding: 0 1.1rem;
-    transform: rotateX(28deg);
+    transform: rotateX(22deg);
     transform-origin: 50% 100%;
   }
   .crawl-copy {
@@ -1051,8 +1051,8 @@ body.page-home {
     margin: 0 0 0.85rem;
   }
   @keyframes crawl-rise {
-    0% { transform: translateY(40%) rotateX(28deg); }
-    100% { transform: translateY(-130%) rotateX(28deg); }
+    0% { transform: translateY(40%) rotateX(22deg); }
+    100% { transform: translateY(-130%) rotateX(22deg); }
   }
 }
 @media (prefers-reduced-motion: reduce) {
