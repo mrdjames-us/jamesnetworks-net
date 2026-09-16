@@ -10,6 +10,7 @@
     nav.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-open", open);
   };
 
   toggle.addEventListener("click", () => {
@@ -22,5 +23,10 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setOpen(false);
+  });
+
+  // Close on resize to desktop
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 861px)").matches) setOpen(false);
   });
 })();

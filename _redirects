@@ -14,3 +14,10 @@
 # These path rules are a belt-and-suspenders fallback if middleware
 # is skipped for a request (they also fire on the lab host — avoid
 # that by keeping middleware as the source of truth).
+
+# HCC redesign aliases
+/how-it-works /method/ 301
+/how-it-works/ /method/ 301
+/contact /book/ 301
+/contact/ /book/ 301
+

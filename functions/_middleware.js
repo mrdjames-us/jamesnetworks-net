@@ -25,7 +25,13 @@ const LAB_PREFIXES = [
 
 const HCC_ONLY_PREFIXES = [
   "/services",
+  "/about",
   "/faq",
+  "/privacy",
+  "/method",
+  "/book",
+  "/contact",
+  "/how-it-works",
   "/ai-consulting-clinton-mo",
   "/workflow-automation",
 ];

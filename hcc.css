@@ -1,8 +1,7 @@
-/* LEGACY: HCC pages now use /hcc.css only. Kept so old links do not 404. Do not put journal tokens here. */
-/* Henry County Consulting — handmade editorial with subtle steampunk */
+/* Henry County Consulting — dark editorial + brass (hcc.css; journal never imports this) */
 
 :root {
-  --bg: #0e0c0a;
+  --bg: #12151a;
   --bg-elev: #1a1f27;
   --bg-soft: #222831;
   --ink: #f4f0e8;
@@ -18,8 +17,8 @@
   --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   --radius: 8px;
   --radius-sm: 4px;
-  --font: "Instrument Sans", system-ui, sans-serif;
-  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font: "Instrument Sans", "Source Sans 3", system-ui, sans-serif;
+  --display: "Fraunces", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --max: 1120px;
   --grain:
@@ -181,12 +180,17 @@ a:hover { color: #f0a070; }
 .btn-sm { padding: 0.42rem 0.9rem; font-size: 0.86rem; }
 .btn-lg { padding: 0.85rem 1.35rem; font-size: 1.02rem; }
 .btn-primary {
-  background: linear-gradient(165deg, #e28955 0%, #c45f2f 55%, #a85228 100%);
+  background: var(--brass);
   color: #1a120c;
   border-color: var(--brass);
-  box-shadow:
-    0 6px 18px rgba(196, 95, 47, 0.28),
-    inset 0 1px 0 rgba(255, 220, 180, 0.25);
+  box-shadow: 0 6px 18px rgba(184, 115, 51, 0.22);
+  min-height: 44px;
+}
+.btn-primary:hover {
+  color: #1a120c;
+  background: var(--brass-bright);
+  border-color: var(--brass-bright);
+  filter: none;
 }
 .btn-primary:hover { color: #1a120c; filter: brightness(1.06); }
 .btn-ghost {
@@ -220,16 +224,8 @@ a:hover { color: #f0a070; }
 }
 .riveted::before,
 .riveted::after {
-  content: "";
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--brass-dim);
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1.5px rgba(18, 21, 26, 0.85);
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.7;
+  content: none;
+  display: none;
 }
 .riveted::before {
   top: 6px;
@@ -1042,13 +1038,7 @@ h1 em {
   background: linear-gradient(90deg, #16120f, #1a1410 50%, #16120f);
 }
 
-.gear-rail {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  padding: 1.75rem 0 0.25rem;
-  opacity: 0.55;
-}
+.gear-rail { display: none !important; }
 .gear-rail span {
   width: 10px;
   height: 10px;
@@ -1205,3 +1195,152 @@ h1 em {
   padding: 1rem 0 2rem;
 }
 .not-found .hero-actions { margin-top: 1.4rem; }
+
+
+/* —— HCC redesign polish —— */
+body.hcc {
+  font-size: 17px;
+  line-height: 1.6;
+}
+body.hcc :focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+body.hcc .btn { min-height: 44px; }
+body.hcc .btn-sm { min-height: 40px; }
+body.hcc .nav-toggle { width: 44px; height: 44px; min-width: 44px; }
+body.hcc .site-nav a[aria-current="page"] { color: var(--ink); }
+body.hcc .header-book {
+  display: none;
+  margin-left: 0.5rem;
+}
+body.hcc .nav-shell .header-book { color: #1a120c; }
+@media (max-width: 860px) {
+  body.hcc .header-book { display: inline-flex; }
+  body.hcc .site-nav .btn-primary.nav-book-dup { display: none; }
+}
+body.hcc .footer-tagline {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.35rem 0 0;
+  max-width: 36rem;
+}
+body.hcc .footer-doors {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+body.hcc .footer-doors span.label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+body.hcc .doors-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  body.hcc .doors-grid { grid-template-columns: repeat(3, 1fr); }
+}
+body.hcc .door-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+}
+body.hcc .door-card strong { display: block; margin-bottom: 0.35rem; font-family: var(--display); font-size: 1.15rem; }
+body.hcc .book-embed {
+  background: var(--bg-elev);
+  border: 1px solid var(--brass-dim);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  min-height: 700px;
+  overflow: hidden;
+}
+body.hcc .book-embed iframe {
+  width: 100%;
+  min-height: 680px;
+  border: 0;
+  border-radius: 4px;
+}
+body.hcc .gates-list {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  margin: 1.5rem 0;
+}
+@media (min-width: 720px) {
+  body.hcc .gates-list { grid-template-columns: repeat(3, 1fr); }
+}
+body.hcc .gate-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.15rem;
+}
+body.hcc .gate-card h3 {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brass-bright);
+  margin: 0 0 0.5rem;
+}
+body.hcc .utility-phone {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+@media (min-width: 1100px) {
+  body.hcc .utility-phone { display: inline; }
+}
+body.hcc .section { padding: 2.75rem 1.25rem; }
+@media (min-width: 900px) {
+  body.hcc .section { padding: 4.5rem 1.5rem; }
+}
+
+
+/* —— solid brass wins (override steampunk gradient pass) —— */
+body.hcc .btn-primary {
+  background: var(--brass);
+  color: #1a120c;
+  border-color: var(--brass);
+  box-shadow: 0 6px 18px rgba(184, 115, 51, 0.22);
+  background-image: none;
+}
+body.hcc .btn-primary:hover {
+  background: var(--brass-bright);
+  border-color: var(--brass-bright);
+  color: #1a120c;
+  filter: none;
+}
+
+/* —— mobile header: Book always visible —— */
+@media (max-width: 860px) {
+  body.hcc .nav-shell {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  body.hcc .brand { flex: 1 1 auto; min-width: 0; }
+  body.hcc .header-book {
+    display: inline-flex;
+    order: 2;
+    margin-left: auto;
+  }
+  body.hcc .nav-toggle {
+    display: inline-flex;
+    order: 3;
+    margin-left: 0;
+  }
+  body.hcc .site-nav {
+    order: 4;
+    width: 100%;
+    margin-left: 0;
+  }
+  body.hcc .utility-phone { display: none !important; }
+}

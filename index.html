@@ -139,16 +139,15 @@
     ]
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/hcc.css" />
   <link rel="icon" href="/assets/hcc-mark.png" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/hcc-mark.png" />
   <script defer src="https://stats.aiformissouri.com/script.js" data-website-id="33b9a318-245a-4fe9-9d53-0f30e0b25c1c"></script>
 </head>
-<body>
+<body class="hcc page-home">
   <a class="skip-link" href="#main">Skip to content</a>
   <div id="demoEnvBanner" hidden class="demo-banner">
     DEMO ENVIRONMENT — not production
@@ -177,16 +176,17 @@
           <span>AI for workflows · Henry County, MO</span>
         </span>
       </a>
+      <a class="btn btn-sm btn-primary header-book" href="/book/?utm_source=hcc&amp;utm_medium=site&utm_campaign=home" data-umami-event="book_nav_mobile">Book</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a href="/#method">Method</a>
+        <a class="utility-phone" href="tel:+16608692868">(660) 869-2868</a>
         <a href="/services/">Services</a>
-        <a href="/#who">Who for</a>
+        <a href="/method/">Method</a>
         <a href="/about/">About</a>
         <a href="/faq/">FAQ</a>
-        <a class="btn btn-sm btn-primary" href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home" target="_blank" rel="noopener noreferrer" data-umami-event="calendly_nav">Book a call</a>
+        <a class="btn btn-sm btn-primary nav-book-dup" href="/book/?utm_source=hcc&amp;utm_medium=site&utm_campaign=home" data-umami-event="calendly_nav">Book</a>
       </nav>
     </div>
   </header>
@@ -205,19 +205,18 @@
         <p class="lead">
           I’m <strong>David James</strong> — thirty years in IT, MSP Director of Ops background, based in Clinton.
           <strong>Henry County Consulting</strong> is me sitting with whoever actually does the job, figuring out what’s worth automating,
-          and being honest when AI isn’t the answer. We walk Assess → Simplify → Automate → Train. Humans stay in the loop
-          for money, access, deletes, and anything else that shouldn’t fire on its own.
+          and being honest when AI isn’t the answer. We walk <strong>Assess → Simplify → Automate → Train</strong>. Humans stay in the loop
+          for <strong>money, access, deletes</strong>, and anything else that shouldn’t fire on its own.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home" target="_blank" rel="noopener noreferrer" data-umami-event="calendly_hero">Book a free 30-min call</a>
-          <a class="btn btn-ghost btn-lg" href="#method">See the method</a>
+          <a class="btn btn-primary btn-lg" href="/book/" data-umami-event="calendly_hero">Book 30 minutes</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+16608692868">Call (660) 869-2868</a>
         </div>
         <p class="hero-note">
-          Coffee or Zoom. Do-it-with-you.
-          <a href="/ai-consulting-clinton-mo/">Local consulting in Clinton</a> ·
+          Coffee in Clinton or Zoom. Do-it-with-you — not a SaaS pitch.
+          <a href="/method/">Method</a> ·
           <a href="/services/">Services</a> ·
-          <a href="/workflow-automation/">Workflow automation</a> ·
-          <a href="/faq/">FAQ</a>.
+          <a href="/ai-consulting-clinton-mo/">Clinton local</a>.
         </p>
       </div>
       <aside class="hero-panel riveted" aria-label="Engagement snapshot">
@@ -253,22 +252,22 @@
         <h2>Built for local operators</h2>
         <div class="brass-rule" aria-hidden="true"></div>
         <p class="section-lead">
-          Henry County, Clinton, and west-central Missouri shops that want a real person across the table — not another SaaS pitch.
+          Henry County, Clinton, and west-central Missouri shops that want a real person across the table — not another landing page that promises the moon.
           See <a href="/ai-consulting-clinton-mo/">AI consulting in Clinton, MO</a>.
         </p>
       </header>
       <div class="who-grid">
         <article class="service-card riveted who-featured">
           <h3>SMB ops under water</h3>
-          <p>You’re buried in email, tickets, CRM notes, quotes, or spreadsheets. Sound familiar? That’s where I start — Clinton, Henry County, and nearby.</p>
+          <p>Email, tickets, CRM notes, quotes, spreadsheets. That’s where we start.</p>
         </article>
         <article class="service-card riveted">
           <h3>Owners &amp; ops leads</h3>
-          <p>You want someone local who’ll sit down over coffee or hop on Zoom — not a deck from a remote agency you’ve never met.</p>
+          <p>Coffee or Zoom with someone local (or Midwest-remote who still shows up as a human).</p>
         </article>
         <article class="service-card riveted">
           <h3>Lean Main Street teams</h3>
-          <p>Trade shops, professional services, Main Street ops that already run lean. You can’t afford a mystery vendor.</p>
+          <p>Trade, professional services, Main Street ops. You can’t afford a mystery vendor.</p>
         </article>
       </div>
       <figure class="editorial-photo">
@@ -291,24 +290,25 @@
         <article class="method-card riveted">
           <span class="step-num">01</span>
           <h3>Assess</h3>
-          <p>I sit with whoever does the job. Triggers, handoffs, exceptions — and what should stay human.</p>
+          <p>Sit with whoever does the job. Triggers, handoffs, exceptions — and what must stay human.</p>
         </article>
         <article class="method-card riveted">
           <span class="step-num">02</span>
           <h3>Simplify</h3>
-          <p>Some steps shouldn’t exist. Automating a broken process just makes the mess go faster.</p>
+          <p>Kill busywork before you automate it. Automating a broken process just makes the mess go faster.</p>
         </article>
         <article class="method-card riveted">
           <span class="step-num">03</span>
           <h3>Automate</h3>
-          <p>Agents and workflows in tools you already use. Approvals for money, access, deletes — AI doesn’t freestyle the consequential stuff. <a href="/workflow-automation/">How the gates work</a>.</p>
+          <p>Agents and workflows in tools you already use. Approvals on money, access, deletes — AI doesn’t freestyle the consequential stuff.</p>
         </article>
         <article class="method-card accent riveted">
           <span class="step-num">04</span>
           <h3>Train</h3>
-          <p>Your people run the playbook when I’m gone. No mystery vendor.</p>
+          <p>Your people own the playbook when I’m gone. No mystery vendor.</p>
         </article>
       </div>
+      <p class="section-lead" style="margin-top:1.5rem"><a href="/method/">See the full Method →</a></p>
     </section>
 
     <section class="section" id="services">
@@ -318,25 +318,25 @@
         <div class="brass-rule" aria-hidden="true"></div>
         <p class="section-lead">
           Practical AI for small and mid-size businesses — especially shops that live in email, tickets, CRM, and spreadsheets.
-          Full menu on the <a href="/services/">services</a> page.
+          Same method every time. Humans approve money, access, and deletes. No hype, no SaaS pitch, no “agent army” slide.
         </p>
       </header>
       <div class="service-grid">
         <article class="service-card riveted service-wide">
           <h3>Workflow discovery</h3>
-          <p>We find the routines that eat your week, then pick by pain and payoff — before writing a single prompt.</p>
+          <p>Find the routines that eat the week; pick by pain and payoff — before writing a single prompt. Output is a clear plan, not a tool list.</p>
         </article>
         <article class="service-card riveted">
           <h3>Agents &amp; automations</h3>
-          <p>Inbox triage, follow-ups, quoting nudges, ticket assist, reporting digests — named jobs with clear ownership, and human approvals where money, access, or deletes are on the line. <a href="/workflow-automation/">Inbox, quotes, tickets</a>.</p>
+          <p>Named jobs with clear ownership in tools you already use. Inbox triage, follow-ups, quoting nudges, ticket assist, reporting digests. If a plain workflow will do, we don’t dress it up as an agent. <a href="/workflow-automation/">Inbox, quotes, tickets</a>.</p>
         </article>
         <article class="service-card riveted">
           <h3>Ops patterns for service businesses</h3>
-          <p>Service-desk hygiene, lifecycle summaries, and glue between the tools a lean team already lives in.</p>
+          <p>Service-desk hygiene, lifecycle summaries, glue between tools a lean team already lives in. MSP-ops discipline applied to AI.</p>
         </article>
         <article class="service-card riveted service-wide">
           <h3>Team enablement</h3>
-          <p>Hands-on sessions so your folks know when to use AI, when to escalate, and how to keep quality up.</p>
+          <p>Hands-on sessions so your folks know when to use AI, when to escalate, and how to keep quality up. Your team owns the playbook.</p>
         </article>
       </div>
       <div class="callout riveted">
@@ -344,7 +344,7 @@
           <p class="eyebrow">Not sure where to start?</p>
           <p class="callout-text">Bring one painful routine to a 30-minute call. I’ll tell you straight — agent, plain workflow, or leave it alone.</p>
         </div>
-        <a class="btn btn-primary" href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home-services" target="_blank" rel="noopener noreferrer" data-umami-event="calendly_services">Book the call</a>
+        <a class="btn btn-primary" href="/services/" data-umami-event="services_full">Full services</a>
       </div>
     </section>
 
@@ -353,9 +353,7 @@
         <p class="eyebrow">Outcomes</p>
         <h2>What good looks like</h2>
         <div class="brass-rule" aria-hidden="true"></div>
-        <p class="section-lead">
-          Clearer ops, less thrash — and a team that can explain what runs.
-        </p>
+        <p class="section-lead">Clearer ops, less thrash — and a team that can explain what runs.</p>
       </header>
       <div class="outcomes-grid">
         <article class="service-card riveted">
@@ -372,7 +370,7 @@
         </article>
         <article class="service-card riveted">
           <h3>Humans in the loop</h3>
-          <p>Your staff can explain what runs — and approvals sit on money, access, and deletes. No black box freelancing.</p>
+          <p>Approvals sit on money, access, and deletes. No black-box freelancing.</p>
         </article>
       </div>
     </section>
@@ -384,19 +382,17 @@
           <h2>David James · Henry County Consulting</h2>
           <div class="brass-rule" aria-hidden="true"></div>
           <p>
-            MSP Director of Ops. Thirty years in IT. I’m building this practice for people in Henry County
+            MSP Director of Ops background. Thirty years in IT. I’m building this practice for people in Henry County
             who want a human partner — not another landing page that promises the moon.
-            <a href="/about/">More about David</a>.
           </p>
-          <p>
-            Faith shapes how I show up: honest about limits, no hype. Education and local-tool labs stay side doors;
-            consulting is the front door.
-          </p>
+          <p>Faith shapes how I show up: honest about limits, no hype.</p>
+          <p><strong>Three doors — don’t mix them up:</strong></p>
           <ul class="check-list">
-            <li>Henry County / Clinton beachhead — coffee or Zoom</li>
-            <li>Remote-friendly for Midwest and U.S. clients</li>
-            <li>Workshops live at AI for Missouri. Apps live in the lab. This site is consulting.</li>
+            <li><strong>Henry County Consulting</strong> (this site) — paid do-it-with-you consulting</li>
+            <li><strong>AI for Missouri</strong> — workshops (statewide classes)</li>
+            <li><strong>James Networks</strong> — the lab (apps &amp; experiments)</li>
           </ul>
+          <p><a href="/about/">More about David →</a></p>
         </div>
         <aside class="about-card riveted">
           <p class="about-card-label">What I care about</p>
@@ -411,21 +407,22 @@
       </div>
     </section>
 
+    
     <section class="cta" id="contact">
       <div class="cta-card riveted">
         <p class="eyebrow">Next step</p>
-        <h2>Grab thirty minutes. Bring one real process.</h2>
+        <h2>Tell me what eats your week.</h2>
         <div class="brass-rule brass-rule-center" aria-hidden="true"></div>
-        <p>Tell me what eats your week. I’ll tell you if we should automate it — or leave it alone. <a href="/faq/">FAQ first</a> if you want the short version.</p>
+        <p>I’ll tell you if we should automate it — or leave it alone. Thirty minutes. Bring one painful routine. <a href="/faq/">FAQ first</a> if you want the short version.</p>
         <div class="hero-actions center">
-          <a class="btn btn-primary btn-lg" href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home" target="_blank" rel="noopener noreferrer" data-umami-event="calendly_cta">Book on Calendly</a>
-          <a class="btn btn-ghost btn-lg" href="mailto:david@henrycountyconsulting.com?subject=Henry%20County%20Consulting%20fit%20call" data-umami-event="cta_email">Email david@henrycountyconsulting.com</a>
+          <a class="btn btn-primary btn-lg" href="/book/" data-umami-event="book_cta">Book 30 minutes</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+16608692868" data-umami-event="cta_phone">Call (660) 869-2868</a>
         </div>
         <ul class="contact-mini">
           <li><span>Calendar</span> <a href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home" target="_blank" rel="noopener noreferrer">calendly.com/david-p-james/30min</a></li>
           <li><span>Email</span> <a href="mailto:david@henrycountyconsulting.com">david@henrycountyconsulting.com</a></li>
           <li><span>Phone</span> <a href="tel:+16608692868">(660) 869-2868</a></li>
-          <li><span>Location</span> <span>Clinton, MO 64735</span></li>
+          <li><span>Location</span> <span>Clinton, MO 64735 — coffee or Zoom</span></li>
         </ul>
       </div>
     </section>
@@ -436,28 +433,31 @@
       <div class="footer-brand">
         <strong>Henry County Consulting</strong>
         <span>David James</span>
+        <p class="footer-tagline">Turn the aggravations into automations. Keep the judgment human.</p>
       </div>
       <address class="footer-nap">
         Clinton, MO 64735<br />
         <a href="tel:+16608692868">(660) 869-2868</a><br />
         <a href="mailto:david@henrycountyconsulting.com">david@henrycountyconsulting.com</a><br />
-        <a href="https://www.henrycountyconsulting.com/">https://www.henrycountyconsulting.com/</a><br />
         Hours: By appointment — coffee in Clinton or Zoom
       </address>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="/#method">Method</a>
         <a href="/services/">Services</a>
-        <a href="/ai-consulting-clinton-mo/">Clinton / Henry County</a>
-        <a href="/workflow-automation/">Workflow automation</a>
+        <a href="/method/">Method</a>
         <a href="/about/">About</a>
         <a href="/faq/">FAQ</a>
+        <a href="/book/">Book</a>
+        <a href="/workflow-automation/">Workflow automation</a>
+        <a href="/ai-consulting-clinton-mo/">Clinton / Henry County</a>
         <a href="/privacy/">Privacy</a>
-        <a href="https://calendly.com/david-p-james/30min?utm_source=hcc&amp;utm_medium=site&amp;utm_campaign=home" target="_blank" rel="noopener noreferrer">Book a call</a>
       </nav>
-      <nav class="footer-side" aria-label="Related brands">
-        <span class="footer-side-label">Related</span>
-        <a href="https://www.aiformissouri.com/" target="_blank" rel="noopener noreferrer">AI for Missouri — workshops</a>
-        <a href="https://www.jamesnetworks.net/" target="_blank" rel="noopener noreferrer">James Networks — the lab</a>
+      <nav class="footer-side" aria-label="Three doors">
+        <span class="footer-side-label">Three doors</span>
+        <div class="footer-doors">
+          <span><span class="label">Consulting</span> <a href="/">Henry County Consulting</a> — this site</span>
+          <span><span class="label">Workshops</span> <a href="https://www.aiformissouri.com/" target="_blank" rel="noopener noreferrer">AI for Missouri</a></span>
+          <span><span class="label">Lab</span> <a href="https://www.jamesnetworks.net/" target="_blank" rel="noopener noreferrer">James Networks</a></span>
+        </div>
       </nav>
       <p class="footer-copy">© <span id="year"></span> Henry County Consulting. All rights reserved.</p>
     </div>
