@@ -7,6 +7,8 @@ Henry County Consulting is the consulting front door. It is not AI for Missouri 
 ## Site
 - [Home](https://www.henrycountyconsulting.com/): AI consulting in Clinton, MO
 - [Local consulting](https://www.henrycountyconsulting.com/ai-consulting-clinton-mo/): Clinton, Henry County, west-central Missouri
+- [Method](https://www.henrycountyconsulting.com/method/): Assess → Simplify → Automate → Train
+- [Book a call](https://www.henrycountyconsulting.com/book/): 30 minutes, one painful routine
 - [Services](https://www.henrycountyconsulting.com/services/): discovery, agents, ops patterns, enablement
 - [Workflow automation](https://www.henrycountyconsulting.com/workflow-automation/): inbox, quotes, tickets, human gates
 - [About David James](https://www.henrycountyconsulting.com/about/)
