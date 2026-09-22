@@ -1,0 +1,7 @@
+See PR #9 follow-up: apply this after pulling seo/hcc-2026-09-18.
+Home title becomes Do-it-with-you AI Consulting | Henry County Consulting.
+Clinton local keeps AI Consulting in Clinton, MO.
+FAQ title becomes Straight Answers | Henry County Consulting.
+Services title becomes Discovery, Agents, Enablement | Henry County Consulting.
+FAQPage + HowTo + BreadcrumbList + og:image dimensions + llms.txt alternate.
+Apply from repo root: git apply gtm/seo-onpage-2026-09-21.diff
