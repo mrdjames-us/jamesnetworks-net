@@ -1,3 +1,7 @@
+# HSTS for every host this project serves (HCC + JN, apex + www). No preload.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
 # Canonical hints for the JN lab app pages (their HTML has no <link rel="canonical">).
 # Cloudflare Pages applies these to static responses; Google honors rel="canonical" in the Link header.
 /cipherladder/
