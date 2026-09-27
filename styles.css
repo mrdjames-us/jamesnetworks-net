@@ -1204,3 +1204,9 @@ h1 em {
   padding: 1rem 0 2rem;
 }
 .not-found .hero-actions { margin-top: 1.4rem; }
+
+/* <picture> wrappers (WebP + PNG fallback) must not change layout. */
+.hero-atmosphere picture,
+.editorial-photo picture {
+  display: contents;
+}
