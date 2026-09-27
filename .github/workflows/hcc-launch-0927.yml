@@ -1,0 +1,38 @@
+# One-shot helper (no deploy, no secrets): makes hcc-rebrand-launch-0927's tree identical to
+# hcc-rebrand-0927 @ f4eb284 in small commits, verifies the tree, deletes this file, pushes once.
+name: hcc-launch-0927 (one-shot, no deploy)
+on:
+  push:
+    branches: [hcc-rebrand-launch-0927]
+    paths: ['.github/workflows/hcc-launch-0927.yml']
+permissions:
+  contents: write
+concurrency: { group: hcc-launch-0927, cancel-in-progress: false }
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/hcc-rebrand-launch-0927'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: hcc-rebrand-launch-0927, fetch-depth: 0 }
+      - name: Commit the rebrand in small steps, verify tree, remove this file
+        run: |
+          set -euo pipefail
+          SRC=f4eb28459d418df87892670077a60c86d69b91d0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git fetch --no-tags origin hcc-rebrand-0927
+          test "$(git rev-parse FETCH_HEAD)" = "$SRC" || test "$(git cat-file -t $SRC)" = commit
+          take(){ msg="$1"; shift; git checkout "$SRC" -- "$@"; git add -A -- "$@"; git commit -q -m "$msg"; }
+          take "HCC rebrand launch: brand tokens, site CSS, favicon placeholder and OG image" assets/brand favicon.ico
+          take "HCC rebrand launch: restyle the 7 production HCC pages and 404 (B1, B2, P1-P4, towns)" index.html about/index.html services/index.html faq/index.html privacy/index.html workflow-automation/index.html ai-consulting-clinton-mo/index.html 404.html
+          git rm -q assets/hcc-mark.png assets/hcc-hero-atmosphere.png
+          take "HCC rebrand launch: image weight (WebP desk still, drop gold mark and hero atmosphere PNGs)" assets/hcc-desk-still.webp styles.css tools/optimize-hcc-images.py
+          take "HCC rebrand launch: HCC robots policy (robots-hcc.txt served by middleware)" robots-hcc.txt robots.txt functions/_middleware.js
+          take "HCC rebrand launch: sitemap and llms.txt list only production pages" sitemap.xml llms.txt
+          take "HCC rebrand launch: JN one h1 on home and /work/, canonical hints for lab apps, preview noindex" journal/build.mjs journal/index.html journal/work/index.html cipherladder/index.html flowscout/index.html netnudge/index.html pool/index.html _headers
+          git rm -q .github/workflows/hcc-launch-0927.yml
+          git commit -q -m "HCC rebrand launch: remove one-shot helper workflow"
+          test "$(git rev-parse HEAD^{tree})" = "$(git rev-parse $SRC^{tree})"
+          git log --oneline -8
+          git push origin HEAD:hcc-rebrand-launch-0927
