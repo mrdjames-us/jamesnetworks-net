@@ -1,4 +1,16 @@
+# Henry County Consulting: www.henrycountyconsulting.com
+# Search + user-triggered AI agents: allowed
 User-agent: *
 Allow: /
+
+# --- Training opt-out: ONLY if David decides (uncomment the whole block) ---
+# If enabled here, enable "Disallow AI Training" in Cloudflare too (and vice versa).
+# User-agent: GPTBot
+# User-agent: ClaudeBot
+# User-agent: CCBot
+# User-agent: Google-Extended
+# User-agent: Applebot-Extended
+# User-agent: Bytespider
+# Disallow: /
 
 Sitemap: https://www.henrycountyconsulting.com/sitemap.xml

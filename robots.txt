@@ -1,5 +1,18 @@
+# Henry County Consulting: www.henrycountyconsulting.com
+# Root default. functions/_middleware.js serves robots-hcc.txt on the HCC host (and
+# unknown hosts) and journal/robots.txt on www.jamesnetworks.net. Keep in sync with robots-hcc.txt.
+# Search + user-triggered AI agents: allowed
 User-agent: *
 Allow: /
 
-# Default file. Host-aware middleware serves robots-hcc.txt or robots-lab.txt.
+# --- Training opt-out: ONLY if David decides (uncomment the whole block) ---
+# If enabled here, enable "Disallow AI Training" in Cloudflare too (and vice versa).
+# User-agent: GPTBot
+# User-agent: ClaudeBot
+# User-agent: CCBot
+# User-agent: Google-Extended
+# User-agent: Applebot-Extended
+# User-agent: Bytespider
+# Disallow: /
+
 Sitemap: https://www.henrycountyconsulting.com/sitemap.xml
