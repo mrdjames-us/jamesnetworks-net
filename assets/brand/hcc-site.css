@@ -129,8 +129,8 @@ a{color:inherit}
 .cards--3{grid-template-columns:repeat(3,1fr)}
 .cards--2{grid-template-columns:repeat(2,1fr)}
 .card h3.long{font:var(--font-weight-text-medium) 1.375rem/1.3 var(--font-family-text)}
-.card p a,.intro a,.bench a,.prose a,.about-copy a,.cta-box p a{color:var(--color-text);text-decoration:underline;text-decoration-color:var(--color-accent);text-decoration-thickness:2px;text-underline-offset:4px}
-.card p a:hover,.intro a:hover,.prose a:hover,.about-copy a:hover,.cta-box p a:hover{color:var(--color-accent)}
+.card p a:not(.btn),.intro a:not(.btn),.bench a:not(.btn),.prose a:not(.btn),.about-copy a:not(.btn),.cta-box p a:not(.btn){color:var(--color-text);text-decoration:underline;text-decoration-color:var(--color-accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.card p a:not(.btn):hover,.intro a:not(.btn):hover,.prose a:not(.btn):hover,.about-copy a:not(.btn):hover,.cta-box p a:not(.btn):hover{color:var(--color-accent)}
 .bench{margin-top:var(--space-3);font:var(--typography-small);color:var(--color-text-muted);max-width:70ch}
 .callout-card{margin-top:var(--space-3);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between}
 .callout-card p{max-width:60ch;color:var(--color-text)}
@@ -147,7 +147,7 @@ a{color:inherit}
 .contact-mini{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:var(--space-2) var(--space-6);margin-top:var(--space-4)}
 .contact-mini li{display:flex;flex-direction:column;font-size:1rem;color:var(--color-text)}
 .contact-mini .label{margin-bottom:2px}
-.contact-mini a{color:var(--color-text);text-underline-offset:3px;display:inline-flex;align-items:center;min-height:var(--layout-tap-target)}
+.contact-mini a{white-space:nowrap;color:var(--color-text);text-underline-offset:3px;display:inline-flex;align-items:center;min-height:var(--layout-tap-target)}
 .h2 + .intro, .h2 + .bench{margin-top:var(--space-2)}
 
 /* ---------- inner pages ---------- */
@@ -163,11 +163,11 @@ a{color:inherit}
 .prose ul li{position:relative;padding-left:28px}
 .prose ul li::before{content:"";position:absolute;left:0;top:.8em;width:16px;height:2px;background:var(--color-accent)}
 .prose ol{list-style:decimal;padding-left:1.4em}
-.prose h2{font:var(--typography-h2);font-size:clamp(1.6875rem,1.2rem + 1.4vw,2.25rem);color:var(--color-text-heading);margin-top:var(--space-8);text-wrap:balance}
-.prose h2.long{font:var(--font-weight-text-bold) clamp(1.6875rem,1.2rem + 1.4vw,2.25rem)/1.2 var(--font-family-text)}
+.prose h2{font:var(--typography-h2);color:var(--color-text-heading);margin-top:var(--space-8);text-wrap:balance}
+.prose h2.long{font:var(--font-weight-text-bold) var(--font-size-h2)/1.2 var(--font-family-text)}
 .prose h3{font:var(--typography-h3);color:var(--color-text-heading);margin-top:var(--space-4)}
 .prose address{font-style:normal;margin-top:var(--space-2)}
-.prose a{display:inline;min-height:0}
+.prose a:not(.btn){display:inline;min-height:0}
 .prose li a,.prose address a{display:inline-flex;align-items:center;min-height:var(--layout-tap-target)}
 .prose address{font-style:normal;line-height:1.5;margin-top:var(--space-3)}
 /* Towns: caps label list with pine dividers (spec: /ai-consulting-clinton-mo/) */
@@ -207,3 +207,10 @@ a{color:inherit}
   .contact-mini{grid-template-columns:1fr}
   .callout-card .btn{flex:1 1 100%}
 }
+
+/* Review fixes 2026-09-27 */
+.nav .btn,.nav .btn:hover{color:var(--color-accent-on);text-decoration:none}
+.btn,.btn:hover,.btn:visited{text-decoration:none}
+.btn:not(.btn--ghost),.btn:not(.btn--ghost):visited,.btn:not(.btn--ghost):hover{color:var(--color-accent-on)}
+.ctas{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-6)}
+@media (max-width:480px){.cta-box .btn--ghost{font-size:.9375rem;padding-left:12px;padding-right:12px}}

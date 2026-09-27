@@ -9,16 +9,6 @@
 /pool/
   Link: <https://www.jamesnetworks.net/pool/>; rel="canonical"
 
-# /book and /method are kept (restyled) but unlisted: keep them out of search indexes.
-/book
-  X-Robots-Tag: noindex
-/book/*
-  X-Robots-Tag: noindex
-/method
-  X-Robots-Tag: noindex
-/method/*
-  X-Robots-Tag: noindex
-
 # Preview hosts (*.pages.dev) are never indexed. Production hosts are unaffected.
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
