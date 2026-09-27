@@ -15,5 +15,6 @@
 # is skipped for a request (they also fire on the lab host — avoid
 # that by keeping middleware as the source of truth).
 
-# HCC Contact: no-trailing-slash variant resolves (never 404).
-/contact /contact/ 301
+# HCC Method + Book: make the no-trailing-slash variants resolve (never 404).
+/book /book/ 301
+/method /method/ 301
