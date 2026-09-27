@@ -8,3 +8,9 @@
   Link: <https://www.jamesnetworks.net/netnudge/>; rel="canonical"
 /pool/
   Link: <https://www.jamesnetworks.net/pool/>; rel="canonical"
+
+# Preview hosts (*.pages.dev) are never indexed. Production hosts are unaffected.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:branch.:project.pages.dev/*
+  X-Robots-Tag: noindex

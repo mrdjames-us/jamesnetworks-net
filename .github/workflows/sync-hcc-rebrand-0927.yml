@@ -1,0 +1,57 @@
+name: one-shot sync hcc-rebrand-0927
+# One-shot: pulls the exact files from the immutable Pages preview deployment
+# (4b37dd51), verifies every git blob SHA, commits, and deletes itself.
+on:
+  push:
+    branches: [hcc-rebrand-0927]
+    paths: ['.github/workflows/sync-hcc-rebrand-0927.yml']
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: hcc-rebrand-0927
+      - name: Fetch and verify files
+        run: |
+          set -euo pipefail
+          B=https://4b37dd51.jamesnetworks-net.pages.dev
+          fetch() { # path url expected-sha
+            mkdir -p "$(dirname "$1")"
+            curl -sSL --retry 3 "$B$2" -o "$1"
+            got=$(git hash-object "$1")
+            if [ "$got" != "$3" ]; then echo "SHA mismatch $1: $got != $3"; exit 1; fi
+            echo "ok $1 $got"
+          }
+          fetch 404.html /this-page-does-not-exist 3635849f1349edefbc9300e6a3f70e442f280a41
+          fetch about/index.html /about/ 47cc62d74f17f92664d54b702e9cd32eab346658
+          fetch ai-consulting-clinton-mo/index.html /ai-consulting-clinton-mo/ d237074848d0339ba61e0f04b2cac1a9154800a7
+          fetch assets/brand/favicon-placeholder-180.png /assets/brand/favicon-placeholder-180.png d497ed2954683d2d4f1695c38d57e95c0ef7f157
+          fetch assets/brand/favicon-placeholder-32.png /assets/brand/favicon-placeholder-32.png ca78bc83339eba7f157bb61babe3a267bdc52dac
+          fetch assets/brand/favicon-placeholder.svg /assets/brand/favicon-placeholder.svg 7f3a2a5480e0e07788493fc5d7555fb35c0511c4
+          fetch assets/brand/hcc-site.css /assets/brand/hcc-site.css 95b4f556ad2e60c819dc4d06a7be2fb622a35999
+          fetch assets/brand/og-image-1200x630.png /assets/brand/og-image-1200x630.png b632e413c562d658e49413d1c3d3ace215709ce8
+          fetch assets/brand/tokens.css /assets/brand/tokens.css d5ee3d290d33ad50701607ac9dfeed9a43b4f07d
+          fetch book/index.html /book/ 542b68c659a55e7fcc70d56ba636f49b4ef47536
+          fetch contact/index.html /contact/ a95e48fb1560e40ccf5ce045139f7345210b6c8c
+          fetch faq/index.html /faq/ 646a8f96d13851c7c73c61b6b91e977b0dc25ab8
+          fetch favicon.ico /favicon.ico 6dc8d5affe329d0af67d4b78411f80065d92845b
+          fetch index.html / f623e78a13e0d71456e0592bda572bc47e1e3aa3
+          fetch llms.txt /llms.txt 5386c4eb50dc562cdbbd819fe9534b49712393b6
+          fetch method/index.html /method/ 16b29c3b08192b43b70e5221ae888036be600473
+          fetch privacy/index.html /privacy/ 40c9a958bb1107e5c30f2a8f54d1fa03349d6ce7
+          fetch services/index.html /services/ 07e5b6a3cae84cbf651507396d71441d55266dec
+          fetch sitemap.xml /sitemap.xml 2025bc15ccf00bd1d70a88a53fadb8e2c9c6db2f
+          fetch tools/optimize-hcc-images.py /tools/optimize-hcc-images.py 92388b7b679bcc8af006706280f232a61e1e8cd6
+          fetch workflow-automation/index.html /workflow-automation/ 34aef1974994e9ff8e628c495b7dba274644535a
+          git rm -q --ignore-unmatch assets/hcc-mark.png assets/hcc-hero-atmosphere.png assets/hcc-hero-atmosphere.webp assets/hcc-touch-icon.png
+          git rm -q .github/workflows/sync-hcc-rebrand-0927.yml
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898499+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "HCC rebrand per Website Designer BUILD-SPEC (preview only)" -m "Spec tokens + site.css port, plain wordmark, placeholder favicon, brand OG, all 10 DRAFT calls, demo banner removed, JSON-LD fixes, /book and /method out of sitemap + llms.txt. Removes gold mark + hero atmosphere images. Files verified by git blob SHA against Pages preview 4b37dd51."
+          git push origin HEAD:hcc-rebrand-0927
