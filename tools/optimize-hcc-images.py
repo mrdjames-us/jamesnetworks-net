@@ -8,6 +8,10 @@
   <picture>; the PNG stays as the <img> fallback for non-WebP browsers.
 
 Run from the repo root: python3 tools/optimize-hcc-images.py
+
+hcc-rebrand-0927: hcc-mark.png (the gold HCC monogram) and hcc-hero-atmosphere.*
+were removed from the site; the steps for them now skip. hcc-desk-still.png stays
+because jamesnetworks.net (journal /work/) still uses it.
 """
 from pathlib import Path
 
@@ -17,6 +21,9 @@ ASSETS = Path("assets")
 
 
 def mark() -> None:
+    if not (ASSETS / "hcc-mark.png").exists():
+        print("hcc-mark.png removed (hcc-rebrand-0927), skipping")
+        return
     src = Image.open(ASSETS / "hcc-mark.png").convert("RGB")
     if src.size == (180, 180):
         print("hcc-mark.png already 180x180, skipping")
@@ -29,6 +36,9 @@ def mark() -> None:
 
 
 def webp(name: str) -> None:
+    if not (ASSETS / f"{name}.png").exists():
+        print(f"{name}.png removed (hcc-rebrand-0927), skipping")
+        return
     src = Image.open(ASSETS / f"{name}.png").convert("RGB")
     if src.width != 1536:
         src = src.resize((1536, round(src.height * 1536 / src.width)), Image.LANCZOS)
@@ -39,5 +49,5 @@ if __name__ == "__main__":
     mark()
     webp("hcc-hero-atmosphere")
     webp("hcc-desk-still")
-    for f in ("hcc-mark.png", "hcc-hero-atmosphere.webp", "hcc-desk-still.webp"):
+    for f in ("hcc-desk-still.webp",):
         print(f, (ASSETS / f).stat().st_size, "bytes")
