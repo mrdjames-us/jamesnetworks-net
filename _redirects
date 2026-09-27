@@ -18,3 +18,6 @@
 # HCC Method + Book: make the no-trailing-slash variants resolve (never 404).
 /book /book/ 301
 /method /method/ 301
+
+# HCC Contact: no-trailing-slash variant resolves (never 404).
+/contact /contact/ 301
