@@ -1,0 +1,10 @@
+# Canonical hints for the JN lab app pages (their HTML has no <link rel="canonical">).
+# Cloudflare Pages applies these to static responses; Google honors rel="canonical" in the Link header.
+/cipherladder/
+  Link: <https://www.jamesnetworks.net/cipherladder/>; rel="canonical"
+/flowscout/
+  Link: <https://www.jamesnetworks.net/flowscout/>; rel="canonical"
+/netnudge/
+  Link: <https://www.jamesnetworks.net/netnudge/>; rel="canonical"
+/pool/
+  Link: <https://www.jamesnetworks.net/pool/>; rel="canonical"

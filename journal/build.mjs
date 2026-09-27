@@ -968,6 +968,7 @@ function renderHome(posts) {
 
   const content = `
     <section class="crawl-stage" aria-label="Opening crawl">
+      <h1 style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">${escapeHtml(`${SITE.name} — ${SITE.tagline}`)}</h1>
       <div class="crawl-stars" aria-hidden="true"></div>
       <p class="crawl-eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
       <div class="crawl-perspective">
@@ -1237,7 +1238,10 @@ write(
     description: work.description,
     path: "/work/",
     bodyClass: "page-work",
-    content: `${work.html ? `<div class="prose page-prose">${work.html}</div>` : ""}${renderBuiltBlock("personal")}`,
+    content: `
+    <header class="page-head">
+      <h1>${escapeHtml(work.title)}</h1>
+    </header>${work.html ? `<div class="prose page-prose">${work.html}</div>` : ""}${renderBuiltBlock("personal")}`,
   })
 );
 write(

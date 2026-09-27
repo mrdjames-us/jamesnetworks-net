@@ -194,7 +194,10 @@
   <main id="main">
     <section class="hero">
       <div class="hero-atmosphere" aria-hidden="true">
-        <img src="/assets/hcc-hero-atmosphere.png" alt="" width="1200" height="900" decoding="async" />
+        <picture>
+          <source type="image/webp" srcset="/assets/hcc-hero-atmosphere.webp" />
+          <img src="/assets/hcc-hero-atmosphere.png" alt="" width="1536" height="1024" decoding="async" fetchpriority="high" />
+        </picture>
         <div class="hero-scrim"></div>
       </div>
       <div class="hero-copy">
@@ -272,7 +275,10 @@
         </article>
       </div>
       <figure class="editorial-photo">
-        <img src="/assets/hcc-desk-still.png" width="1400" height="900" alt="Brass calipers and a gear on a dark desk beside a laptop showing a workflow diagram" loading="lazy" decoding="async" />
+        <picture>
+          <source type="image/webp" srcset="/assets/hcc-desk-still.webp" />
+          <img src="/assets/hcc-desk-still.png" width="1536" height="1024" alt="Brass calipers and a gear on a dark desk beside a laptop showing a workflow diagram" loading="lazy" decoding="async" />
+        </picture>
         <figcaption>The bench: measure twice, automate once — workflows mapped before a single prompt is written.</figcaption>
       </figure>
     </section>
