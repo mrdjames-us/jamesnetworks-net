@@ -14,3 +14,6 @@
 # These path rules are a belt-and-suspenders fallback if middleware
 # is skipped for a request (they also fire on the lab host — avoid
 # that by keeping middleware as the source of truth).
+
+# HCC Contact: no-trailing-slash variant resolves (never 404).
+/contact /contact/ 301
