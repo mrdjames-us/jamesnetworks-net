@@ -1,0 +1,90 @@
+diff --git a/cipherladder/index.html b/cipherladder/index.html
+index 5628571..b502950 100644
+--- a/cipherladder/index.html
++++ b/cipherladder/index.html
+@@ -6,6 +6,7 @@
+   <meta name="theme-color" content="#0b1020" />
+   <meta name="description" content="TheCipherLadder — How high will you go? A daily logic climb. Five clues. One secret order. The ladder gets skinnier as it gets harder." />
+   <title>TheCipherLadder — How high will you go?</title>
++  <link rel="canonical" href="https://www.jamesnetworks.net/cipherladder/" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+diff --git a/flowscout/index.html b/flowscout/index.html
+index 7f9a73d..3437540 100644
+--- a/flowscout/index.html
++++ b/flowscout/index.html
+@@ -4,6 +4,7 @@
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>FlowScout — Your Automation Blueprint | James Networks</title>
++<link rel="canonical" href="https://www.jamesnetworks.net/flowscout/" />
+ <meta name="description" content="FlowScout interviews you about a workflow the way an automation consultant would, then hands back a blueprint: what to automate, how, and which platform to use — n8n, Rewst, Zapier, Make, or Power Automate.">
+ <link rel="icon" type="image/jpeg" href="/assets/badge-j.jpg">
+ <style>
+diff --git a/index.html b/index.html
+index 50d7605..e35a78c 100644
+--- a/index.html
++++ b/index.html
+@@ -194,7 +194,10 @@
+   <main id="main">
+     <section class="hero">
+       <div class="hero-atmosphere" aria-hidden="true">
+-        <img src="/assets/hcc-hero-atmosphere.png" alt="" width="1200" height="900" decoding="async" />
++        <picture>
++          <source type="image/webp" srcset="/assets/hcc-hero-atmosphere.webp" />
++          <img src="/assets/hcc-hero-atmosphere.png" alt="" width="1536" height="1024" decoding="async" fetchpriority="high" />
++        </picture>
+         <div class="hero-scrim"></div>
+       </div>
+       <div class="hero-copy">
+@@ -272,7 +275,10 @@
+         </article>
+       </div>
+       <figure class="editorial-photo">
+-        <img src="/assets/hcc-desk-still.png" width="1400" height="900" alt="Brass calipers and a gear on a dark desk beside a laptop showing a workflow diagram" loading="lazy" decoding="async" />
++        <picture>
++          <source type="image/webp" srcset="/assets/hcc-desk-still.webp" />
++          <img src="/assets/hcc-desk-still.png" width="1536" height="1024" alt="Brass calipers and a gear on a dark desk beside a laptop showing a workflow diagram" loading="lazy" decoding="async" />
++        </picture>
+         <figcaption>The bench: measure twice, automate once — workflows mapped before a single prompt is written.</figcaption>
+       </figure>
+     </section>
+diff --git a/netnudge/index.html b/netnudge/index.html
+index 9ad7f32..49a3388 100644
+--- a/netnudge/index.html
++++ b/netnudge/index.html
+@@ -4,6 +4,7 @@
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>NetNudge — We build the website first | James Networks</title>
++  <link rel="canonical" href="https://www.jamesnetworks.net/netnudge/" />
+   <meta name="description" content="New website or a redesign of the one that isn't working. We build a real site first. Free to see. $79/month if you keep it. Clinton, Missouri." />
+   <meta name="theme-color" content="#0a0c10" />
+   <link rel="icon" type="image/jpeg" href="/assets/badge-j.jpg" />
+diff --git a/pool/index.html b/pool/index.html
+index 55daccc..feb8dbc 100644
+--- a/pool/index.html
++++ b/pool/index.html
+@@ -6,6 +6,7 @@
+   <meta name="description" content="James Networks Pool Hub — APA Captain, 8-Ball & 9-Ball scorers, one Google account." />
+   <meta name="theme-color" content="#0a0c10" />
+   <title>Pool Hub | James Networks</title>
++  <link rel="canonical" href="https://www.jamesnetworks.net/pool/" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+diff --git a/styles.css b/styles.css
+index c073b60..e7dd220 100644
+--- a/styles.css
++++ b/styles.css
+@@ -1204,3 +1204,9 @@ h1 em {
+   padding: 1rem 0 2rem;
+ }
+ .not-found .hero-actions { margin-top: 1.4rem; }
++
++/* <picture> wrappers (WebP + PNG fallback) must not change layout. */
++.hero-atmosphere picture,
++.editorial-photo picture {
++  display: contents;
++}
