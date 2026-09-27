@@ -168,7 +168,13 @@ a{color:inherit}
 .prose h3{font:var(--typography-h3);color:var(--color-text-heading);margin-top:var(--space-4)}
 .prose address{font-style:normal;margin-top:var(--space-2)}
 .prose a{display:inline;min-height:0}
-.prose li a{display:inline-flex;align-items:center;min-height:var(--layout-tap-target)}
+.prose li a,.prose address a{display:inline-flex;align-items:center;min-height:var(--layout-tap-target)}
+.prose address{font-style:normal;line-height:1.5;margin-top:var(--space-3)}
+/* Towns: caps label list with pine dividers (spec: /ai-consulting-clinton-mo/) */
+.prose ul.towns{list-style:none;padding:0;margin:var(--space-2) 0 var(--space-3) -30px;clip-path:inset(0 0 0 16px);display:flex;flex-wrap:wrap;row-gap:var(--space-1)}
+.prose ul.towns li{margin:0;padding-left:0;position:static;font:var(--typography-label);font-size:.875rem;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text);display:flex;align-items:center}
+.prose ul.towns li::before{content:"";display:inline-block;position:static;width:2px;height:1.1em;background:var(--color-accent);margin:0 14px}
+@media (max-width:480px){.prose ul.towns{margin-left:-22px;clip-path:inset(0 0 0 12px)}.prose ul.towns li{font-size:.75rem;letter-spacing:.14em}.prose ul.towns li::before{margin:0 10px}}
 .cta-box .btn{white-space:normal;text-align:center;line-height:1.25;padding-top:10px;padding-bottom:10px;overflow-wrap:anywhere}
 .page-main .section-tight{margin-top:var(--space-6)}
 .page-main .cards{margin-top:var(--space-4)}
