@@ -138,7 +138,7 @@ function redirectWithCookie(location, cookie) {
   return withOptionalCookie(res, cookie);
 }
 
-export async function onRequest(context) {
+async function handleRequest(context) {
   const url = new URL(context.request.url);
   const host = url.hostname.toLowerCase();
   const cookie = siteCookie(url);
@@ -245,4 +245,17 @@ export async function onRequest(context) {
   }
 
   return withOptionalCookie(res, cookie);
+}
+
+// HSTS on every response this middleware returns: redirects, rewrites and
+// context.next() passthroughs (Pages does not apply _headers to Function
+// responses). No preload on purpose. Browsers ignore HSTS over plain http.
+const HSTS = "max-age=31536000; includeSubDomains";
+
+export async function onRequest(context) {
+  const res = await handleRequest(context);
+  if (res.headers.get("Strict-Transport-Security") === HSTS) return res;
+  const headers = new Headers(res.headers);
+  headers.set("Strict-Transport-Security", HSTS);
+  return new Response(res.body, { status: res.status, statusText: res.statusText, headers });
 }
