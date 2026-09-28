@@ -30,12 +30,712 @@
     <header class="page-head">
       <p class="kicker">Playbook Rack</p>
       <h1>Skills</h1>
-      <p>Playbooks you can run the same way twice — not product pages.</p>
+      <p>Playbooks you can run the same way twice — not product pages. 106 on this shelf.</p>
     </header>
-    <div class="empty">
-      <strong>This shelf is empty on purpose.</strong>
-      <p>Playbooks you can run the same way twice — not product pages.</p>
+    <nav class="jump" aria-label="Categories">
+      <a href="#cat-automation">automation <span>11</span></a><a href="#cat-azure-mcp">azure-mcp <span>30</span></a><a href="#cat-backup-dr">backup-dr <span>4</span></a><a href="#cat-client-comms">client-comms <span>3</span></a><a href="#cat-documentation">documentation <span>3</span></a><a href="#cat-networking">networking <span>3</span></a><a href="#cat-onboarding">onboarding <span>5</span></a><a href="#cat-other">other <span>3</span></a><a href="#cat-reporting">reporting <span>4</span></a><a href="#cat-sales">sales <span>11</span></a><a href="#cat-security">security <span>10</span></a><a href="#cat-ticketing">ticketing <span>9</span></a><a href="#cat-vcio-qbr">vcio-qbr <span>10</span></a>
+    </nav>
+  <section class="cat" id="cat-automation">
+    <h2>automation</h2>
+    <div class="entries">
+    <article class="entry" id="alert-triage-agent-playbook">
+      <h3>Alert Triage Agent (n8n) — AI First-15-Minutes Incident Triage</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum"># Alert Triage Agent (n8n)</p>
+      <p class="entry-src"><a href="https://github.com/SurvivesProduction/alert-triage-agent" rel="noopener noreferrer">SurvivesProduction/alert-triage-agent</a></p>
+    </article>
+    <article class="entry" id="rewst-authorized-user-check-skill">
+      <h3>Authorized User Check (Rewst form guard)</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Reusable Rewst subworkflow that authorizes users submitting forms (e.g., onboarding/offboarding request forms). Add &quot;Check if Authorized&quot; as a subworkflow in any parent workflow; it outputs the boolean variable `Authorized`.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/Authorized%20User%20Check" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    <article class="entry" id="rewst-azure-tables-actions">
+      <h3>Azure Tables Actions subworkflow (OAuth2 + GET/INSERT)</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Rewst subworkflow (designed to be called from parent workflows) that acquires a valid OAuth2.0 client-credentials token, stores it with an expiration value in Rewst org variables as a secret, then allows GET and INSERT actions on an Azure Table.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/Azure%20Tables%20Actions" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    <article class="entry" id="rewst-immybot-storage-monitor">
+      <h3>ImmyBot low-disk storage monitor to CWM ticket</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Rewst workflow that pulls all ImmyBot devices, queries their last reported volume storage metrics, builds a per-client list of devices needing attention, and creates a ConnectWise Manage ticket alerting on any device with a volume under 15% free space.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/ImmyBot%20Storage%20Monitor" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    <article class="entry" id="rewst-immybot-cwm-device-sync">
+      <h3>ImmyBot to ConnectWise Manage device assignment sync</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Rewst workflow that lists all ImmyBot devices, filters to devices with an Immy user assigned, then assigns the matching ConnectWise Manage contact to the corresponding CWM configuration.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/ImmyBot%20to%20CWM%20Device%20Assignment%20Sync" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    <article class="entry" id="incident-response-agent-patterns">
+      <h3>Incident Response with AI Agents (12 Runbook-Driven Patterns)</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum"># AGENT-10: Incident Response with AI Agents</p>
+      <p class="entry-src"><a href="https://github.com/faionfaion/faion-network/blob/HEAD/.aidocs/sdlc-ai-methodologies/research/AGENT-10-incidents.md" rel="noopener noreferrer">faionfaion/faion-network</a></p>
+    </article>
+    <article class="entry" id="msp-proactive-maintenance-skill">
+      <h3>MSP Proactive Maintenance Operations Skill</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-maintenance/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="rewst-psa-agreement-user-sync">
+      <h3>PSA agreement user-count sync (Additions)</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Pre-built Rewst automation that synchronizes user counts to &quot;Additions&quot; line items on PSA agreements (ConnectWise Manage, Datto, Kaseya), so agreement line items stay aligned with actual usage without manual data entry.</p>
+      <p class="entry-src"><a href="https://rewst.io/resources/blog/6-cumbersome-msp-processes-rewst-can-automate-with-connectwise-manage/" rel="noopener noreferrer">Rewst blog — 6 cumbersome MSP processes</a></p>
+    </article>
+    <article class="entry" id="rewst-tool-actions-in-cwm-ticket">
+      <h3>Run tool actions from inside a ConnectWise ticket</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Pre-built Rewst workflow that lets technicians execute common tool actions from inside a ConnectWise Manage ticket, removing the need to leave the PSA for routine tasks.</p>
+      <p class="entry-src"><a href="https://rewst.io/resources/blog/6-cumbersome-msp-processes-rewst-can-automate-with-connectwise-manage/" rel="noopener noreferrer">Rewst blog — 6 cumbersome MSP processes</a></p>
+    </article>
+    <article class="entry" id="rewst-teams-approval-card">
+      <h3>Teams approval card subworkflow (Approve/Deny)</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Rewst subworkflow that pauses a parent workflow for human approval: it intakes information on an activity to receive approval, then POSTs a Teams Adaptive Card with Approve and Deny buttons. Once a button is selected, the workflow outputs a boolean — True for approval, False for denial. If you use ConnectWise Manage PSA, an extra &quot;view ticket&quot; button is inserted when you provide a ticket number and company ID.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/Send%20Teams%20Approval%20Card" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    <article class="entry" id="rewst-threatlocker-autotask-approval">
+      <h3>ThreatLocker application-request approval to Autotask</h3>
+      <p class="entry-cat">automation</p>
+      <p class="entry-sum">Rewst workflow that eliminates the manual ticket cleanup on ThreatLocker application requests in Autotask (writing the note, logging time, closing the ticket). Demonstrated by Brendan McLeod of Vital Technology Solutions.</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=eJtfjP8z0a8" rel="noopener noreferrer">Rewst Community Creations — YouTube (Brendan McLeod, Vital Technology Solutions)</a></p>
+    </article>
     </div>
+  </section>
+  <section class="cat" id="cat-azure-mcp">
+    <h2>azure-mcp</h2>
+    <div class="entries">
+    <article class="entry" id="azure-functions-mcp-demo-dotnet">
+      <h3>.NET MCP demo on Azure Functions (local + remote VS Code config)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># azure-functions-mcp-demo (.NET)</p>
+      <p class="entry-src"><a href="https://github.com/stuartdotnet/azure-functions-mcp-demo" rel="noopener noreferrer">stuartdotnet/azure-functions-mcp-demo (GitHub)</a></p>
+    </article>
+    <article class="entry" id="aks-model-context-protocol-server-docs">
+      <h3>AKS MCP server via Helm with workload identity (Azure docs)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># AKS Model Context Protocol server (Azure docs)</p>
+      <p class="entry-src"><a href="https://github.com/microsoftdocs/azure-aks-docs/blob/HEAD/articles/aks/aks-model-context-protocol-server.md" rel="noopener noreferrer">Azure AKS docs (GitHub mirror)</a></p>
+    </article>
+    <article class="entry" id="remote-mcp-apim-functions-python">
+      <h3>APIM as AI gateway to remote MCP servers (Functions + OAuth)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Azure API Management as AI Gateway to Remote MCP servers</p>
+      <p class="entry-src"><a href="https://github.com/msftse/remote-mcp-apim-functions-python" rel="noopener noreferrer">msftse/remote-mcp-apim-functions-python (GitHub)</a></p>
+    </article>
+    <article class="entry" id="context7-entra-apim-gateway">
+      <h3>APIM as MCP gateway with per-user Entra ID (OBO flow)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Azure API Management as MCP gateway — Microsoft Entra ID</p>
+      <p class="entry-src"><a href="https://github.com/upstash/context7/blob/HEAD/docs/enterprise/enterprise-managed-auth/entra.mdx" rel="noopener noreferrer">upstash/context7 docs (GitHub)</a></p>
+    </article>
+    <article class="entry" id="azure-devops-mcp-copilot-studio">
+      <h3>Azure DevOps MCP server in Copilot Studio (Entra app recipe)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Azure DevOps MCP for Copilot Studio</p>
+      <p class="entry-src"><a href="https://github.com/amgdy/azure-devops-mcp-for-copilot-studio/blob/HEAD/README.md" rel="noopener noreferrer">amgdy/azure-devops-mcp-for-copilot-studio (GitHub)</a></p>
+    </article>
+    <article class="entry" id="chatgpt-app-azure-function-mcp">
+      <h3>Azure Functions MCP server as a ChatGPT app (Inspector + dev tunnels)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># chatgpt-app-azure-function-mcp — turn an Azure Functions MCP server into a ChatGPT app</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/chatgpt-app-azure-function-mcp" rel="noopener noreferrer">Azure-Samples (GitHub)</a></p>
+    </article>
+    <article class="entry" id="foundry-build-register-mcp-server">
+      <h3>Build and register an MCP server on Azure Functions (Foundry)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Build and register a Model Context Protocol (MCP) server — Microsoft Foundry</p>
+      <p class="entry-src"><a href="https://learn.microsoft.com/en-us/azure/foundry/mcp/build-your-own-mcp-server" rel="noopener noreferrer">Microsoft Learn (Azure AI Foundry)</a></p>
+    </article>
+    <article class="entry" id="azure-functions-code-interpreter-mcp">
+      <h3>Code-interpreter MCP on Azure Functions (azd + VNET + remote client)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># azure-functions-code-interpreter-mcp</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/azure-functions-code-interpreter-mcp" rel="noopener noreferrer">azure-samples/azure-functions-code-interpreter-mcp (GitHub)</a></p>
+    </article>
+    <article class="entry" id="semantic-kernel-mcp-client-dotnet">
+      <h3>Connect an MCP server to Azure OpenAI with Semantic Kernel (.NET)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># MCP Client Sample — Semantic Kernel + Azure OpenAI + MCP tools (.NET 9)</p>
+      <p class="entry-src"><a href="https://github.com/ddobric/semantic-kernel-training/blob/HEAD/src/Mcp/McpClient/README.md" rel="noopener noreferrer">ddobric/semantic-kernel-training (GitHub)</a></p>
+    </article>
+    <article class="entry" id="copilot-studio-mcp-apim">
+      <h3>Connect APIM-hosted MCP servers to Copilot Studio</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Configuring MCP Tools on Copilot Studio</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/ai-gateway/blob/HEAD/labs/mcp-from-api/COPILOT-STUDIO.md" rel="noopener noreferrer">azure-samples/ai-gateway (GitHub)</a></p>
+    </article>
+    <article class="entry" id="azure-mcp-blueprint-copilot-studio">
+      <h3>Copilot Studio integration for a Container Apps MCP server</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Copilot Studio integration — Azure MCP Blueprint</p>
+      <p class="entry-src"><a href="https://github.com/cloud2br-msftlearninghub/azure-mcp-blueprint/blob/HEAD/docs/integration-guides/copilot-studio-integration.md" rel="noopener noreferrer">cloud2br-msftlearninghub/azure-mcp-blueprint (GitHub)</a></p>
+    </article>
+    <article class="entry" id="mcp-for-beginners-deploy-azure">
+      <h3>Deploy a remote MCP server to Azure (mcp-for-beginners practical)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Deploy Remote MCP Server to Azure — mcp-for-beginners practical implementation</p>
+      <p class="entry-src"><a href="https://github.com/microsoft/mcp-for-beginners/blob/HEAD/04-PracticalImplementation/README.md" rel="noopener noreferrer">microsoft/mcp-for-beginners (GitHub)</a></p>
+    </article>
+    <article class="entry" id="aks-mcp-server-workload-identity">
+      <h3>Deploy an MCP server on AKS with workload identity</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Deploy an MCP server on AKS with workload identity</p>
+      <p class="entry-src"><a href="https://github.com/azure/aks/blob/HEAD/website/blog/2025-10-22-deploy-mcp-server-aks-workload-identity/index.md" rel="noopener noreferrer">azure/aks (GitHub blog)</a></p>
+    </article>
+    <article class="entry" id="microsoft-docs-assistant-container-apps">
+      <h3>Docs AI assistant on Container Apps + Azure OpenAI + MCP (Next.js)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Build your own Microsoft Docs AI assistant with Azure Container Apps and Azure OpenAI</p>
+      <p class="entry-src"><a href="https://devblogs.microsoft.com/all-things-azure/build-your-own-microsoft-docs-ai-assistant-with-azure-container-apps-and-azure-openai/" rel="noopener noreferrer">devblogs.microsoft.com (All things Azure)</a></p>
+    </article>
+    <article class="entry" id="illumio-entra-oauth-mcp">
+      <h3>Entra ID OAuth setup for an MCP server (app registration recipe)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Microsoft Entra ID (Azure AD) — OAuth Setup</p>
+      <p class="entry-src"><a href="https://github.com/alexgoller/illumio-mcp-server/blob/HEAD/docs/operations/oauth-providers/entra.md" rel="noopener noreferrer">alexgoller/illumio-mcp-server (GitHub)</a></p>
+    </article>
+    <article class="entry" id="apim-legacy-apis-container-apps-mcp">
+      <h3>Expose legacy APIs on Container Apps as MCP servers via APIM</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Exposing Legacy APIs hosted on Azure Container Apps to AI Agents using MCP Servers</p>
+      <p class="entry-src"><a href="https://techcommunity.microsoft.com/blog/appsonazureblog/exposing-legacy-apis-hosted-on-azure-container-apps-to-ai-agents-using-mcp-serve/4470476" rel="noopener noreferrer">Microsoft Tech Community (Apps on Azure)</a></p>
+    </article>
+    <article class="entry" id="mcp-container-apps-production-medium">
+      <h3>From local to Azure — production MCP server on Container Apps</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># From Local to Azure: Deploy Your MCP Server to Production</p>
+      <p class="entry-src"><a href="https://medium.com/microsoft-azure-in-practice/from-local-to-azure-deploy-your-mcp-server-to-production-78b05bb1e5a9" rel="noopener noreferrer">Medium (Microsoft Azure in Practice — Divyesh Govaerdhanan)</a></p>
+    </article>
+    <article class="entry" id="mslearn-azure-ai-functions-mcp-server-lab">
+      <h3>Host an MCP server on Azure Functions (MS Learn lab, step-by-step)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Lab: Azure Functions MCP server (Microsoft Learn exercise)</p>
+      <p class="entry-src"><a href="https://github.com/microsoftlearning/mslearn-azure-ai/blob/HEAD/instructions/integrate-services/03-azure-functions-mcp-server.md" rel="noopener noreferrer">MicrosoftLearning/mslearn-azure-ai (GitHub)</a></p>
+    </article>
+    <article class="entry" id="mcp-sdk-custom-handler-functions">
+      <h3>Host MCP SDK servers on Azure Functions via custom handlers</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Host remote MCP servers built with official MCP SDKs on Azure Functions (early preview)</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/mcp-sdk-functions-hosting-python/blob/HEAD/README.md" rel="noopener noreferrer">Azure-Samples (GitHub)</a></p>
+    </article>
+    <article class="entry" id="yfinance-mcp-auth-options">
+      <h3>MCP auth options on Azure Functions (anonymous, function key, Entra)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># yfinance MCP Server hosted on Azure Functions — authentication playbook</p>
+      <p class="entry-src"><a href="https://github.com/torosent/yfinance-mcp" rel="noopener noreferrer">torosent/yfinance-mcp (GitHub)</a></p>
+    </article>
+    <article class="entry" id="mcp-container-ts-container-apps">
+      <h3>MCP server on Azure Container Apps with Node.js/TypeScript</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># mcp-container-ts — quick start for a remote MCP server on Azure Container Apps</p>
+      <p class="entry-src"><a href="https://github.com/tur11ng/mcp-container-ts" rel="noopener noreferrer">tur11ng/mcp-container-ts (GitHub)</a></p>
+    </article>
+    <article class="entry" id="foundry-mcp-football-functions-agent">
+      <h3>MCP server on Azure Functions + Microsoft Foundry agent (end to end)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># MCP Server + Foundry Agent: Football Statistics</p>
+      <p class="entry-src"><a href="https://github.com/maciejrubczynski/foundry-mcp-football" rel="noopener noreferrer">maciejrubczynski/foundry-mcp-football (GitHub)</a></p>
+    </article>
+    <article class="entry" id="ai-course-600-mcp-functions-flex">
+      <h3>MCP server on Azure Functions Flex Consumption (Terraform + func publish)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Deploying an MCP Server on Azure Functions Flex Consumption</p>
+      <p class="entry-src"><a href="https://github.com/houssemdellai/ai-course/blob/HEAD/600_mcp_server_on_functions/Readme.md" rel="noopener noreferrer">houssemdellai/ai-course (GitHub)</a></p>
+    </article>
+    <article class="entry" id="functions-mcp-tool-resources-prompts">
+      <h3>MCP tools, resources, prompts on Azure Functions (Python samples)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># FunctionsMcpTool / FunctionsMcpResources / FunctionsMcpPrompts — Python</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/remote-mcp-functions-python/blob/HEAD/src/FunctionsMcpTool/README.md" rel="noopener noreferrer">Azure-Samples (GitHub)</a></p>
+    </article>
+    <article class="entry" id="mcp-azure-security-guide">
+      <h3>MCP-on-Azure security and adoption patterns (APIM gateway, Entra, MI)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># MCP + Azure security guide — migration/adoption patterns</p>
+      <p class="entry-src"><a href="https://github.com/microsoft/mcp-azure-security-guide/blob/HEAD/docs/adoption/migration-guidance.md" rel="noopener noreferrer">microsoft/mcp-azure-security-guide (GitHub)</a></p>
+    </article>
+    <article class="entry" id="openai-mcp-agent-dotnet-container-apps">
+      <h3>OpenAI agent + MCP server on Azure Container Apps (.NET)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Sample: AI Agent using OpenAI models with any MCP server running on Azure Container Apps</p>
+      <p class="entry-src"><a href="https://github.com/adhameldeeb/openai-mcp-agent-dotnet" rel="noopener noreferrer">adhameldeeb/openai-mcp-agent-dotnet (GitHub)</a></p>
+    </article>
+    <article class="entry" id="remote-mcp-functions-language-matrix">
+      <h3>Remote MCP on Azure Functions — language matrix (official quickstarts)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Getting Started with Remote MCP Servers using Azure Functions (Overview)</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/remote-mcp-functions/blob/HEAD/README.md" rel="noopener noreferrer">Azure-Samples (GitHub)</a></p>
+    </article>
+    <article class="entry" id="remote-mcp-functions-python-sample">
+      <h3>Remote MCP server on Azure Functions (Python) — official sample</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Getting Started with Remote MCP Servers using Azure Functions (Python)</p>
+      <p class="entry-src"><a href="https://github.com/azure-samples/remote-mcp-functions-python/blob/HEAD/README.md" rel="noopener noreferrer">Azure-Samples (GitHub)</a></p>
+    </article>
+    <article class="entry" id="semantic-kernel-mcp-azure-openai-blog">
+      <h3>Semantic Kernel client for MCP tools + Azure OpenAI (.NET)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># Semantic Kernel based client with MCP Client Tools and Azure OpenAI LLM Integration</p>
+      <p class="entry-src"><a href="https://github.com/pravinchandankhede/pravinchandankhede.github.io/blob/HEAD/_posts/2025-04-15-ModelContextProtocolSemanticKernel.md" rel="noopener noreferrer">pravinchandankhede.github.io (blog)</a></p>
+    </article>
+    <article class="entry" id="servicenow-mcp-apim-entra">
+      <h3>ServiceNow MCP behind APIM with Entra OAuth (Bicep deploy)</h3>
+      <p class="entry-cat">azure-mcp</p>
+      <p class="entry-sum"># ServiceNow MCP server behind Azure APIM with authentication (Entra OAuth / API key / URL-code)</p>
+      <p class="entry-src"><a href="https://github.com/fizamusthafa/servicenow-mcp-apim" rel="noopener noreferrer">fizamusthafa/servicenow-mcp-apim (GitHub)</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-backup-dr">
+    <h2>backup-dr</h2>
+    <div class="entries">
+    <article class="entry" id="backup-verify-restore-playbook">
+      <h3>Backup verify and restore playbook</h3>
+      <p class="entry-cat">backup-dr</p>
+      <p class="entry-sum">Playbook: Backup Verify &amp; Restore. Follow BEFORE data loss (not after — the correct time to test a backup is before the failure).</p>
+      <p class="entry-src"><a href="https://github.com/88lin/computer-repair-skill/blob/HEAD/skills/computer-repair-skill/references/playbook-backup-verify-restore.md" rel="noopener noreferrer">88lin computer-repair-skill (GitHub)</a></p>
+    </article>
+    <article class="entry" id="msp-backup-testing-control-baseline">
+      <h3>Core control baseline — backup testing (CERG)</h3>
+      <p class="entry-cat">backup-dr</p>
+      <p class="entry-sum">From the Cragin Enterprise Risk &amp; Governance framework&#x27;s core control baseline. MSP relevance: control 4 — backup and recovery testing — is the control MSPs most often own for clients.</p>
+      <p class="entry-src"><a href="https://github.com/cragin-security/cerg/blob/HEAD/governance/CERG-GOV-CB-002_100-Core_Control_Baseline.md" rel="noopener noreferrer">Cragin Security CERG (GitHub)</a></p>
+    </article>
+    <article class="entry" id="postgres-backup-dr-runbook">
+      <h3>PostgreSQL Backup and Disaster Recovery Runbook (with Scripts)</h3>
+      <p class="entry-cat">backup-dr</p>
+      <p class="entry-sum"># Backup and Recovery Guide</p>
+      <p class="entry-src"><a href="https://github.com/moonsong-labs/agent-prompttrain/blob/HEAD/docs/03-Operations/backup-recovery.md" rel="noopener noreferrer">moonsong-labs/agent-prompttrain</a></p>
+    </article>
+    <article class="entry" id="servosity-fleet-backup-cli">
+      <h3>Servosity Fleet Backup CLI Playbook (QBR Reports, DR Watch, Billing Reconciliation)</h3>
+      <p class="entry-cat">backup-dr</p>
+      <p class="entry-sum"># Servosity CLI</p>
+      <p class="entry-src"><a href="https://github.com/servosity/msp-skills/blob/HEAD/skills/servosity/guide.md" rel="noopener noreferrer">servosity/msp-skills</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-client-comms">
+    <h2>client-comms</h2>
+    <div class="entries">
+    <article class="entry" id="incident-comms-skill">
+      <h3>Incident Comms (outage client communications)</h3>
+      <p class="entry-cat">client-comms</p>
+      <p class="entry-sum">An MSP-authored agent skill that drafts client-facing incident communications during an outage or major event — initial notification, hourly updates, all-clear, and post-incident review. Trigger phrases: &quot;we have an outage&quot;, &quot;draft an update for clients&quot;, &quot;M365 is down — what do we say&quot;, &quot;send the all-clear&quot;, &quot;write the PIR&quot;.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/incident-comms.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="msp-client-comms-skill">
+      <h3>MSP Client Communications Playbook (10 Operational Templates)</h3>
+      <p class="entry-cat">client-comms</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-client-comms/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="rewst-smtp2go-send-email">
+      <h3>SMTP2Go email sender subworkflow</h3>
+      <p class="entry-cat">client-comms</p>
+      <p class="entry-sum">Rewst subworkflow (designed to be called from parent workflows) that crafts and sends the required API call to SMTP2Go to send an email. Use it from any workflow that needs outbound email — alerts, client notifications, scheduled reports.</p>
+      <p class="entry-src"><a href="https://github.com/gigacodedev/Rewst/tree/main/SMTP2GO%20Send%20Email" rel="noopener noreferrer">gigacodedev/Rewst community workflows (GitHub)</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-documentation">
+    <h2>documentation</h2>
+    <div class="entries">
+    <article class="entry" id="youtube-agmspcoaching-fix-foundation-checklist">
+      <h3>Fix the Foundation First: AI Readiness Checklist</h3>
+      <p class="entry-cat">documentation</p>
+      <p class="entry-sum">From &quot;The Real Reason AI Fails MSPs&quot; — Steve from Advanced Global MSP Coaching explains why AI for MSPs flops when PSA data is unstructured, and what to fix first (Autotask-focused but applicable to any PSA).</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=MyB_vg1658g" rel="noopener noreferrer">Advanced Global MSP Coaching (YouTube)</a></p>
+    </article>
+    <article class="entry" id="hudu-articles-skill">
+      <h3>Hudu Knowledge Base Articles Skill (Runbooks, Procedures, Documentation Health)</h3>
+      <p class="entry-cat">documentation</p>
+      <p class="entry-sum"># Hudu Articles</p>
+      <p class="entry-src"><a href="https://github.com/wyre-technology/msp-claude-plugins/blob/HEAD/msp-claude-plugins/hudu/hudu/skills/articles/SKILL.md" rel="noopener noreferrer">wyre-technology/msp-claude-plugins</a></p>
+    </article>
+    <article class="entry" id="runbook-generator-skill">
+      <h3>Operational Runbook Generator (Copy-Paste Prompt + Quality Controls)</h3>
+      <p class="entry-cat">documentation</p>
+      <p class="entry-sum"># Create Runbook</p>
+      <p class="entry-src"><a href="https://github.com/joanmarcriera/writing-style-catalogue/blob/HEAD/skills/create-runbook.md" rel="noopener noreferrer">joanmarcriera/writing-style-catalogue</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-networking">
+    <h2>networking</h2>
+    <div class="entries">
+    <article class="entry" id="auvik-network-monitoring-maturity-checklist">
+      <h3>&quot;Auvik: Network Monitoring Maturity (OML) Readiness Checklist&quot;</h3>
+      <p class="entry-cat">networking</p>
+      <p class="entry-sum">Self-assess your MSP&#x27;s network monitoring maturity against Operational Maturity Levels (OMLs) and invest at the right level — &quot;an MSP at OML level 1 can [not] copy/paste an MSP at OML level 5&#x27;s tooling and expect the same results.&quot;</p>
+      <p class="entry-src"><a href="https://www.auvik.com/franklyit/blog/msp-ready-for-network-monitoring-tools/" rel="noopener noreferrer">Auvik (MSP network monitoring readiness)</a></p>
+    </article>
+    <article class="entry" id="all-network-infrastructure-assessment">
+      <h3>All Network Infrastructure Posture Assessment (Switches, Routers, Wireless)</h3>
+      <p class="entry-cat">networking</p>
+      <p class="entry-sum"># System-Type Assessment — All Network Infrastructure</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/system-type-assessment/all-network-infrastructure.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    <article class="entry" id="unifi-network-skill">
+      <h3>UniFi Network Skill (Gateway Audits, Firewall Review, Change Detection)</h3>
+      <p class="entry-cat">networking</p>
+      <p class="entry-sum"># UniFi Network - Claude Code Skill</p>
+      <p class="entry-src"><a href="https://github.com/servosity/msp-skills/blob/HEAD/skills/unifi-network/SKILL.md" rel="noopener noreferrer">servosity/msp-skills</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-onboarding">
+    <h2>onboarding</h2>
+    <div class="entries">
+    <article class="entry" id="client-onboarding-30-day-runbook">
+      <h3>Client Onboarding (first-30-days runbook)</h3>
+      <p class="entry-cat">onboarding</p>
+      <p class="entry-sum">An MSP-authored agent skill that runs a standardized new-client onboarding workflow — gathers tenant information, builds a kickoff pack, drafts welcome communications, and creates the initial documentation set. Trigger phrases: &quot;onboard new client&quot;, &quot;kickoff [client name]&quot;, &quot;set up new tenant&quot;, &quot;welcome pack for [company]&quot;, or when a new MSA signs.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/client-onboarding.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="employee-onboarding-provisioning-runbook">
+      <h3>Employee Onboarding (new-starter provisioning runbook)</h3>
+      <p class="entry-cat">onboarding</p>
+      <p class="entry-sum">An MSP-authored agent skill that runs the new-starter provisioning workflow for an MSP client — creates the user, assigns licenses and groups, prepares hardware, schedules induction, and produces a welcome pack. Author&#x27;s note: &quot;The first day at a new job is the loudest test of the MSP relationship. A missed mailbox or a broken laptop on day 1 is what clients remember at renewal.&quot; Trigger phrases: &quot;new starter for [client]&quot;, &quot;set up [name] at [company]&quot;, &quot;onboard [name] starting [date]&quot;, &quot;provisi</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/employee-onboarding.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="msp-client-onboarding-skill">
+      <h3>MSP Client Onboarding 30-Day Runbook</h3>
+      <p class="entry-cat">onboarding</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-onboarding/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="msp-client-onboarding-runbook">
+      <h3>MSP client onboarding runbook (7 phases)</h3>
+      <p class="entry-cat">onboarding</p>
+      <p class="entry-sum">MSP Client Onboarding Runbook: seven phases from kickoff to go-live, with guardrails on every privileged action.</p>
+      <p class="entry-src"><a href="https://github.com/mariaangelikabuilds/class-two/blob/HEAD/skills/msp-onboarding-runbook/SKILL.md" rel="noopener noreferrer">Maria Angelikabuilds class-two (GitHub)</a></p>
+    </article>
+    <article class="entry" id="new-customer-onboarding-recipe">
+      <h3>New Customer Onboarding Assessment Recipe</h3>
+      <p class="entry-cat">onboarding</p>
+      <p class="entry-sum"># New Customer Onboarding Assessment — Master Recipe</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/onboarding-assessment/new-customer-onboarding.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-other">
+    <h2>other</h2>
+    <div class="entries">
+    <article class="entry" id="youtube-itbydesign-grid-prompting-framework">
+      <h3>GRID Prompting Framework + 3-Step MSP AI Roadmap</h3>
+      <p class="entry-cat">other</p>
+      <p class="entry-sum">From &quot;MSP AI Strategy Start Internal, Fix Your Documentation &amp; Build AI Capability First&quot; — an MSP leadership AI-strategy video.</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=G7syEsnRGGM" rel="noopener noreferrer">IT by Design (YouTube)</a></p>
+    </article>
+    <article class="entry" id="msp-offboarding-skill">
+      <h3>MSP Client Offboarding Runbook (Transition, Access Removal, Closure Letter)</h3>
+      <p class="entry-cat">other</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-offboarding/SKILL.md" rel="noopener noreferrer">RTFM-IT-Services-LLC/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="safepointit-system-prompt-rulebook">
+      <h3>Persistent System Prompt Rulebook for MSP Workflows</h3>
+      <p class="entry-cat">other</p>
+      <p class="entry-sum">Playbook from SafePoint IT&#x27;s ChatGPT Prompting Tips webinar:</p>
+      <p class="entry-src"><a href="https://www.safepointit.com/wp-content/uploads/2026/07/Webinar-2026-03-19-ChatGPT-Prompting-Tips.pdf" rel="noopener noreferrer">SafePoint IT</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-reporting">
+    <h2>reporting</h2>
+    <div class="entries">
+    <article class="entry" id="scalepad-8-business-metrics">
+      <h3>&quot;ScalePad: 8 Business Metrics MSPs Need to Manage&quot;</h3>
+      <p class="entry-cat">reporting</p>
+      <p class="entry-sum">The eight operational, service, and profitability metrics ScalePad&#x27;s guide says every MSP should monitor — the guide&#x27;s discipline: ask the right questions, establish a baseline (once you know what normal looks like, you can focus on outliers), and use the right tool. PDF is free with no form fill.</p>
+      <p class="entry-src"><a href="https://www.scalepad.com/resources/msp-business-metrics-guide" rel="noopener noreferrer">ScalePad (8 Business Metrics guide)</a></p>
+    </article>
+    <article class="entry" id="rewst-billing-reconciliation-workflow">
+      <h3>Automated billing reconciliation workflow (Rewst)</h3>
+      <p class="entry-cat">reporting</p>
+      <p class="entry-sum">Repeatable billing-reconciliation workflow, as documented by Rewst (verbatim, lightly cleaned):</p>
+      <p class="entry-src"><a href="https://rewst.io/resources/blog/6-cumbersome-msp-processes-rewst-can-automate-with-connectwise-manage/" rel="noopener noreferrer">Rewst blog — community automation playbooks</a></p>
+    </article>
+    <article class="entry" id="license-rightsizing-audit">
+      <h3>License Rightsizing (M365 audit)</h3>
+      <p class="entry-cat">reporting</p>
+      <p class="entry-sum">An MSP-authored agent skill that audits a client&#x27;s Microsoft 365 license assignments to find unused, oversized, or duplicated licenses, and produces a rightsizing recommendation with dollar savings. Author&#x27;s note: &quot;License waste is the easiest win in any MSP&#x27;s commercial conversation. Most clients are paying for 10–25% more than they use.&quot; Trigger phrases: &quot;license review for [client]&quot;, &quot;are we over-licensed&quot;, &quot;rightsize M365&quot;, &quot;find unused licenses&quot;, &quot;save money on M365&quot;.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/license-rightsizing.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="msp-monthly-metrics-skill">
+      <h3>MSP Monthly Metrics Review and Client Health Scorecard</h3>
+      <p class="entry-cat">reporting</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-metrics/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-sales">
+    <h2>sales</h2>
+    <div class="entries">
+    <article class="entry" id="thread-psa-ticket-report-discovery">
+      <h3>Anonymized PSA ticket-volume report for sales discovery</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Repeatable playbook for generating an anonymized ticket-volume-by-customer report from a prospect&#x27;s PSA during sales discovery. Small, local, transparent tool: scripts run entirely on the prospect&#x27;s own machine, talk only to their own PSA API with credentials they control, and write output only to local disk — nothing is sent to the vendor. It never calculates license recommendations; it only produces raw ticket counts per anonymized customer.</p>
+      <p class="entry-src"><a href="https://github.com/thread-ar/psa-ticket-report/blob/HEAD/CLAUDE.md" rel="noopener noreferrer">thread-ar/psa-ticket-report (GitHub)</a></p>
+    </article>
+    <article class="entry" id="copilot-managed-service-playbook">
+      <h3>Copilot-as-managed-service playbook</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Forum-thread playbook for turning Microsoft 365 Copilot curiosity into chargeable recurring MSP services (verbatim, lightly trimmed):</p>
+      <p class="entry-src"><a href="https://windowsforum.com/threads/msps-turn-copilot-into-recurring-ai-services-with-governance.404897/" rel="noopener noreferrer">Windows Forum — community thread</a></p>
+    </article>
+    <article class="entry" id="youtube-paulgreen-ai-recommend-msp">
+      <h3>Getting AI to Recommend Your MSP — Playbook</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">From &quot;Getting AI To Actually Recommend An MSP&quot; — Paul Green (MSP marketing expert) with guest Jimi Gibson on getting AI tools (ChatGPT, etc.) to recommend the MSP as a lead source.</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=QdXbFw0RdzA" rel="noopener noreferrer">Paul Green / MSP Marketing Edge (YouTube)</a></p>
+    </article>
+    <article class="entry" id="msp-leadgen-skill">
+      <h3>MSP Lead Generation Skill (Territory Sweeps, Desk Scoring, Prospect Dossiers)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-leadgen/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="msp-marketing-skill">
+      <h3>MSP Marketing Content Skill (Articles, Social, Newsletters, Channels)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/rtfm-it-services-llc/msp-claude-skills/blob/HEAD/skills/msp-marketing/SKILL.md" rel="noopener noreferrer">RTFM-IT-Services-LLC/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="msp-outbound-email-sequence-playbook">
+      <h3>MSP Outbound Email Sequence with ChatGPT (5-step playbook)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">A step-by-step playbook from the JumpCloud community (MSP Discussions) for using ChatGPT to build outbound client-acquisition email sequences for an MSP. (Uses a fictional MSP, &quot;ACME IT&quot;, as the worked example.)</p>
+      <p class="entry-src"><a href="https://community.jumpcloud.com/t5/msp-discussions/create-effective-email-sequences-with-chatgpt-to-attract-new/m-p/2770" rel="noopener noreferrer">JumpCloud Community — MSP Discussions</a></p>
+    </article>
+    <article class="entry" id="msp-pricing-configurator">
+      <h3>MSP Pricing Configurator (Floor, Anchor, Open with Margin Protection)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-pricing/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="msp-sales-skill">
+      <h3>MSP Sales Expert Skill (Cold Outreach, Call Scripts, Pipeline, Negotiation)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-sales/SKILL.md" rel="noopener noreferrer">RTFM-IT-Services-LLC/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="pre-sales-discovery-recipe">
+      <h3>Pre-Sales Discovery Assessment Recipe</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum"># Pre-Sales Discovery — Master Recipe</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/sales-assessment/pre-sales-discovery.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    <article class="entry" id="rewst-consulting-playbook">
+      <h3>Rewst automation consulting playbook (discovery, ROI, pricing)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum">Full community playbook for scoping, pricing, and selling MSP automation work (verbatim from the community-contributed Claude skill; lightly trimmed for the staging library):</p>
+      <p class="entry-src"><a href="https://github.com/adamhancock/claude-skills/blob/HEAD/skills/rewst/consulting-playbook.md" rel="noopener noreferrer">GitHub — adamhancock/claude-skills (Rewst community playbook)</a></p>
+    </article>
+    <article class="entry" id="sales-persona-playbook">
+      <h3>Sales Persona Playbook (Zero-Credential Pre-Sales Discovery + Renewal Narratives)</h3>
+      <p class="entry-cat">sales</p>
+      <p class="entry-sum"># Sales — Persona Index</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/personas/sales/README.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-security">
+    <h2>security</h2>
+    <div class="entries">
+    <article class="entry" id="huntress-cloud-incident-response-playbook">
+      <h3>&quot;Huntress: Cloud Incident Response Starter Playbook&quot;</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">A starter playbook for responding to incidents in cloud environments, from Huntress&#x27;s cloud incident response guide.</p>
+      <p class="entry-src"><a href="https://www.huntress.com/cybersecurity-101/topic/what-is-cloud-incident-response" rel="noopener noreferrer">Huntress (Cloud incident response guide)</a></p>
+    </article>
+    <article class="entry" id="ad-msp-prompt-playbook-pack">
+      <h3>15 Active Directory MSP prompt playbooks</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">Professional MSP prompt system: 15 specialized MSP prompts implemented as multi-step playbooks for AI assistants against an Active Directory MCP server (MCP protocol 2024-11-05 over Streamable HTTP). Architecture: multi-step aware (identifier resolution → LDAP lookups → result formatting); dual format (compact for fast ops, detailed for audit/compliance); tenant-aware (each MCP instance executes the playbook against its own AD). Exposed as MCP tools: `ad_list_msp_prompts` (lists the playbooks) a</p>
+      <p class="entry-src"><a href="https://github.com/devskillsit/skills-mcp-active-directory/blob/HEAD/CHANGELOG_PROMPTS.md" rel="noopener noreferrer">devskillsit skills-mcp-active-directory (GitHub)</a></p>
+    </article>
+    <article class="entry" id="cmmc-ngfw-compliance-assessment-workflow">
+      <h3>CMMC NGFW compliance assessment workflow</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">System prompt: expert CMMC assessor + Palo Alto / Fortinet / Cisco firewall engineer + network security architect with deep CMMC 2.0 (L1/L2) knowledge.</p>
+      <p class="entry-src"><a href="https://github.com/fastrevmd/ai-prompts/blob/HEAD/prompts/ops/msp/cmmc-compliance/cmmc-ngfw-compliance-assessment/SKILL.md" rel="noopener noreferrer">fastrevmd ai-prompts (GitHub)</a></p>
+    </article>
+    <article class="entry" id="cyber-insurance-readiness-recipe">
+      <h3>Cyber Insurance Readiness Assessment Recipe (Evidence-Backed Questionnaire)</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum"># Cyber Insurance Readiness — Master Recipe</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/compliance/cyber-insurance/cyber-insurance-readiness.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    <article class="entry" id="incident-response-playbook">
+      <h3>Incident Response Playbook (Phishing to PowerShell to C2)</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum"># Incident Response Playbook (Phishing → PowerShell → C2 Attack)</p>
+      <p class="entry-src"><a href="https://github.com/demonchant/soc-investigation-labs/blob/HEAD/Incident_Response_Playbook.md" rel="noopener noreferrer">demonchant/soc-investigation-labs</a></p>
+    </article>
+    <article class="entry" id="msp-security-standards-skill">
+      <h3>MSP Security Standards (Client Baseline and House Standard)</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-security/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="nist-sp-1353-csf-co-star-prompt">
+      <h3>NIST SP 1353 CSF 2.0 assessment co-star prompt</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">NIST SP 1353 details AI prompts and use cases for Cybersecurity Framework 2.0 analysis, planning, and reporting. Three use cases (assessment, target-state profile, reporting); the guide&#x27;s simplified executable **co-star prompt** supports a NIST CSF 2.0 assessment:</p>
+      <p class="entry-src"><a href="https://industrialcyber.co/nist/nist-sp-1353-details-ai-prompts-and-use-cases-for-cybersecurity-framework-2-0-analysis-planning-and-reporting/" rel="noopener noreferrer">Industrial Cyber</a></p>
+    </article>
+    <article class="entry" id="huntress-operational-resilience-ir-playbook">
+      <h3>Operational Resilience IR Playbook</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">Huntress&#x27;s operational resilience framework for turning an IR plan into a team that can execute it. Aligned to the NIST framework&#x27;s five functions.</p>
+      <p class="entry-src"><a href="https://www.huntress.com/blog/operational-resilience-incident-response-plan" rel="noopener noreferrer">Huntress Blog</a></p>
+    </article>
+    <article class="entry" id="security-baseline-check-skill">
+      <h3>Security Baseline Check (M365 gap report)</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">An MSP-authored agent skill that runs a Microsoft 365 security baseline review against a defined standard (e.g., Essential Eight, CIS, MSP house standard) and produces a gap report with prioritized remediation. Trigger phrases: &quot;security review for [client]&quot;, &quot;are they Essential Eight compliant&quot;, &quot;check the baseline&quot;, &quot;what&#x27;s [client]&#x27;s Secure Score story&quot;, &quot;security gap analysis&quot;.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/security-baseline-check.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="rewst-security-ticket-threat-sync">
+      <h3>Security threat-data sync into PSA tickets (Rewst)</h3>
+      <p class="entry-cat">security</p>
+      <p class="entry-sum">Repeatable workflow that syncs cybersecurity data into PSA tickets automatically, as documented by Rewst (verbatim, lightly cleaned):</p>
+      <p class="entry-src"><a href="https://rewst.io/resources/blog/6-cumbersome-msp-processes-rewst-can-automate-with-connectwise-manage/" rel="noopener noreferrer">Rewst blog — community automation playbooks</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-ticketing">
+    <h2>ticketing</h2>
+    <div class="entries">
+    <article class="entry" id="rewst-ai-ticket-sentiment-triage">
+      <h3>AI ticket sentiment triage workflow (Rewst)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Repeatable AI-driven ticket triage workflow, as documented by Rewst (verbatim, lightly cleaned):</p>
+      <p class="entry-src"><a href="https://rewst.io/resources/blog/6-cumbersome-msp-processes-rewst-can-automate-with-connectwise-manage/" rel="noopener noreferrer">Rewst blog — community automation playbooks</a></p>
+    </article>
+    <article class="entry" id="youtube-cloudradial-ticketing-triage-rules">
+      <h3>AI Ticket Triage Rules Playbook (Pro Tips)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">From &quot;Ticketing Triage: Let AI Sort and Route Your Tickets&quot; — hands-on tutorial with Ricky Cecchini on ServiceAI&#x27;s intelligent triage (works with ConnectWise &amp; Autotask).</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=LP7nWRpNRvI" rel="noopener noreferrer">CloudRadial (YouTube)</a></p>
+    </article>
+    <article class="entry" id="conversational-ticket-triage-agent">
+      <h3>Conversational ticket triage agent rules</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Custom rules for an AI triage agent that handles the first contact with a client on a new support ticket, one question at a time. (From a larger prompt library of triage-agent rules; this file is the initial-question ruleset.)</p>
+      <p class="entry-src"><a href="https://github.com/griff2021/threadpromptlibrary/blob/HEAD/TriageAgent/CustomRulesInitialQuestion.md" rel="noopener noreferrer">ThreadPromptLibrary (GitHub)</a></p>
+    </article>
+    <article class="entry" id="wyre-autotask-mcp-rate-limit-playbook">
+      <h3>LLM + Autotask rate-limit survival playbook (autotask-mcp)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Playbook for MSPs running LLM-driven workflows against Autotask without blowing through API limits. From the autotask-mcp server README (part of the MSP Claude Plugins ecosystem; gives an AI assistant 39 Autotask tools for natural-language ticket triage, time logging, company lookups, project management, and billing review).</p>
+      <p class="entry-src"><a href="https://github.com/pdlaskbis/autotask-mcp/blob/HEAD/README.md" rel="noopener noreferrer">wyre-technology/autotask-mcp — MSP Claude Plugins ecosystem (GitHub)</a></p>
+    </article>
+    <article class="entry" id="threadpromptlibrary-triage-agent-full-process">
+      <h3>MSP AI Triage Agent — Full 7-Step Intake Process</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Expanded variant of the MSP triage-agent system prompt (friendly tone, allows safe guided troubleshooting). Replace [MSP] with your company name.</p>
+      <p class="entry-src"><a href="https://github.com/griff2021/threadpromptlibrary/blob/HEAD/TriageAgent/CustomRulesInitialQuestion.md" rel="noopener noreferrer">griff2021 / ThreadPromptLibrary</a></p>
+    </article>
+    <article class="entry" id="threadpromptlibrary-triage-agent-simple">
+      <h3>MSP AI Triage Agent — Intake-Only System Prompt (Simple)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Deploy as the system prompt of an AI triage agent that is the first point of contact for MSP support requests. Replace [MSP] with your company name.</p>
+      <p class="entry-src"><a href="https://github.com/griff2021/threadpromptlibrary/blob/HEAD/TriageAgent/CustomRulesSIMPLE.md" rel="noopener noreferrer">griff2021 / ThreadPromptLibrary</a></p>
+    </article>
+    <article class="entry" id="msp-service-desk-skill">
+      <h3>MSP Service Desk Operations Skill (Priorities, Targets, Escalation)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-helpdesk/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="ticket-triage-impact-urgency-skill">
+      <h3>Ticket Triage Skill (Impact x Urgency framework)</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">An MSP-authored agent skill for triaging support tickets: classifies by urgency and impact, assigns priority, suggests queue and engineer tier, and drafts the first client response. Trigger phrases: &quot;triage these tickets&quot;, &quot;what should I work on next&quot;, &quot;prioritize the queue&quot;, &quot;is this a P1&quot;.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/office365/blob/HEAD/Cowork-Skills/ticket-triage.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="youtube-cloudradial-chatgpt-fails-msp-webinar">
+      <h3>Why ChatGPT Fails Your MSP — Webinar Notes</h3>
+      <p class="entry-cat">ticketing</p>
+      <p class="entry-sum">From &quot;Why ChatGPT Fails Your MSP: The AI Strategy Your MSP Needs&quot; — CloudRadial webinar with VP of Product Ricky Cecchini on the risks of generic AI on the service desk and how purpose-built MSP tooling differs.</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=PiHEjG2Lge8" rel="noopener noreferrer">CloudRadial (YouTube)</a></p>
+    </article>
+    </div>
+  </section>
+  <section class="cat" id="cat-vcio-qbr">
+    <h2>vcio-qbr</h2>
+    <div class="entries">
+    <article class="entry" id="scalepad-qbr-action-plan">
+      <h3>&quot;ScalePad: QBR Action Plan Framework&quot;</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">ScalePad&#x27;s three-part framework for running quarterly business reviews as strategic conversations — not an hour and a half of reading reports. &quot;The quarterly business review is not a place to dump all the out-of-warranty servers and workstations into a spreadsheet and hand it over to the client.&quot;</p>
+      <p class="entry-src"><a href="https://www.scalepad.com/blog/quarterly-business-reviews-qbr-action-plan/" rel="noopener noreferrer">ScalePad (QBR action plan)</a></p>
+    </article>
+    <article class="entry" id="qbr-master-recipe">
+      <h3>Environment Quarterly Lookback / QBR Master Recipe</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum"># Environment Quarterly Lookback — Master Recipe (PBR / QBR)</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/environment-quarterly-lookback/quarterly-business-review.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    <article class="entry" id="youtube-liongard-modern-vcio-ai-workflow">
+      <h3>Modern vCIO AI + Asset Intelligence Workflow</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">Workflow from &quot;How a Modern vCIO Uses AI + Asset Intelligence&quot; — a day-in-the-life of a virtual CIO (Avery) using Liongard asset intelligence with AI across three client scenarios:</p>
+      <p class="entry-src"><a href="https://www.youtube.com/watch?v=Bd445iowfRQ" rel="noopener noreferrer">Liongard (YouTube)</a></p>
+    </article>
+    <article class="entry" id="msp-qbr-prep-skill">
+      <h3>MSP QBR prep skill (ticket trends, security, licenses, roadmap)</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">Cowork skill: &quot;Prepares a Quarterly Business Review (QBR) pack for an MSP client — pulls ticket trends, security posture, license utilization, project status, and strategic recommendations into a presentation-ready brief. Use when user says &#x27;QBR for [client]&#x27;, &#x27;prep the quarterly review&#x27;, &#x27;build the business review deck&#x27;, or &#x27;what should I tell [client] this quarter&#x27;.&quot;</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/office365/blob/HEAD/Cowork-Skills/qbr-prep.md" rel="noopener noreferrer">directorcia Office365 (GitHub)</a></p>
+    </article>
+    <article class="entry" id="msp-qbr-playbook-skill">
+      <h3>MSP Quarterly Business Review Playbook and Client Scorecard</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">Also seen at: https://github.com/cradixus/msp-claude-skills Also seen at: https://github.com/bc-rb/msp-claude-skills</p>
+      <p class="entry-src"><a href="https://github.com/RTFM-IT-Services-LLC/msp-claude-skills/blob/main/skills/msp-qbr/SKILL.md" rel="noopener noreferrer">rtfm-it-services-llc/msp-claude-skills</a></p>
+    </article>
+    <article class="entry" id="qbr-builder-roi-recovery">
+      <h3>QBR builder with ROI quantification and recovery playbook</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">QBR Builder Skill: customer health recap, ROI delivered, goals for next quarter, renewal and expansion discussion framework. Activates when a QBR is scheduled in the next 2 weeks, when you need to quantify ROI before a renewal, before an exec-level review, or when recovering an unhappy customer relationship.</p>
+      <p class="entry-src"><a href="https://github.com/adrianr84/claudient/blob/HEAD/plugins/claudient-gtm/skills/qbr-builder/SKILL.md" rel="noopener noreferrer">Claudient (GitHub)</a></p>
+    </article>
+    <article class="entry" id="qbr-prep-pack-skill">
+      <h3>QBR Prep (presentation-ready brief)</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">An MSP-authored agent skill that prepares a Quarterly Business Review pack for an MSP client — pulls ticket trends, security posture, license utilization, project status, and strategic recommendations into a presentation-ready brief. Trigger phrases: &quot;QBR for [client]&quot;, &quot;prep the quarterly review&quot;, &quot;build the business review deck&quot;, &quot;what should I tell [client] this quarter&quot;.</p>
+      <p class="entry-src"><a href="https://github.com/directorcia/Office365/blob/master/Cowork-Skills/qbr-prep.md" rel="noopener noreferrer">GitHub — directorcia/Office365 Cowork-Skills (MSP-authored skill)</a></p>
+    </article>
+    <article class="entry" id="qbr-report-builder">
+      <h3>QBR report builder (evidence-led, draft discipline)</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">Skill that builds a defensible QBR report where every claim traces to a specific note, ticket, or metric. Evidence, not adjectives.</p>
+      <p class="entry-src"><a href="https://github.com/promptmetrics/skills/blob/HEAD/qbr-prep/SKILL.md" rel="noopener noreferrer">PromptMetrics skills (GitHub)</a></p>
+    </article>
+    <article class="entry" id="refresh-lifecycle-roadmap-recipe">
+      <h3>Refresh &amp; Lifecycle Roadmap Recipe (Hardware, EOL, License Renewal Calendar)</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum"># Refresh &amp; Lifecycle Roadmap — Master Recipe</p>
+      <p class="entry-src"><a href="https://github.com/liongard/liongard-ai/blob/HEAD/recipes/roadmap-planning/refresh-and-lifecycle-roadmap.md" rel="noopener noreferrer">liongard/liongard-ai</a></p>
+    </article>
+    <article class="entry" id="shadow-ai-qbr-talk-track">
+      <h3>Shadow AI QBR talk track</h3>
+      <p class="entry-cat">vcio-qbr</p>
+      <p class="entry-sum">Verbatim client conversation script for MSP vCIOs/QBRs on shadow AI (a recurring billable service hook):</p>
+      <p class="entry-src"><a href="https://www.thirdtier.net/2026/06/25/speak-to-your-client-about-shadow-ai/" rel="noopener noreferrer">ThirdTier — QBR Talk</a></p>
+    </article>
+    </div>
+  </section>
   </main>
 
   <footer class="shop-foot">
