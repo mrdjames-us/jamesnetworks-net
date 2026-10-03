@@ -170,6 +170,11 @@ export async function onRequest(context) {
   }
 
   if (!wantsJournal(context.request, url, host)) {
+    // HCC (and unknown hosts, which default to HCC): serve the HCC robots
+    // policy explicitly instead of relying on the root default file.
+    if (url.pathname === "/robots.txt") {
+      return fetchMapped(context, "/robots-hcc.txt");
+    }
     return context.next();
   }
 
