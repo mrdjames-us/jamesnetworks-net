@@ -823,58 +823,71 @@ body.page-home .post-index {
 
 
 
+
+.gate {
+  margin: 0.4rem auto 2.5rem;
+}
+.gate-lead {
+  max-width: 34rem;
+  margin: 0 auto 1.35rem;
+  text-align: center;
+}
+.gate-place {
+  margin: 0 0 0.55rem;
+  font-family: var(--font);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+.gate-lead h1 {
+  margin: 0 0 0.5rem;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+  letter-spacing: 0.03em;
+  line-height: 1.12;
+  color: var(--text);
+}
+.gate-line {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.gate-line p { margin: 0; }
+
 .doors {
   display: grid;
-  gap: 1.75rem;
+  gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 2.25rem 0 3rem;
-  max-width: 52rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
+  max-width: none;
 }
 .golden-door {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  min-height: 44px;
   text-decoration: none;
   color: inherit;
-  border-radius: 18px;
-  isolation: isolate;
+  border-radius: 14px;
   overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid var(--border-strong);
   background: #07080c;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  transition: transform 180ms ease, border-color 180ms ease;
 }
 .golden-door:hover,
 .golden-door:focus-visible {
-  transform: translateY(-8px) scale(1.015);
+  transform: translateY(-4px);
   outline: none;
-  box-shadow:
-    0 0 0 1px rgba(255, 214, 120, 0.35),
-    0 0 36px rgba(255, 180, 60, 0.35),
-    0 22px 48px rgba(0, 0, 0, 0.6);
-}
-.golden-door-glow {
-  position: absolute;
-  inset: -18px;
-  border-radius: 28px;
-  background:
-    radial-gradient(ellipse at 50% 35%, rgba(255, 180, 60, 0.45), transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(196, 140, 50, 0.28), transparent 60%);
-  filter: blur(16px);
-  opacity: 0.7;
-  z-index: -1;
-  animation: door-pulse 3.6s ease-in-out infinite;
-  pointer-events: none;
-}
-.golden-door:hover .golden-door-glow,
-.golden-door:focus-visible .golden-door-glow {
-  opacity: 1;
-  filter: blur(20px);
+  border-color: var(--gold);
+  color: inherit;
+  text-decoration: none;
 }
 .golden-door-art {
   display: block;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #050608;
 }
@@ -883,215 +896,50 @@ body.page-home .post-index {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  transition: transform 0.45s ease, filter 0.35s ease;
-  filter: saturate(1.05) contrast(1.05);
+  object-position: center 42%;
+  transition: transform 220ms ease;
 }
 .golden-door:hover .golden-door-art img,
 .golden-door:focus-visible .golden-door-art img {
-  transform: scale(1.04);
-  filter: saturate(1.15) contrast(1.08) brightness(1.05);
+  transform: scale(1.03);
 }
 .golden-door-caption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 1rem 1.15rem 1.2rem;
-  background:
-    linear-gradient(180deg, rgba(12, 10, 6, 0.92), rgba(8, 6, 3, 0.98));
-  border-top: 1px solid rgba(255, 200, 100, 0.22);
-}
-.golden-door-label {
-  font-family: Cinzel, Georgia, serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.04em;
-  color: #ffe9a8;
-  text-shadow: 0 0 18px rgba(255, 180, 60, 0.4);
-}
-.golden-door-hint {
-  font-size: 0.92rem;
-  color: rgba(255, 236, 190, 0.75);
-}
-@keyframes door-pulse {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 0.95; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .golden-door-glow { animation: none; }
-  .golden-door,
-  .golden-door-art img { transition: none; }
-}
-
-/* Home: logo only */
-.site-header-logo-only .header-inner {
-  justify-content: center;
-}
-.site-header-logo-only .brand-logo {
-  width: 56px;
-  height: 56px;
-}
-.page-home .site-header {
-  border-bottom: none;
-  background: transparent;
-}
-
-/* Star Wars–style crawl — Safari-safe (no 100vw breakout) */
-body.page-home {
-  overflow-x: hidden;
-}
-.crawl-stage {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  min-height: 22rem;
-  margin: 0.5rem 0 1rem;
-  padding: 1.25rem 0 0;
-  box-sizing: border-box;
-}
-.crawl-stars {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 12% 18%, rgba(255, 236, 180, 0.9), transparent),
-    radial-gradient(1px 1px at 28% 62%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 48% 22%, rgba(255, 220, 140, 0.85), transparent),
-    radial-gradient(1px 1px at 67% 74%, rgba(255, 255, 255, 0.55), transparent),
-    radial-gradient(1px 1px at 82% 36%, rgba(255, 236, 180, 0.8), transparent),
-    radial-gradient(1px 1px at 91% 58%, rgba(255, 255, 255, 0.5), transparent),
-    radial-gradient(1.5px 1.5px at 8% 80%, rgba(255, 210, 120, 0.7), transparent),
-    radial-gradient(1px 1px at 55% 48%, rgba(255, 255, 255, 0.45), transparent);
-  opacity: 0.85;
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), transparent 92%);
-}
-.crawl-eyebrow {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  margin: 0 0 1rem;
-  padding: 0 0.75rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #c4a35a;
-}
-.crawl-perspective {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 18rem;
-  overflow: hidden;
-  perspective: 900px;
-  perspective-origin: 50% 100%;
-  transform-style: preserve-3d;
-  mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 78%, transparent 100%);
-}
-.crawl-track {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-  transform: rotateX(22deg);
-  transform-origin: 50% 100%;
-  animation: crawl-rise 28s linear infinite;
-  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 2.6rem 1.15rem 1rem;
+  background: linear-gradient(180deg, transparent, rgba(6, 5, 3, 0.92) 58%);
 }
-.crawl-copy {
-  width: 100%;
-  max-width: 28rem;
-  margin: 0 auto;
-  text-align: center;
-  color: #ffe81f;
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(1rem, 2.6vw, 1.4rem);
+.golden-door-label {
+  font-family: var(--display);
   font-weight: 600;
-  line-height: 1.45;
-  text-shadow: 0 0 18px rgba(255, 200, 40, 0.35);
-  box-sizing: border-box;
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: #f6edd8;
 }
-.crawl-copy p {
-  margin: 0 0 1rem;
-  padding: 0 0.25rem;
+.golden-door-hint {
+  font-family: var(--font);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: rgba(243, 235, 224, 0.78);
 }
-.crawl-copy strong,
-.crawl-copy b {
-  color: #fff3a0;
-  font-weight: 700;
-}
-@keyframes crawl-rise {
-  0% { transform: translateY(45%) rotateX(22deg); }
-  100% { transform: translateY(-125%) rotateX(22deg); }
-}
-@media (max-width: 640px) {
-  .crawl-stage {
-    min-height: 17rem;
-    padding-top: 0.75rem;
-  }
-  .crawl-perspective {
-    height: 15rem;
-    /* gentler tilt — aggressive rotateX clips glyphs on iOS */
-    perspective: 900px;
-  }
-  .crawl-track {
-    padding: 0 1.1rem;
-    transform: rotateX(22deg);
-    transform-origin: 50% 100%;
-  }
-  .crawl-copy {
-    max-width: 100%;
-    font-size: clamp(0.95rem, 4.2vw, 1.12rem);
-    line-height: 1.4;
-  }
-  .crawl-copy p {
-    margin: 0 0 0.85rem;
-  }
-  @keyframes crawl-rise {
-    0% { transform: translateY(40%) rotateX(22deg); }
-    100% { transform: translateY(-130%) rotateX(22deg); }
-  }
+@media (max-width: 720px) {
+  .doors { grid-template-columns: 1fr; }
+  .golden-door-label { font-size: 1.2rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .crawl-track {
-    animation: none;
-    position: relative;
-    bottom: auto;
-    padding: 0 1rem 1rem;
-    transform: none;
-  }
-  .crawl-perspective {
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-    mask-image: none;
-    perspective: none;
-  }
+  .golden-door,
+  .golden-door-art img { transition: none; }
 }
 
-
-
-
-@media (max-width: 640px) {
-  .doors {
-    gap: 0.75rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 1.5rem 0 2rem;
-    max-width: 100%;
-  }
-  .golden-door-caption {
-    padding: 0.65rem 0.55rem 0.75rem;
-  }
-  .golden-door-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-  .golden-door-hint {
-    font-size: 0.7rem;
-    line-height: 1.25;
-  }
+body.page-home {
+  overflow-x: hidden;
+}
+body.page-home main {
+  padding-top: 1.4rem;
 }

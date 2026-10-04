@@ -644,28 +644,26 @@ function renderLibraryDetail(entry, extras = "") {
 
 function renderHomeDoors() {
   return `
-    <section class="doors" aria-label="Choose your path">
+    <div class="doors">
       <a class="golden-door" href="/work/">
-        <span class="golden-door-glow" aria-hidden="true"></span>
         <span class="golden-door-art">
-          <img src="/assets/door-vault.jpg" width="1152" height="1728" alt="" />
+          <img src="/assets/gate-built.jpg" width="1728" height="1152" alt="" />
         </span>
         <span class="golden-door-caption">
-          <span class="golden-door-label">Personal Portfolio</span>
+          <span class="golden-door-label">Personal portfolio</span>
           <span class="golden-door-hint">Projects I've shipped</span>
         </span>
       </a>
       <a class="golden-door" href="/msp/">
-        <span class="golden-door-glow" aria-hidden="true"></span>
         <span class="golden-door-art">
-          <img src="/assets/door-vault.jpg" width="1152" height="1728" alt="" />
+          <img src="/assets/gate-msp.jpg" width="1728" height="1152" alt="" />
         </span>
         <span class="golden-door-caption">
-          <span class="golden-door-label">MSP Education</span>
+          <span class="golden-door-label">MSP education</span>
           <span class="golden-door-hint">Prompts, skills, short videos</span>
         </span>
       </a>
-    </section>`;
+    </div>`;
 }
 
 function loadBuilt() {
@@ -967,16 +965,14 @@ function renderHome(posts) {
   });
 
   const content = `
-    <section class="crawl-stage" aria-label="Opening crawl">
-      <div class="crawl-stars" aria-hidden="true"></div>
-      <p class="crawl-eyebrow">Clinton, Missouri · built in brass &amp; bits</p>
-      <div class="crawl-perspective">
-        <div class="crawl-track">
-          <div class="crawl-copy prose">${home.html}</div>
-        </div>
-      </div>
-    </section>
-    ${renderHomeDoors()}`;
+    <section class="gate" aria-label="Choose your path">
+      <header class="gate-lead">
+        <p class="gate-place">Clinton, Missouri</p>
+        <h1>Built in brass & bits.</h1>
+        <div class="gate-line">${home.html}</div>
+      </header>
+      ${renderHomeDoors()}
+    </section>`;
 
   return layout({
     title: SITE.name,
@@ -985,7 +981,6 @@ function renderHome(posts) {
     extraHead,
     bodyClass: "page-home",
     content,
-    logoOnly: true,
   });
 }
 
