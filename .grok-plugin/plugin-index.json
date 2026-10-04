@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "plugins": {
+    "jamesnetworks": {
+      "components": {
+        "skills": [
+          {
+            "name": "jamesnetworks",
+            "description": "How jamesnetworks.net is hosted and where the homepage work stands."
+          }
+        ]
+      }
+    }
+  }
+}

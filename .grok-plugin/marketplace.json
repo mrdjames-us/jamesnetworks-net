@@ -1,0 +1,17 @@
+{
+  "name": "James Networks",
+  "description": "Skill for the jamesnetworks.net journal: hosting, the host split, and the live gate homepage.",
+  "owner": { "name": "David James", "email": "david@jamesnetworks.net" },
+  "plugins": [
+    {
+      "name": "jamesnetworks",
+      "description": "How jamesnetworks.net is hosted and where the homepage work stands.",
+      "category": "site",
+      "version": "1.0.0",
+      "author": "David James",
+      "homepage": "https://www.jamesnetworks.net/",
+      "tags": ["jamesnetworks", "cloudflare", "journal"],
+      "source": { "type": "local", "path": "./plugins/jamesnetworks" }
+    }
+  ]
+}

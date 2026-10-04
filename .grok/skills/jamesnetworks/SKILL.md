@@ -4,11 +4,11 @@ description: >
   James Networks site (jamesnetworks.net), the Clinton journal. Use for any
   edit, preview, publish, deploy, Cloudflare, GitHub, homepage, crawl, gate,
   journal, MSP door, or "where we left the site" ask. Covers hosting, the
-  host split with Henry County Consulting, and the unpublished homepage
-  currently in the working copy.
+  host split with Henry County Consulting, and the gate homepage that is live
+  on main.
 metadata:
-  short-description: "jamesnetworks.net hosting and current homepage state"
-  user-invocable: false
+  short-description: "jamesnetworks.net hosting and the live gate homepage"
+user-invocable: true
 ---
 
 # James Networks
@@ -28,7 +28,7 @@ Read this before editing, previewing, or talking about publish.
 | Repo | https://github.com/mrdjames-us/jamesnetworks-net (`main`) |
 | Pages project | `jamesnetworks-net` (`wrangler.toml`, `pages_build_output_dir = "."`) |
 | What gets deployed | The repo root, as-is. No Vite, no npm build on Pages. |
-| Last shipped commit | `2f696ac` — "Fill MSP prompt and skill shelves from the library." (2026-09-28) |
+| Gate commit | `172fff7` — "Replace the homepage crawl with a two-door gate." (2026-10-03 CT) |
 
 **Grok Publish does not update this domain.** Publish in an App Builder chat
 ships that chat's TanStack project to Vercel and a separate `*.grok.me` URL.
@@ -80,22 +80,29 @@ node journal/build.mjs
 - Tokens already in that file: iron `#0a0c10`, brass, teal `#2ec4b6`, cream text. Display face Cinzel, body Source Serif 4, UI Inter. Stay inside that. No second visual language.
 - Voice: his, short, not a brochure. Keep "brass & bits."
 
-## Where the work is (evening of 2026-10-03, America/Chicago)
+## Where the work is (shipped 2026-10-03, America/Chicago)
 
-**Live site is still the old homepage:** Star Wars crawl, both doors the same `assets/door-vault.jpg`, header is logo-only.
+**Live site is the gate.** https://www.jamesnetworks.net/ no longer shows the crawl. Commit `172fff7` is on `main`, and Pages has deployed it.
 
-**Not on `main`.** Local working copy only, uncommitted:
-
-- Crawl removed.
-- Homepage is a gate. Place line "Clinton, Missouri", title "Built in brass & bits.", one sentence from `journal/content/pages/home.md`: "Using AI the way it was meant to be used."
+- Place line "Clinton, Missouri", title "Built in brass & bits.", one sentence from `journal/content/pages/home.md`: "Using AI the way it was meant to be used."
 - Two doors, distinct photos, captions over the image, 3:2, stacked on a phone:
   - Personal portfolio → `/work/` → `assets/gate-built.jpg` (open brass workshop)
   - MSP education → `/msp/` → `assets/gate-msp.jpg` (after-hours shop bench)
-- Header on the homepage shows the name and the primary nav again (`logoOnly` is off).
-- Files: `journal/build.mjs`, `journal/content/pages/home.md`, `journal/styles.css`, generated `journal/index.html`, plus the two jpgs.
-- `preview-server.mjs` at the repo root is also untracked. It is a local stand-in for the journal host. It is not how production is hosted.
+- Header shows the name and the primary nav (`logoOnly` is off).
+- `preview-server.mjs` at the repo root is a local stand-in for the journal host. It is not how production is hosted.
 
-A new chat that only clones `main` will get the crawl, not the gate. The gate exists only in a working copy that still has those files. If they are missing, say so. Do not reinvent the crawl.
+Do not bring the crawl back unless he asks. Do not point both doors at one image.
+
+## This skill
+
+Published with the site. In this repo it loads from `.grok/skills/jamesnetworks/` and as the `jamesnetworks` plugin in `.grok-plugin/marketplace.json`. A new Grok session adds the marketplace once, then installs it:
+
+```bash
+grok plugin marketplace add mrdjames-us/jamesnetworks-net
+grok plugin install jamesnetworks --trust
+```
+
+Inside a checkout of this repo, `/jamesnetworks` runs it directly.
 
 ## Preview
 
@@ -113,8 +120,8 @@ If the server file is gone, any static server of the repo root is wrong for `/` 
 
 ## Continue from here
 
-1. Confirm whether the gate files are in the tree. If yes, preview that. If no, you are on the shipped crawl.
+1. You are on the shipped gate. Clone `main` if you do not already have `172fff7`.
 2. Edit `journal/build.mjs`, `home.md`, and `styles.css`. Run `node journal/build.mjs`.
 3. Do not point both doors at one image. Do not bring the crawl back unless he asks.
-4. Do not push, and do not tell him Publish updated jamesnetworks.net.
-5. When he says to ship: commit the gate files and the skill, push `main`, then check https://www.jamesnetworks.net/ for the gate instead of the crawl. Pages deploys the repo root. No Wrangler command is required if the GitHub connection is already live.
+4. Do not push, and do not tell him a Grok Publish updated jamesnetworks.net.
+5. When he says to ship: commit, push `main`, then check https://www.jamesnetworks.net/. Pages deploys the repo root. No Wrangler command is required if the GitHub connection is already live.
