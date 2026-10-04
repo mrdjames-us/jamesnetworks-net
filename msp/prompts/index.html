@@ -30,11 +30,367 @@
     <header class="page-head">
       <p class="kicker">Ticket Bench</p>
       <h1>Prompts</h1>
-      <p>Reusable prompts for ticket work, client updates, and the sentences you type twenty times a week. 163 on this shelf.</p>
+      <p>Reusable prompts for ticket work, client updates, and the sentences you type twenty times a week. 213 on this shelf. The Super Magic set is built to paste into Thread while you are on a ticket. Writes wait for your confirm.</p>
     </header>
     <nav class="jump" aria-label="Categories">
-      <a href="#cat-automation">automation <span>14</span></a><a href="#cat-azure-mcp">azure-mcp <span>9</span></a><a href="#cat-backup-dr">backup-dr <span>5</span></a><a href="#cat-client-comms">client-comms <span>18</span></a><a href="#cat-documentation">documentation <span>21</span></a><a href="#cat-networking">networking <span>3</span></a><a href="#cat-onboarding">onboarding <span>3</span></a><a href="#cat-other">other <span>10</span></a><a href="#cat-reporting">reporting <span>10</span></a><a href="#cat-sales">sales <span>18</span></a><a href="#cat-security">security <span>21</span></a><a href="#cat-ticketing">ticketing <span>26</span></a><a href="#cat-vcio-qbr">vcio-qbr <span>5</span></a>
+      <a href="#cat-super-magic">super-magic <span>50</span></a><a href="#cat-automation">automation <span>14</span></a><a href="#cat-azure-mcp">azure-mcp <span>9</span></a><a href="#cat-backup-dr">backup-dr <span>5</span></a><a href="#cat-client-comms">client-comms <span>18</span></a><a href="#cat-documentation">documentation <span>21</span></a><a href="#cat-networking">networking <span>3</span></a><a href="#cat-onboarding">onboarding <span>3</span></a><a href="#cat-other">other <span>10</span></a><a href="#cat-reporting">reporting <span>10</span></a><a href="#cat-sales">sales <span>18</span></a><a href="#cat-security">security <span>21</span></a><a href="#cat-ticketing">ticketing <span>26</span></a><a href="#cat-vcio-qbr">vcio-qbr <span>5</span></a>
     </nav>
+  <section class="cat" id="cat-super-magic">
+    <h2>super-magic</h2>
+    <p class="entry-sum">Paste these into Thread Super Magic while you are on a ticket or in Inbox. Bracketed words are yours to fill. Reads are free. Every write stops for your confirm. Each one is short enough to save as a skill (under the 3,000-character cap).</p>
+    <div class="entries">
+    <article class="entry" id="sm-morning-digest">
+      <h3>Morning queue digest</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Start of shift. Read-only. Scope is your queue unless you name a board.</p>
+      <pre class="entry-prompt">You are building my morning digest. Scope to tickets assigned to me unless I name a board. Read the open tickets first. If a search cap may have truncated the list, say so before the digest. Put each ticket in exactly one bucket, in this order: needs my reply (client spoke last), SLA or priority risk, scheduled today, waiting on client or vendor and quiet 3 or more days, everything else as a count only. One line per ticket: number, client, six-word state, next action. End with the single ticket I should open first and why. Do not change any ticket.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-work-next">
+      <h3>What should I work next</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">When the queue is noisy and you need three tickets, not thirty.</p>
+      <pre class="entry-prompt">Look at my open tickets. Rank the next three I should touch. Score for: client waiting on me, SLA risk, a known fix from a similar closed ticket, and whether I can finish it in one touch. Skip tickets blocked on a vendor or an approval. For each, give ticket number, client, the ask in one line, why it is next, and the first action. Do not assign, change status, or post notes.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-easy-win">
+      <h3>Easy win from my history</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Use your own closed work as the fingerprint. Do not take the ticket until you confirm.</p>
+      <pre class="entry-prompt">Find me a ticket I can close in a short touch. Prefer unassigned tickets on the boards I work, or my queue if I say so. Use my recently closed tickets as the fingerprint for what I finish fast. Prefer a single clear issue with a known resolution pattern. Skip VIP-sensitive, negative-sentiment, security, and reopen cases. Recommend up to three with ticket number, client, why it is easy for me, and the expected path. Do not take the ticket until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-sla-risk">
+      <h3>SLA risk sweep</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Board sweep for breach and near-breach. Falls back to age plus priority if SLA fields are hidden.</p>
+      <pre class="entry-prompt">Sweep open tickets on [board] for SLA risk. Flag anything past response or resolution target, and anything within 2 hours of breach. Order by time remaining. For each: ticket number, client, priority, what the clock is waiting on, and the smallest next action. If you cannot see SLA fields, say so and use age plus priority instead. Do not change status.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-client-waiting">
+      <h3>Client waiting on us</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Find threads where the client spoke last. Draft only after you pick one.</p>
+      <pre class="entry-prompt">Find open tickets where the client sent the last message and we have not replied. Scope to [board or my queue]. Order by how long they have been waiting. One line each: number, client, hours waiting, what they asked. Draft nothing yet. After I pick one, draft a client reply grounded only in that thread.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-stale-woc">
+      <h3>Stale waiting-on-client</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Nudges for tickets quiet 3 or more days. Each send is its own confirm.</p>
+      <pre class="entry-prompt">Find tickets in a waiting-on-client status with no client reply for 3 or more days. Scope to [board]. For each, show number, client, the last thing we asked, and days silent. Draft a short nudge: restate the ask, the deadline if one was set, and what we will do if we do not hear back. Do not send until I confirm each one.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-unassigned-intake">
+      <h3>Unassigned intake sweep</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Morning pass on the intake board. Proposals only until you confirm a ticket.</p>
+      <pre class="entry-prompt">Read unassigned tickets on [intake board]. For each, classify from the body, not the subject: category, incident versus request, proposed priority. Security, multi-user, or site-down is high regardless of tone. Flag possible duplicates on the same client. Recommend a board and an owner only as a proposal. Do not assign or move until I confirm a specific ticket.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-lightest-queue">
+      <h3>Dispatch to the lightest queue</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Classify, note, move, assign. Each write stops for confirm.</p>
+      <pre class="entry-prompt">This ticket needs an owner. Read it. Name the right board, then look up teammates and recommend the person with the fewest open tickets who works that board. Post an internal note with the classification and why that owner, move the board, and assign them. Stop for my confirmation before each write.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-triage-this">
+      <h3>Triage this ticket</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">On the open ticket. Classification and the next diagnostic. No writes until confirm.</p>
+      <pre class="entry-prompt">Triage this ticket. Read the full thread, not the subject. Classify category, incident versus request, and proposed priority. Security, malware, unexpected MFA, or multi-user impact is high unless the requester explicitly de-escalates. List the facts we have, the facts we still need, and the single next diagnostic. Propose field updates. Do not write them until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-first-touch">
+      <h3>First touch package</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Classification, duplicate check, prior fix, and an acknowledgment draft in one pass.</p>
+      <pre class="entry-prompt">Do a first touch on this ticket. Read the thread. Classify it. Search open tickets for the same client and a matching device, error, or contact. Search closed tickets for a prior resolution. Draft an acknowledgment that states what we understood, what we will do next, and when we will update. Show me classification, duplicate result, prior fix, and the draft. Nothing posts until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-duplicate-check">
+      <h3>Duplicate check</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Same client, same issue. Recommend merge or a cross-note. Do not merge until confirm.</p>
+      <pre class="entry-prompt">Search open tickets for this client for the same issue. Match on contact, device, error text, or subject meaning, not an exact subject line. If you find a likely duplicate, show both summaries and recommend merge or a cross-note. If none, say none. Do not merge until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-similar-closed">
+      <h3>Similar closed tickets</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Same client first, then the same symptom elsewhere. Thin notes get called thin.</p>
+      <pre class="entry-prompt">Find resolved tickets like this one. Same client first, then other clients with the same symptom. Summarize the fix that actually closed them, and say if the notes are too thin to trust. Post an internal note with the useful prior fixes and the ticket numbers. Confirm before posting.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-recap-next">
+      <h3>Recap, next step, reply, time</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Four labeled previews. Each write is a separate confirm.</p>
+      <pre class="entry-prompt">Recap this ticket in plain text: what arrived, what we tried, who has the ball, what is unresolved. Then name the single next action and why. Draft the client reply for that action in a short desk tone. Draft a time entry for work already evidenced on the thread. Label all four. Post or log nothing until I approve each item.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-recalc-priority">
+      <h3>Recalculate priority</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Impact and urgency from the thread. A calm tone does not lower it.</p>
+      <pre class="entry-prompt">Re-read this ticket and propose a priority. Use impact and urgency from the thread: users affected, site down, deadline, security. A calm tone does not lower it. Show current priority, proposed priority, and the sentence from the thread that justifies the change. Update only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-route-board">
+      <h3>Route to the right board</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Board from the work described, not the subject line.</p>
+      <pre class="entry-prompt">Recommend the board for this ticket from the work described, not the subject. Options I care about: [Support, Network, Security, Onsite, Projects]. Give one board, the reason, and the owner you would assign. Move and assign only after I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-escalate-tried">
+      <h3>Escalate with what was tried</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">The next team should not have to reread the thread.</p>
+      <pre class="entry-prompt">This needs escalation. Recap what was tried, what failed, and what the next team needs. Post that as an internal note. Set priority to the level the impact supports. Move it to [Escalations] and assign [name]. Confirm each write.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-security-fast-path">
+      <h3>Security fast path</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Containment first. Do not email a diagnosis. Do not ask the user to forward the phish into a new thread.</p>
+      <pre class="entry-prompt">Treat this as a possible security ticket until the thread says otherwise. Read it. Look for phishing, unexpected MFA, impossible travel, malware, or a mailbox rule the user did not create. Do not ask the user to click links or forward the original message into a new thread. Draft an internal note with what to contain first. Propose priority high and the Security board. Do not email the client a diagnosis. Confirm before any write.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-outage-fanout">
+      <h3>Outage fan-out</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Show the list first. Same note and board only after you confirm they are one incident.</p>
+      <pre class="entry-prompt">Find open tickets mentioning [outage symptom or system]. Show the list first. If I confirm they are the same incident, post the same internal note on each with the current status and the parent ticket number, and move them to [Outage board]. Do not close them. Confirm the note text before you apply it.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-clean-title">
+      <h3>Clean title and category</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Symptom plus system. Show old and new before any field write.</p>
+      <pre class="entry-prompt">Rewrite this ticket title as symptom plus system, not &quot;help&quot; or &quot;re: issue&quot;. Propose category, subtype, and item from the body. Show old and new. Apply only the fields I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-ack-draft">
+      <h3>Client acknowledgment</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">What we understood, the next step, the next update. No unverified fix.</p>
+      <pre class="entry-prompt">Draft a client reply for this ticket. Short. Say what we understood, the next step, and when we will update. No jargon. No promise of a fix we have not verified. Show it to me. Post it only after I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-waiting-client">
+      <h3>Waiting on the client</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Name the exact ask and the date we re-ask or close.</p>
+      <pre class="entry-prompt">Draft a client note that states the exact thing we need, why we are paused, and the date we will close or re-ask if we do not hear back. Set status to waiting on client only after I confirm the note.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-nontechnical-status">
+      <h3>Non-technical status update</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Their words, our next step, their next step. No blame.</p>
+      <pre class="entry-prompt">Rewrite the last internal findings as a status update for a non-technical contact. No hostnames unless they named them. No blame. What is broken in their words, what we are doing, what they should do, when we will update. Show the draft. Send only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-after-hours">
+      <h3>After-hours expectation</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Receipt, coverage window, and what counts as an emergency. No fake on-call promise.</p>
+      <pre class="entry-prompt">The client wrote after hours. Draft a reply that acknowledges receipt, states our coverage window, and names the condition that makes this an emergency. Do not promise a person who is not on call. Show the draft before sending.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-hot-tone">
+      <h3>Hot-tone reply</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Own a delay the thread shows. Do not argue. Do not discount.</p>
+      <pre class="entry-prompt">The tone on this ticket is hot. Draft a reply that owns the delay if the thread shows one, states the current fact, and gives the next time we will update. Do not argue. Do not discount. Show me the draft and a one-line internal note on what not to say. Send nothing until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-change-approval">
+      <h3>Change approval request</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">What changes, the window, the rollback, and the ask. Show it before it sends.</p>
+      <pre class="entry-prompt">Send the client an approval request for [change]. Include what will change, the window, the rollback, and what we need them to approve. Use the approval action if the workspace has it. Show the request before it sends.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-billable-check">
+      <h3>Billable versus included</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Thread evidence only. Do not invoice. Do not mark billable until confirm.</p>
+      <pre class="entry-prompt">Read this ticket against what we can see about the agreement. Say whether the work looks included, billable, or unclear. Quote the thread evidence. Draft an internal note and, if billable, a client approval line. Do not invoice. Do not mark billable until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-schedule-remote">
+      <h3>Schedule a remote session</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Calendar write and client note are separate confirms. TimeZest link if you ask for it.</p>
+      <pre class="entry-prompt">Schedule this ticket on my calendar for [day and window]. Draft a client note with the time and what they need open. If TimeZest is connected, offer a scheduling link instead of a fixed slot when I say so. Confirm before the calendar write and before the client note.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-onsite-window">
+      <h3>Onsite window</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Address, access, who must be there, and what they need ready.</p>
+      <pre class="entry-prompt">This needs a site visit. Read the thread for address, access, and who must be there. Draft the onsite note: window, what we will do, what they must have ready. Schedule it if I give a window. Confirm before posting or booking.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-vendor-chase">
+      <h3>Vendor chase</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">What we asked, when, and the case number. Nothing sends until confirm.</p>
+      <pre class="entry-prompt">Find what we asked the vendor and when. Draft the chase note with ticket or case number, the ask, and the deadline. Post it internally and, if a vendor contact exists, draft the outbound note. Send nothing until I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-handoff">
+      <h3>Handoff note</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">A tech should be able to act without rereading the thread.</p>
+      <pre class="entry-prompt">I am handing this ticket to [name]. Write an internal note a tech can act on without rereading the thread: symptom, environment, tried and failed, next step, client expectation, and any access constraint. Assign them and set In Progress only after I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-time-from-thread">
+      <h3>Time entry from the thread</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Minutes and a PSA-safe summary. No invented steps.</p>
+      <pre class="entry-prompt">Log time for work the thread already shows. Propose minutes, a plain-text PSA-safe summary, and the work role if you can see one. Do not invent steps. If the thread does not show the work, say so and do not log. Confirm before the time entry.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-missing-time">
+      <h3>Missing time audit</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Notes and status changes versus time entries. Estimates stay marked until confirm.</p>
+      <pre class="entry-prompt">On this ticket, compare notes and status changes to time entries. List work that looks done but has no time. Propose an entry for each, marked estimate. Do not log until I confirm each one.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-closeout">
+      <h3>Closeout package</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Fix summary, client note, time entry, then status. Only the items you confirm.</p>
+      <pre class="entry-prompt">Prepare closeout. Summarize the fix in plain text. Draft the client note with what changed and what to do if it returns. Draft the resolution time entry. List any verification still missing. Log, send, and set Closed only for the items I confirm, in that order.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-qa-before-close">
+      <h3>QA before close</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Pass or fail from the thread. A fail does not close.</p>
+      <pre class="entry-prompt">Grade this ticket before close. Pass or fail each item: symptom stated, steps tried written, resolution written, client told, time logged, no open question from the client. Any fail: do not close. Post an internal note with the failed items and the one action that would pass. Confirm before the note.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-reopen">
+      <h3>Reopen with reason</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Status back, plus why it came back and the next check.</p>
+      <pre class="entry-prompt">Reopen this ticket. Set it back to the working status. Post an internal note with why it came back, what the client reported, and the next check. Confirm both writes.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-csat-checkin">
+      <h3>CSAT or stay-fixed check-in</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Do not send a survey twice. Two lines if there is no survey.</p>
+      <pre class="entry-prompt">If this ticket is closed and a survey is available, say so. If not, draft a two-line check-in asking if the issue stayed fixed. Do not send a survey twice. Show the draft before sending.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-resolution-kb">
+      <h3>Resolution to a KB outline</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Strip names and hostnames. Outline first. Do not publish unless asked.</p>
+      <pre class="entry-prompt">Turn the resolution on this ticket into a KB outline: symptom, environment, cause, fix, how to verify, what not to do. Strip client names, emails, and hostnames. Show the outline. If I confirm, post an internal note that the outline is ready for the KB. Do not publish to the KB unless I explicitly say to.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-docs-lookup">
+      <h3>Docs lookup for this ticket</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">IT Glue or Hudu, then the KB. Post only what you found and what was missing.</p>
+      <pre class="entry-prompt">Search IT Glue or Hudu, then the KB, for this client&#x27;s setup related to the issue on this ticket. Summarize the useful facts and the doc name. Post an internal note with what you found and what was missing. Confirm before posting.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-error-lookup">
+      <h3>Error text lookup</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Web plus closed tickets. Safer first check. No changes.</p>
+      <pre class="entry-prompt">Take the error text on this ticket. Search the web and our closed tickets. Give the likely cause, the safer first check, and what would make it a vendor case. Do not run changes. Post the findings as an internal note only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-password-safe">
+      <h3>Password or MFA reset, safe path</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Match the contact first. No temporary password in a client note.</p>
+      <pre class="entry-prompt">This looks like a password or MFA reset. Verify the contact against the client record before any reset steps. List who requested it and whether they match a known admin. Draft the identity-check questions. Do not reset anything. Do not put a temporary password in a client-facing note.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-new-user">
+      <h3>New user request</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Extract what was named. List what is missing. Create no accounts.</p>
+      <pre class="entry-prompt">Treat this as a new-user request. Extract name, start date, title, manager, mailbox needs, and groups named in the thread. List what is missing. Draft the internal build checklist and a client reply confirming what we will create. Create no accounts. Confirm before posting.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-offboarding">
+      <h3>Offboarding request</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Person, last day, forwarding, and who approved it. Disable nothing.</p>
+      <pre class="entry-prompt">Treat this as an offboarding. Extract the person, last day, forwarding, and who approved it. Flag if approval is missing. Draft the disable checklist: sign-in, mailbox, VPN, admin roles, devices. Do not disable anything. Post the checklist internally only after I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-printer-workup">
+      <h3>Printer ticket workup</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">One user or the queue. Docs and similar closes. First two checks.</p>
+      <pre class="entry-prompt">Work up this printer ticket. Identify site, printer name, and whether it is one user or the queue. Search docs and similar closed tickets. Propose the first two checks. Draft the client questions we still need. Post the internal workup only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-vpn-workup">
+      <h3>VPN ticket workup</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Client docs, then similar closes. Network board only if you confirm.</p>
+      <pre class="entry-prompt">Work up this VPN ticket. Search docs for this client&#x27;s VPN, then similar closed tickets. Note client, gateway, and error if present. Draft the internal workup and a client reply with the next test. Move to the Network board only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-mail-flow">
+      <h3>Mail flow ticket</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Send versus receive, one mailbox versus the domain. Do not blame filtering you have not checked.</p>
+      <pre class="entry-prompt">Work up this mail ticket. Separate sending versus receiving, one mailbox versus the domain, and whether a recent change is mentioned. Search docs for MX and mail security. Draft the checks in order and a client update that does not blame filtering we have not verified. Confirm before any note.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-backup-failure">
+      <h3>Backup failure workup</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Job, last success, error. Do not say the backups are healthy.</p>
+      <pre class="entry-prompt">Work up this backup failure. Name the job, the last success if the thread has it, and the error. Search similar closed tickets. Draft an internal note with the first check and whether the client needs to know tonight. Do not say backups are healthy. Confirm before posting.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-patch-failure">
+      <h3>Patch failure workup</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Device, KB, error. Online check only if NinjaOne is connected. Reboot nothing unless confirmed.</p>
+      <pre class="entry-prompt">Work up this patch failure. Device, KB or product, and error from the thread. Search similar closed tickets and, if NinjaOne is connected, whether the device is online. Propose maintenance window versus retry. Draft the internal note. Reboot nothing unless I confirm a device action.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-recurring-pattern">
+      <h3>Recurring issue pattern</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">90 days, same client. A problem ticket only if you confirm.</p>
+      <pre class="entry-prompt">Look at this client&#x27;s closed and open tickets for the last 90 days. Cluster repeats by symptom. Name the pattern, the ticket numbers, and whether it deserves a problem ticket. Draft that problem ticket. Create it only if I confirm.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-client-health">
+      <h3>Client health from the queue</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">A paragraph a CSM can read, plus the three tickets that need a human today.</p>
+      <pre class="entry-prompt">For [client], summarize open tickets: count, oldest, anything security or priority high, anything waiting on us. One paragraph a CSM can read. Then list the three tickets that most need a human today. Do not contact the client.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    <article class="entry" id="sm-end-of-day">
+      <h3>End of day queue close</h3>
+      <p class="entry-cat">super-magic</p>
+      <p class="entry-sum">Client next step, time logged, status matches the thread. Apply nothing until ticket by ticket.</p>
+      <pre class="entry-prompt">Review tickets I touched today. For each, say whether the client has the next step, whether time is logged, and whether status matches the thread. Propose the status and note fixes. Apply none until I confirm ticket by ticket.</pre>
+      <p class="entry-src"><a href="https://docs.getthread.com/super-magic/meet-super-magic-your-ai-assistant-in-the-inbox" rel="noopener noreferrer">Thread Super Magic docs</a> · written for the Ticket Bench</p>
+    </article>
+    </div>
+  </section>
   <section class="cat" id="cat-automation">
     <h2>automation</h2>
     <div class="entries">
