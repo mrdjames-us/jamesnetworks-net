@@ -6,15 +6,18 @@
   const BED = 260;
   const MAX_COLORS = 4;
   const SHELF = [
-    { name: "Yellow", hex: "#E8B10C" },
-    { name: "Pink", hex: "#E84A7F" },
-    { name: "Red", hex: "#D62222" },
-    { name: "Black", hex: "#141414" },
-    { name: "Blue", hex: "#1E4D8C" },
-    { name: "Green", hex: "#12643C" },
-    { name: "Purple", hex: "#4A1C6B" },
-    { name: "White", hex: "#FFFFFF" },
-    { name: "Gray", hex: "#8E8A84" }
+    { name: "Pine", hex: "#D9B57A" },
+    { name: "Honey Oak", hex: "#B9803F" },
+    { name: "Cherry", hex: "#8A3E26" },
+    { name: "Walnut", hex: "#5A3A24" },
+    { name: "Barn Red", hex: "#7D2620" },
+    { name: "Milk Blue", hex: "#4D6B7A" },
+    { name: "Sage", hex: "#8C9772" },
+    { name: "Mustard", hex: "#C49A3A" },
+    { name: "Cream", hex: "#EDE3CC" },
+    { name: "Linen", hex: "#CFC2A6" },
+    { name: "Iron Black", hex: "#221D1A" },
+    { name: "Pewter", hex: "#9A9C9A" }
   ];
   const SHELF_HEX = Object.fromEntries(SHELF.map((item) => [item.name, item.hex]));
 
@@ -1348,25 +1351,25 @@
   }
 
   const PRESETS = [
-    { id: "side-chair", kind: "chair", name: "Side chair", room: "Dining", w: 18, d: 16, h: 36, colors: chips([["frame", "Gray"], ["cushion", "Yellow"]]), partColors: { Frame: "frame", Cushion: "cushion" } },
-    { id: "dining-table", kind: "table", name: "Dining table", room: "Dining", w: 60, d: 36, h: 30, shelf: false, colors: chips([["top", "Gray"], ["base", "Black"]]), partColors: { Top: "top", Base: "base" } },
-    { id: "sideboard", kind: "drawers", name: "Sideboard", room: "Dining", w: 54, d: 18, h: 34, drawers: 3, colors: chips([["case", "Red"], ["fronts", "Gray"], ["knobs", "Black"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
-    { id: "armchair", kind: "sofa", name: "Armchair", room: "Parlor", w: 32, d: 34, h: 36, colors: chips([["body", "Red"], ["cushions", "White"], ["legs", "Black"]]), partColors: { Body: "body", Cushions: "cushions", Legs: "legs" } },
-    { id: "sofa", kind: "sofa", name: "Sofa", room: "Parlor", w: 84, d: 36, h: 34, colors: chips([["body", "Blue"], ["cushions", "White"], ["legs", "Black"]]), partColors: { Body: "body", Cushions: "cushions", Legs: "legs" } },
-    { id: "ottoman", kind: "ottoman", name: "Ottoman", room: "Parlor", w: 24, d: 18, h: 17, colors: chips([["body", "Blue"], ["cushion", "White"], ["legs", "Gray"]]), partColors: { Body: "body", Cushion: "cushion", Legs: "legs" } },
-    { id: "coffee-table", kind: "table", name: "Coffee table", room: "Parlor", w: 48, d: 24, h: 17, shelf: true, colors: chips([["top", "Gray"], ["base", "Blue"], ["shelf", "White"]]), partColors: { Top: "top", Base: "base", Shelf: "shelf" } },
-    { id: "end-table", kind: "table", name: "End table", room: "Parlor", w: 18, d: 18, h: 24, shelf: true, colors: chips([["top", "Gray"], ["base", "Red"], ["shelf", "Black"]]), partColors: { Top: "top", Base: "base", Shelf: "shelf" } },
-    { id: "bookcase", kind: "bookcase", name: "Bookcase", room: "Parlor", w: 36, d: 12, h: 72, colors: chips([["case", "Blue"], ["shelves", "Gray"]]), partColors: { Case: "case", Shelves: "shelves" } },
-    { id: "floor-lamp", kind: "lamp", name: "Floor lamp", room: "Parlor", w: 12, d: 12, h: 58, colors: chips([["base", "Gray"], ["shade", "White"]]), partColors: { Base: "base", Shade: "shade" } },
-    { id: "bed", kind: "bed", name: "Bed", room: "Bedroom", w: 54, d: 75, h: 48, colors: chips([["frame", "Gray"], ["mattress", "Red"], ["pillows", "White"]]), partColors: { Frame: "frame", Mattress: "mattress", Pillows: "pillows" } },
-    { id: "nightstand", kind: "drawers", name: "Nightstand", room: "Bedroom", w: 18, d: 16, h: 26, drawers: 2, colors: chips([["case", "White"], ["fronts", "Gray"], ["knobs", "Black"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
-    { id: "dresser", kind: "drawers", name: "Dresser", room: "Bedroom", w: 48, d: 20, h: 34, drawers: 3, colors: chips([["case", "Blue"], ["fronts", "Gray"], ["knobs", "Black"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
-    { id: "wardrobe", kind: "wardrobe", name: "Wardrobe", room: "Bedroom", w: 42, d: 22, h: 72, colors: chips([["case", "Red"], ["doors", "Gray"], ["knobs", "Black"]]), partColors: { Case: "case", Doors: "doors", Knobs: "knobs" } },
-    { id: "bench", kind: "bench", name: "Bench", room: "Bedroom", w: 48, d: 16, h: 18, colors: chips([["frame", "Gray"], ["pad", "Red"]]), partColors: { Frame: "frame", Pad: "pad" } },
-    { id: "vanity", kind: "vanity", name: "Vanity", room: "Bedroom", w: 36, d: 18, h: 56, colors: chips([["case", "White"], ["drawer", "Gray"], ["knob", "Black"], ["mirror", "Blue"]]), partColors: { Case: "case", Drawer: "drawer", Knob: "knob", Mirror: "mirror" } },
-    { id: "crib", kind: "crib", name: "Crib", room: "Bedroom", w: 30, d: 54, h: 40, colors: chips([["frame", "White"], ["mattress", "Blue"]]), partColors: { Frame: "frame", Mattress: "mattress" } },
-    { id: "kitchen-table", kind: "table", name: "Kitchen table", room: "Kitchen", w: 42, d: 28, h: 30, shelf: false, colors: chips([["top", "Gray"], ["base", "Blue"]]), partColors: { Top: "top", Base: "base" } },
-    { id: "stool", kind: "stool", name: "Stool", room: "Kitchen", w: 14, d: 14, h: 24, colors: chips([["seat", "Gray"], ["pad", "Red"]]), partColors: { Seat: "seat", Pad: "pad" } }
+    { id: "side-chair", kind: "chair", name: "Side chair", room: "Dining", w: 18, d: 16, h: 36, colors: chips([["frame", "Honey Oak"], ["cushion", "Barn Red"]]), partColors: { Frame: "frame", Cushion: "cushion" } },
+    { id: "dining-table", kind: "table", name: "Dining table", room: "Dining", w: 60, d: 36, h: 30, shelf: false, colors: chips([["top", "Walnut"], ["base", "Cream"]]), partColors: { Top: "top", Base: "base" } },
+    { id: "sideboard", kind: "drawers", name: "Sideboard", room: "Dining", w: 54, d: 18, h: 34, drawers: 3, colors: chips([["case", "Milk Blue"], ["fronts", "Pine"], ["knobs", "Walnut"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
+    { id: "armchair", kind: "sofa", name: "Armchair", room: "Parlor", w: 32, d: 34, h: 36, colors: chips([["body", "Barn Red"], ["cushions", "Linen"], ["legs", "Walnut"]]), partColors: { Body: "body", Cushions: "cushions", Legs: "legs" } },
+    { id: "sofa", kind: "sofa", name: "Sofa", room: "Parlor", w: 84, d: 36, h: 34, colors: chips([["body", "Sage"], ["cushions", "Linen"], ["legs", "Walnut"]]), partColors: { Body: "body", Cushions: "cushions", Legs: "legs" } },
+    { id: "ottoman", kind: "ottoman", name: "Ottoman", room: "Parlor", w: 24, d: 18, h: 17, colors: chips([["body", "Sage"], ["cushion", "Linen"], ["legs", "Walnut"]]), partColors: { Body: "body", Cushion: "cushion", Legs: "legs" } },
+    { id: "coffee-table", kind: "table", name: "Coffee table", room: "Parlor", w: 48, d: 24, h: 17, shelf: true, colors: chips([["top", "Pine"], ["base", "Barn Red"], ["shelf", "Honey Oak"]]), partColors: { Top: "top", Base: "base", Shelf: "shelf" } },
+    { id: "end-table", kind: "table", name: "End table", room: "Parlor", w: 18, d: 18, h: 24, shelf: true, colors: chips([["top", "Walnut"], ["base", "Mustard"], ["shelf", "Pine"]]), partColors: { Top: "top", Base: "base", Shelf: "shelf" } },
+    { id: "bookcase", kind: "bookcase", name: "Bookcase", room: "Parlor", w: 36, d: 12, h: 72, colors: chips([["case", "Barn Red"], ["shelves", "Pine"]]), partColors: { Case: "case", Shelves: "shelves" } },
+    { id: "floor-lamp", kind: "lamp", name: "Floor lamp", room: "Parlor", w: 12, d: 12, h: 58, colors: chips([["base", "Walnut"], ["shade", "Linen"]]), partColors: { Base: "base", Shade: "shade" } },
+    { id: "bed", kind: "bed", name: "Bed", room: "Bedroom", w: 54, d: 75, h: 48, colors: chips([["frame", "Cherry"], ["mattress", "Milk Blue"], ["pillows", "Cream"]]), partColors: { Frame: "frame", Mattress: "mattress", Pillows: "pillows" } },
+    { id: "nightstand", kind: "drawers", name: "Nightstand", room: "Bedroom", w: 18, d: 16, h: 26, drawers: 2, colors: chips([["case", "Cherry"], ["fronts", "Honey Oak"], ["knobs", "Walnut"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
+    { id: "dresser", kind: "drawers", name: "Dresser", room: "Bedroom", w: 48, d: 20, h: 34, drawers: 3, colors: chips([["case", "Cherry"], ["fronts", "Honey Oak"], ["knobs", "Walnut"]]), partColors: { Case: "case", Fronts: "fronts", Knobs: "knobs" } },
+    { id: "wardrobe", kind: "wardrobe", name: "Wardrobe", room: "Bedroom", w: 42, d: 22, h: 72, colors: chips([["case", "Barn Red"], ["doors", "Pine"], ["knobs", "Walnut"]]), partColors: { Case: "case", Doors: "doors", Knobs: "knobs" } },
+    { id: "bench", kind: "bench", name: "Bench", room: "Bedroom", w: 48, d: 16, h: 18, colors: chips([["frame", "Honey Oak"], ["pad", "Barn Red"]]), partColors: { Frame: "frame", Pad: "pad" } },
+    { id: "vanity", kind: "vanity", name: "Vanity", room: "Bedroom", w: 36, d: 18, h: 56, colors: chips([["case", "Cream"], ["drawer", "Honey Oak"], ["knob", "Walnut"], ["mirror", "Pewter"]]), partColors: { Case: "case", Drawer: "drawer", Knob: "knob", Mirror: "mirror" } },
+    { id: "crib", kind: "crib", name: "Crib", room: "Bedroom", w: 30, d: 54, h: 40, colors: chips([["frame", "Cream"], ["mattress", "Milk Blue"]]), partColors: { Frame: "frame", Mattress: "mattress" } },
+    { id: "kitchen-table", kind: "table", name: "Kitchen table", room: "Kitchen", w: 42, d: 28, h: 30, shelf: false, colors: chips([["top", "Pine"], ["base", "Milk Blue"]]), partColors: { Top: "top", Base: "base" } },
+    { id: "stool", kind: "stool", name: "Stool", room: "Kitchen", w: 14, d: 14, h: 24, colors: chips([["seat", "Honey Oak"], ["pad", "Barn Red"]]), partColors: { Seat: "seat", Pad: "pad" } }
   ];
 
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
