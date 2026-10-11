@@ -53,7 +53,7 @@ slash. These stay on the **repo root**, not under `journal/`:
 
 - `/msp` and `/msp/**` — the playbook ("THE David James — AI for MSPs Playbook"), not `journal/msp/`
 - `/assets/**`
-- lab apps: `/pool`, `/cipherladder`, `/netnudge`, `/flowscout`, `/mocks`
+- lab apps: `/pool`, `/cipherladder`, `/netnudge`, `/flowscout`, `/dollhouse`, `/mocks`
 - `/api/**`
 
 `/rss.xml`, `/sitemap.xml`, `/robots.txt`, `/favicon.ico` map into `journal/`.

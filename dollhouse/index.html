@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doll House Furniture 3D Builder</title>
+<style>
+  :root {
+    --paper: #f3ecdf;
+    --card: #fbf7f0;
+    --ink: #241c16;
+    --muted: #7c7064;
+    --line: #e2d5c4;
+    --brass: #8d6840;
+    --warn: #8c3d2f;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.45 "Segoe UI", sans-serif;
+    min-height: 100vh;
+  }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: end;
+    padding: 28px 32px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mark { font-family: Palatino, "Palatino Linotype", Georgia, serif; }
+  .kicker {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--brass);
+    margin: 0 0 4px;
+  }
+  .kicker a { color: inherit; text-decoration: none; }
+  h1 { font-weight: 500; font-size: 32px; margin: 0; letter-spacing: -0.03em; max-width: 22ch; }
+  .lede { margin: 6px 0 0; color: var(--muted); max-width: 46ch; }
+  header .actions { display: flex; gap: 10px; align-items: center; }
+  input[type="search"], input[type="text"], input[type="number"], select {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+  input[type="search"] { width: 220px; }
+  .text-btn, .solid-btn, .ghost-btn {
+    border-radius: 4px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    background: transparent;
+  }
+  .solid-btn { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .ghost-btn:hover, .text-btn:hover { border-color: var(--brass); }
+  nav {
+    display: flex;
+    gap: 18px;
+    padding: 14px 32px 0;
+  }
+  nav button {
+    background: none;
+    border: 0;
+    padding: 6px 0 8px;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+  }
+  nav button.on { color: var(--ink); border-color: var(--brass); }
+  #list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 18px 32px 48px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    text-align: left;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .card canvas { width: 100%; height: 170px; display: block; }
+  .card .meta { padding: 10px 12px 12px; }
+  .card h2 {
+    font-family: Palatino, Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+  }
+  .card p, .dims, .quiet { color: var(--muted); margin: 2px 0 0; font-size: 13px; }
+  .dots { display: flex; gap: 6px; margin-top: 8px; }
+  .dots i, .swatch-btn {
+    width: 14px; height: 14px; border-radius: 2px;
+    border: 1px solid rgba(36, 28, 22, 0.25);
+    display: inline-block;
+  }
+  #detail, #composer { padding: 8px 32px 64px; }
+  .back { background: none; border: 0; color: var(--brass); padding: 12px 0; }
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+    gap: 28px;
+    align-items: start;
+  }
+  .stage {
+    background: var(--card);
+    border: 1px solid var(--line);
+    position: sticky;
+    top: 12px;
+  }
+  .stage canvas { width: 100%; height: min(68vh, 640px); display: block; touch-action: none; }
+  .stage .hint { padding: 8px 12px 12px; color: var(--muted); font-size: 13px; }
+  .title-input {
+    font-family: Palatino, Georgia, serif;
+    font-size: 36px;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+  .size-row { display: flex; gap: 8px; margin: 12px 0; }
+  .size-row label { flex: 1; font-size: 12px; color: var(--muted); display: flex; flex-direction: column; gap: 4px; }
+  .size-row input { width: 100%; }
+  h3 {
+    font-family: Palatino, Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    margin: 22px 0 8px;
+  }
+  .menu { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  input[type="color"] {
+    width: 42px; height: 42px; padding: 0; border: 1px solid var(--line);
+    background: none; cursor: pointer;
+  }
+  .icon-btn { border: 0; background: none; color: var(--muted); padding: 6px; }
+  .shelf { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+  .swatch-btn {
+    width: 28px; height: 28px; border-radius: 3px; padding: 0;
+    border: 1px solid var(--line);
+  }
+  button:disabled, .solid-btn.disabled { opacity: 0.35; cursor: not-allowed; }
+  .part {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+  }
+  .downloads { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .warn { color: var(--warn); }
+  .note {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .note p { margin: 0 0 8px; }
+  .status { min-height: 1.2em; color: var(--brass); font-size: 13px; }
+  #composer .panel, .detail-side {
+    max-width: 640px;
+  }
+  .composer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .composer-grid label, .full { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  .full { grid-column: 1 / -1; }
+  @media (max-width: 800px) {
+    header, nav, #list, #detail, #composer { padding-left: 16px; padding-right: 16px; }
+    header { flex-direction: column; align-items: stretch; }
+    input[type="search"] { width: 100%; }
+    .split { grid-template-columns: 1fr; }
+    .stage { position: static; }
+    h1 { font-size: 32px; }
+    .title-input { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">
+    <p class="kicker"><a href="/">James Networks</a> · Scale 1:12 · Creality K2</p>
+    <h1>Doll House Furniture 3D Builder</h1>
+    <p class="lede">Dollhouse furniture for the printer. Every piece has its own color menu. A print holds four colors, and the files are already sized for a 260 mm bed. Menus stay in this browser.</p>
+  </div>
+  <div class="actions">
+    <input id="search" type="search" placeholder="Find a piece" aria-label="Find a piece">
+    <button class="solid-btn" id="new-piece" type="button">New piece</button>
+  </div>
+</header>
+<nav id="rooms"></nav>
+<div id="list"></div>
+<div id="detail" hidden></div>
+<div id="composer" hidden></div>
+<script src="engine.js"></script>
+<script>
+const STORE_KEY = "dollhouse-furniture-v1";
+const rooms = ["All", "Parlor", "Dining", "Bedroom", "Kitchen"];
+let catalog = null;
+let room = "All";
+let openId = null;
+let yaw = -0.65;
+let saveTimer = null;
+
+const $ = (id) => document.getElementById(id);
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+function hexOf(piece, colorId) {
+  const color = piece.colors.find((c) => c.id === colorId);
+  return color ? color.hex : "#8E8A84";
+}
+
+function spools(piece) {
+  return new Set(piece.parts.map((p) => p.colorId)).size;
+}
+
+function readState() {
+  try {
+    const data = JSON.parse(localStorage.getItem(STORE_KEY) || "");
+    if (!data || typeof data !== "object") throw new Error("empty");
+    data.overrides = data.overrides || {};
+    data.custom = data.custom || [];
+    return data;
+  } catch {
+    return { version: 1, overrides: {}, custom: [] };
+  }
+}
+
+function writeState(state) {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+}
+
+function specFromPiece(piece) {
+  const known = new Set(piece.colors.map((color) => color.id));
+  const partColors = {};
+  for (const [name, cid] of Object.entries(piece.partColorMemory || {})) {
+    if (known.has(cid)) partColors[name] = cid;
+  }
+  for (const part of piece.parts) partColors[part.name] = part.colorId;
+  return {
+    id: piece.id,
+    kind: piece.kind,
+    name: piece.name,
+    room: piece.room,
+    custom: !!piece.custom,
+    w: piece.real.w,
+    d: piece.real.d,
+    h: piece.real.h,
+    colors: piece.colors,
+    partColors,
+    ...(piece.extra || {})
+  };
+}
+
+function saveFile(bytes, filename, type) {
+  const blob = new Blob([bytes], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+async function downloadPiece(kind, partName) {
+  const piece = current();
+  if (!piece) return;
+  const status = $("status");
+  if (status) status.textContent = "Packing the file…";
+  try {
+    const spec = specFromPiece(piece);
+    if (kind === "3mf") {
+      saveFile(await Dollhouse.build3mf(spec), Dollhouse.slug(spec.name) + ".3mf", "model/3mf");
+    } else if (kind === "zip") {
+      saveFile(await Dollhouse.buildZip(spec), Dollhouse.slug(spec.name) + "-plates.zip", "application/zip");
+    } else {
+      const file = Dollhouse.buildStl(spec, partName);
+      if (!file) return;
+      saveFile(file.data, file.name, "model/stl");
+    }
+    if (status) status.textContent = "Download started.";
+  } catch (err) {
+    if (status) status.textContent = err.message || "The file did not build.";
+  }
+}
+
+function load() {
+  catalog = Dollhouse.catalog(readState());
+  renderRooms();
+  showList();
+}
+
+function renderRooms() {
+  $("rooms").innerHTML = rooms.map((name) =>
+    `<button type="button" class="${name === room ? "on" : ""}" data-room="${esc(name)}">${esc(name)}</button>`
+  ).join("");
+}
+
+function pieces() {
+  const q = $("search").value.trim().toLowerCase();
+  return catalog.pieces.filter((piece) => {
+    if (piece.error) return false;
+    if (room !== "All" && piece.room !== room) return false;
+    if (!q) return true;
+    return (piece.name + " " + piece.room + " " + piece.kind).toLowerCase().includes(q);
+  });
+}
+
+function showList() {
+  openId = null;
+  window.scrollTo(0, 0);
+  $("detail").hidden = true;
+  $("composer").hidden = true;
+  $("list").hidden = false;
+  $("rooms").hidden = false;
+  const rows = pieces();
+  $("list").innerHTML = rows.map((piece) => `
+    <button class="card" type="button" data-id="${esc(piece.id)}">
+      <canvas data-thumb="${esc(piece.id)}" width="480" height="340"></canvas>
+      <div class="meta">
+        <h2>${esc(piece.name)}</h2>
+        <p>${esc(piece.room)} · ${piece.model.w} × ${piece.model.d} × ${piece.model.h} mm</p>
+        <p>${piece.real.w} × ${piece.real.d} × ${piece.real.h} in real</p>
+        <span class="dots">${piece.colors.map((c) => `<i style="background:${esc(c.hex)}" title="${esc(c.name)}"></i>`).join("")}</span>
+      </div>
+    </button>`).join("") || `<p class="quiet">Nothing under that name.</p>`;
+  requestAnimationFrame(() => {
+    for (const canvas of document.querySelectorAll("canvas[data-thumb]")) {
+      const piece = catalog.pieces.find((p) => p.id === canvas.dataset.thumb);
+      paint(canvas, piece, -0.65);
+    }
+  });
+}
+
+function showDetail(id) {
+  const piece = catalog.pieces.find((p) => p.id === id);
+  if (!piece) return;
+  openId = id;
+  yaw = -0.65;
+  window.scrollTo(0, 0);
+  $("list").hidden = true;
+  $("rooms").hidden = true;
+  $("composer").hidden = true;
+  $("detail").hidden = false;
+  const spoolCount = spools(piece);
+  $("detail").innerHTML = `
+    <button class="back" type="button" id="back">← The shop</button>
+    <div class="split">
+      <div class="stage">
+        <canvas id="stage"></canvas>
+        <div class="hint">Drag to turn it. Real ${piece.real.w} × ${piece.real.d} × ${piece.real.h} in, prints at <span id="mm">${piece.model.w} × ${piece.model.d} × ${piece.model.h}</span> mm.</div>
+      </div>
+      <div class="detail-side">
+        <input class="title-input" id="piece-name" aria-label="Piece name" value="${esc(piece.name)}">
+        <p class="quiet">${esc(piece.room)}${piece.custom ? " · made here" : ""}</p>
+        <div class="size-row">
+          <label>Width, real in<input id="dim-w" type="number" min="8" max="120" step="0.5" value="${piece.real.w}"></label>
+          <label>Depth<input id="dim-d" type="number" min="8" max="120" step="0.5" value="${piece.real.d}"></label>
+          <label>Height<input id="dim-h" type="number" min="8" max="120" step="0.5" value="${piece.real.h}"></label>
+        </div>
+        <p id="fit" class="${piece.fits ? "quiet" : "warn"}">${fitText(piece)}</p>
+        <h3>Color menu</h3>
+        <p class="quiet" id="color-cap"></p>
+        <div class="menu" id="menu"></div>
+        <div class="shelf" id="shelf"></div>
+        <h3>Parts</h3>
+        <div id="parts"></div>
+        <div class="downloads">
+          <button class="solid-btn" id="dl-3mf" type="button">3MF for the CFS</button>
+          <button class="ghost-btn" id="dl-zip" type="button">STL plates</button>
+          ${piece.defaults ? `<button class="text-btn" type="button" id="reset">Reset this piece</button>` : ""}
+          ${piece.custom ? `<button class="text-btn" type="button" id="delete">Delete</button>` : ""}
+        </div>
+        <p class="status" id="status"></p>
+        <div class="note">
+          <p>${esc(piece.blurb)}</p>
+          <p id="spool-note" class="${spoolCount > MAX_COLORS ? "warn" : ""}">${spoolNote(piece)}</p>
+          <p>The 3MF opens in Creality Print as one assembled object, each part pinned to a spool. The STL zip lays each color on its own plate so a single-spool print skips the purge. Leave scale at 100%. The K2 bed is 260 mm, not 350. Gray is the stand-in for wood.</p>
+        </div>
+      </div>
+    </div>`;
+  drawMenu(piece);
+  const canvas = $("stage");
+  paint(canvas, piece, yaw);
+  canvas.addEventListener("pointerdown", (ev) => {
+    canvas.setPointerCapture(ev.pointerId);
+    canvas.dataset.x = ev.clientX;
+  });
+  canvas.addEventListener("pointermove", (ev) => {
+    if (!canvas.hasPointerCapture(ev.pointerId)) return;
+    const prev = Number(canvas.dataset.x);
+    yaw += (ev.clientX - prev) * 0.01;
+    canvas.dataset.x = ev.clientX;
+    paint(canvas, current(), yaw);
+  });
+}
+
+function current() {
+  return catalog.pieces.find((p) => p.id === openId);
+}
+
+function fitText(piece) {
+  return piece.fits
+    ? "Fits the K2 bed."
+    : "Bigger than the 260 mm bed on at least one side. Shrink it, or it will hang off the plate.";
+}
+
+const MAX_COLORS = 4;
+
+function spoolNote(piece) {
+  const n = spools(piece);
+  if (n > MAX_COLORS) return `This piece uses ${n} colors. A print holds 4. Remove one before the 3MF.`;
+  return `${n} of 4 colors on this print.`;
+}
+
+function drawMenu(piece) {
+  const full = piece.colors.length >= MAX_COLORS;
+  const cap = $("color-cap");
+  if (cap) {
+    cap.textContent = full
+      ? "Four colors. That is the whole print. Remove one to free a slot."
+      : "A print holds four colors. Add from the shelf, or recolor a swatch.";
+  }
+  $("menu").innerHTML = piece.colors.map((color) => `
+    <div class="chip">
+      <input type="color" data-color="${esc(color.id)}" value="${esc(color.hex)}" aria-label="${esc(color.name)}">
+      <input type="text" data-name="${esc(color.id)}" value="${esc(color.name)}" maxlength="24" aria-label="Color name">
+      <button class="icon-btn" type="button" data-remove="${esc(color.id)}" ${piece.colors.length === 1 ? "disabled" : ""} aria-label="Remove ${esc(color.name)}">✕</button>
+    </div>`).join("");
+  const have = new Set(piece.colors.map((c) => c.hex.toUpperCase()));
+  const extras = catalog.shelf.filter((swatch) => !have.has(swatch.hex.toUpperCase()));
+  const locked = full ? "disabled" : "";
+  const addTitle = full ? "Four colors already. Remove one to add another." : "";
+  $("shelf").innerHTML = extras.map((swatch) =>
+    `<button class="swatch-btn" type="button" data-add="${esc(swatch.name)}" data-hex="${esc(swatch.hex)}" title="${esc(addTitle || "Add " + swatch.name)}" style="background:${esc(swatch.hex)}" ${locked}></button>`
+  ).join("") + `<button class="text-btn" type="button" id="add-custom" ${locked} title="${esc(addTitle)}">Custom swatch</button>`;
+  $("parts").innerHTML = piece.parts.map((part) => {
+    const options = piece.colors.map((color) =>
+      `<option value="${esc(color.id)}" ${color.id === part.colorId ? "selected" : ""}>${esc(color.name)}</option>`
+    ).join("");
+    return `<div class="part">
+      <span>${esc(part.name)}</span>
+      <select data-part="${esc(part.name)}" aria-label="Color for ${esc(part.name)}">${options}</select>
+      <button class="text-btn" type="button" data-stl="${esc(part.name)}">STL</button>
+    </div>
+    <p class="quiet">Plate ${part.plate.w} × ${part.plate.d} mm${part.plate.fits ? "" : " · wider than the bed"}</p>`;
+  }).join("");
+  const note = $("spool-note");
+  if (note) {
+    note.textContent = spoolNote(piece);
+    note.className = spools(piece) > MAX_COLORS ? "warn" : "";
+  }
+  const dl = $("dl-3mf");
+  if (dl) {
+    const blocked = spools(piece) > MAX_COLORS;
+    dl.disabled = blocked;
+  }
+}
+
+function slug(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "part";
+}
+
+function paint(canvas, piece, angle) {
+  const ctx = canvas.getContext("2d");
+  const rect = canvas.getBoundingClientRect();
+  const w = Math.max(10, rect.width || canvas.width);
+  const h = Math.max(10, rect.height || canvas.height);
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.round(w * dpr);
+  canvas.height = Math.round(h * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = "#fbf7f0";
+  ctx.fillRect(0, 0, w, h);
+
+  let minX = Infinity, minY = Infinity, minZ = Infinity;
+  let maxX = -Infinity, maxY = -Infinity, maxZ = -Infinity;
+  const tris = [];
+  for (const part of piece.parts) {
+    const color = hexOf(piece, part.colorId);
+    for (const t of part.tris) {
+      const pts = [[t[0], t[1], t[2]], [t[3], t[4], t[5]], [t[6], t[7], t[8]]];
+      for (const p of pts) {
+        minX = Math.min(minX, p[0]); maxX = Math.max(maxX, p[0]);
+        minY = Math.min(minY, p[1]); maxY = Math.max(maxY, p[1]);
+        minZ = Math.min(minZ, p[2]); maxZ = Math.max(maxZ, p[2]);
+      }
+      tris.push({ pts, color });
+    }
+  }
+  if (!tris.length) return;
+  const cx = (minX + maxX) / 2;
+  const cy = (minY + maxY) / 2;
+  const cz = (minZ + maxZ) / 2;
+  const cos = Math.cos(angle);
+  const sin = Math.sin(angle);
+  const light = normalize([-0.45, -0.55, 0.7]);
+
+  function rot(p) {
+    const x = p[0] - cx;
+    const y = p[1] - cy;
+    return [x * cos - y * sin, x * sin + y * cos, p[2] - cz];
+  }
+  function project(p) {
+    return [(p[0] - p[1]) * 0.866, (p[0] + p[1]) * 0.5 - p[2]];
+  }
+
+  const drawn = tris.map((tri) => {
+    const r = tri.pts.map(rot);
+    const n = normalize(cross(sub(r[1], r[0]), sub(r[2], r[0])));
+    const shade = Math.max(0.28, Math.min(1, 0.38 + 0.72 * Math.abs(dot(n, light))));
+    return {
+      pts: r.map((p) => project(p).concat(p[0] + p[1])),
+      rgb: shadeRgb(tri.color, shade)
+    };
+  });
+  let pminX = Infinity, pminY = Infinity, pmaxX = -Infinity, pmaxY = -Infinity;
+  for (const tri of drawn) {
+    for (const p of tri.pts) {
+      pminX = Math.min(pminX, p[0]); pmaxX = Math.max(pmaxX, p[0]);
+      pminY = Math.min(pminY, p[1]); pmaxY = Math.max(pmaxY, p[1]);
+    }
+  }
+  const pad = 18;
+  const scale = Math.min((w - pad * 2) / (pmaxX - pminX || 1), (h - pad * 2) / (pmaxY - pminY || 1));
+  const ox = w / 2 - ((pminX + pmaxX) / 2) * scale;
+  const oy = h / 2 - ((pminY + pmaxY) / 2) * scale;
+  const bitmap = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const zbuf = new Float32Array(canvas.width * canvas.height);
+  zbuf.fill(1e9);
+  for (const tri of drawn) {
+    const q = tri.pts.map((p) => [(ox + p[0] * scale) * dpr, (oy + p[1] * scale) * dpr, p[2]]);
+    raster(q, tri.rgb, bitmap.data, zbuf, canvas.width, canvas.height);
+  }
+  ctx.putImageData(bitmap, 0, 0);
+
+  const origin = project(rot([0, 0, 0]));
+  const alongX = project(rot([20, 0, 0]));
+  const alongY = project(rot([0, 20, 0]));
+  const pxX = Math.hypot(alongX[0] - origin[0], alongX[1] - origin[1]) * scale;
+  const pxY = Math.hypot(alongY[0] - origin[0], alongY[1] - origin[1]) * scale;
+  const bar = Math.max(pxX, pxY);
+  if (bar > 8) {
+    ctx.strokeStyle = "#7c7064";
+    ctx.fillStyle = "#7c7064";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad, h - 16);
+    ctx.lineTo(pad + bar, h - 16);
+    ctx.stroke();
+    ctx.font = "11px Segoe UI";
+    ctx.fillText("20 mm", pad, h - 20);
+  }
+}
+
+function sub(a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }
+function cross(a, b) {
+  return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+}
+function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+function normalize(v) {
+  const n = Math.hypot(v[0], v[1], v[2]) || 1;
+  return [v[0] / n, v[1] / n, v[2] / n];
+}
+function shadeRgb(hex, shade) {
+  const n = parseInt(hex.slice(1), 16);
+  const mix = (channel) => Math.round(channel * shade + 251 * (1 - shade) * 0.15);
+  return [mix((n >> 16) & 255), mix((n >> 8) & 255), mix(n & 255)];
+}
+
+function raster(q, rgb, data, zbuf, pw, ph) {
+  const [a, b, c] = q;
+  const area = (b[0] - a[0]) * (c[1] - a[1]) - (c[0] - a[0]) * (b[1] - a[1]);
+  if (area === 0) return;
+  const minX = Math.max(0, Math.floor(Math.min(a[0], b[0], c[0])));
+  const maxX = Math.min(pw - 1, Math.ceil(Math.max(a[0], b[0], c[0])));
+  const minY = Math.max(0, Math.floor(Math.min(a[1], b[1], c[1])));
+  const maxY = Math.min(ph - 1, Math.ceil(Math.max(a[1], b[1], c[1])));
+  for (let y = minY; y <= maxY; y++) {
+    for (let x = minX; x <= maxX; x++) {
+      const px = x + 0.5;
+      const py = y + 0.5;
+      const w0 = (b[0] - px) * (c[1] - py) - (c[0] - px) * (b[1] - py);
+      const w1 = (c[0] - px) * (a[1] - py) - (a[0] - px) * (c[1] - py);
+      const w2 = (a[0] - px) * (b[1] - py) - (b[0] - px) * (a[1] - py);
+      const inside = area > 0 ? (w0 >= 0 && w1 >= 0 && w2 >= 0) : (w0 <= 0 && w1 <= 0 && w2 <= 0);
+      if (!inside) continue;
+      const z = (w0 * a[2] + w1 * b[2] + w2 * c[2]) / area;
+      const i = y * pw + x;
+      if (z >= zbuf[i]) continue;
+      zbuf[i] = z;
+      const o = i * 4;
+      data[o] = rgb[0];
+      data[o + 1] = rgb[1];
+      data[o + 2] = rgb[2];
+      data[o + 3] = 255;
+    }
+  }
+}
+
+function scheduleSave(rebuild) {
+  clearTimeout(saveTimer);
+  const status = $("status");
+  if (status) status.textContent = "Saving…";
+  saveTimer = setTimeout(() => save(rebuild), 350);
+}
+
+function save(rebuild) {
+  const piece = current();
+  if (!piece) return;
+  const spec = specFromPiece(piece);
+  const error = Dollhouse.validate(spec);
+  const status = $("status");
+  if (error) {
+    if (status) status.textContent = error;
+    return;
+  }
+  const state = readState();
+  if (spec.custom) {
+    const at = state.custom.findIndex((item) => item.id === spec.id);
+    if (at >= 0) state.custom[at] = spec;
+  } else {
+    state.overrides[spec.id] = {
+      name: spec.name, w: spec.w, d: spec.d, h: spec.h,
+      colors: spec.colors, partColors: spec.partColors
+    };
+  }
+  writeState(state);
+  let data;
+  try {
+    data = Dollhouse.view(spec);
+  } catch (err) {
+    if (status) status.textContent = err.message || "That size does not build.";
+    return;
+  }
+  const index = catalog.pieces.findIndex((p) => p.id === piece.id);
+  catalog.pieces[index] = data;
+  if (status) status.textContent = "Saved in this browser.";
+  if (rebuild) showDetail(piece.id);
+  else {
+    paint($("stage"), data, yaw);
+    const fit = $("fit");
+    if (fit) {
+      fit.textContent = fitText(data);
+      fit.className = data.fits ? "quiet" : "warn";
+    }
+  }
+}
+
+function showComposer() {
+  window.scrollTo(0, 0);
+  $("list").hidden = true;
+  $("rooms").hidden = true;
+  $("detail").hidden = true;
+  $("composer").hidden = false;
+  const options = catalog.kinds.map((kind) =>
+    `<option value="${esc(kind.id)}">${esc(kind.label)}</option>`
+  ).join("");
+  $("composer").innerHTML = `
+    <button class="back" type="button" id="back">← The shop</button>
+    <div class="panel">
+      <h2 class="mark" style="font-weight:500;font-size:32px;margin:0 0 8px">New piece</h2>
+      <p class="quiet">Pick a form and the real-world size. It scales to 1:12 and keeps a color menu you can edit. Four colors is the whole print.</p>
+      <div class="composer-grid" style="margin-top:16px">
+        <label class="full">Kind<select id="kind">${options}</select></label>
+        <label class="full">Name<input id="gen-name" type="text" maxlength="48"></label>
+        <label>Width, real in<input id="gen-w" type="number" min="8" max="120" step="0.5"></label>
+        <label>Depth<input id="gen-d" type="number" min="8" max="120" step="0.5"></label>
+        <label>Height<input id="gen-h" type="number" min="8" max="120" step="0.5"></label>
+      </div>
+      <p id="gen-readout" class="quiet" style="margin-top:12px"></p>
+      <div class="downloads">
+        <button class="solid-btn" type="button" id="create">Generate</button>
+      </div>
+      <p class="status" id="gen-status"></p>
+    </div>`;
+  applyKind();
+}
+
+function applyKind() {
+  const kind = catalog.kinds.find((k) => k.id === $("kind").value);
+  $("gen-name").value = kind.label;
+  $("gen-w").value = kind.w;
+  $("gen-d").value = kind.d;
+  $("gen-h").value = kind.h;
+  readout();
+}
+
+function readout() {
+  const w = Number($("gen-w").value);
+  const d = Number($("gen-d").value);
+  const h = Number($("gen-h").value);
+  const scale = 25.4 / 12;
+  const mw = w * scale, md = d * scale, mh = h * scale;
+  const el = $("gen-readout");
+  const over = mw > 250 || md > 250 || mh > 250;
+  el.className = over ? "warn" : "quiet";
+  el.textContent = `Prints at about ${mw.toFixed(1)} × ${md.toFixed(1)} × ${mh.toFixed(1)} mm. ${over ? "That is larger than the K2 bed." : "That fits a 260 mm bed."}`;
+}
+
+document.body.addEventListener("click", async (ev) => {
+  const roomBtn = ev.target.closest("button[data-room]");
+  if (roomBtn) {
+    room = roomBtn.dataset.room;
+    renderRooms();
+    showList();
+    return;
+  }
+  const card = ev.target.closest("button.card");
+  if (card) {
+    showDetail(card.dataset.id);
+    return;
+  }
+  if (ev.target.id === "back") showList();
+  if (ev.target.id === "new-piece") showComposer();
+  if (ev.target.id === "kind") return;
+  if (ev.target.id === "create") {
+    const spec = Dollhouse.customSpec({
+      kind: $("kind").value,
+      name: $("gen-name").value,
+      w: Number($("gen-w").value),
+      d: Number($("gen-d").value),
+      h: Number($("gen-h").value)
+    });
+    const error = Dollhouse.validate(spec);
+    if (error) {
+      $("gen-status").textContent = error;
+      return;
+    }
+    const state = readState();
+    state.custom.push(spec);
+    writeState(state);
+    catalog.pieces.push(Dollhouse.view(spec));
+    showDetail(spec.id);
+    return;
+  }
+  const piece = current();
+  if (!piece) return;
+  const add = ev.target.closest("[data-add]");
+  if (add) {
+    if (piece.colors.length >= MAX_COLORS) return;
+    piece.colors.push({
+      id: "c" + Math.random().toString(16).slice(2, 8),
+      name: add.dataset.add,
+      hex: add.dataset.hex
+    });
+    drawMenu(piece);
+    scheduleSave(false);
+    return;
+  }
+  if (ev.target.id === "add-custom") {
+    if (piece.colors.length >= MAX_COLORS) return;
+    piece.colors.push({ id: "c" + Math.random().toString(16).slice(2, 8), name: "Custom", hex: "#C4A574" });
+    drawMenu(piece);
+    scheduleSave(false);
+    return;
+  }
+  const remove = ev.target.closest("[data-remove]");
+  if (remove && piece.colors.length > 1) {
+    const id = remove.dataset.remove;
+    const fallback = piece.colors.find((c) => c.id !== id).id;
+    piece.colors = piece.colors.filter((c) => c.id !== id);
+    for (const part of piece.parts) if (part.colorId === id) part.colorId = fallback;
+    drawMenu(piece);
+    paint($("stage"), piece, yaw);
+    scheduleSave(false);
+    return;
+  }
+  if (ev.target.id === "reset" && piece.defaults) {
+    piece.name = piece.defaults.name;
+    piece.real = { w: piece.defaults.w, d: piece.defaults.d, h: piece.defaults.h };
+    piece.colors = piece.defaults.colors.map((c) => ({ ...c }));
+    const assigned = piece.defaults.partColors;
+    piece.partColorMemory = { ...assigned };
+    for (const part of piece.parts) {
+      if (assigned[part.name]) part.colorId = assigned[part.name];
+    }
+    scheduleSave(true);
+    return;
+  }
+  if (ev.target.id === "dl-3mf") { downloadPiece("3mf"); return; }
+  if (ev.target.id === "dl-zip") { downloadPiece("zip"); return; }
+  const stlBtn = ev.target.closest("[data-stl]");
+  if (stlBtn) { downloadPiece("stl", stlBtn.dataset.stl); return; }
+  if (ev.target.id === "delete") {
+    if (!piece.custom) {
+      $("status").textContent = "That one stays. Only a generated piece can be deleted.";
+      return;
+    }
+    const state = readState();
+    state.custom = state.custom.filter((item) => item.id !== piece.id);
+    writeState(state);
+    catalog.pieces = catalog.pieces.filter((p) => p.id !== piece.id);
+    showList();
+  }
+});
+
+document.body.addEventListener("input", (ev) => {
+  if (ev.target.id === "search") {
+    if (!$("list").hidden) showList();
+    return;
+  }
+  if (ev.target.id === "kind" || ev.target.id === "gen-w" || ev.target.id === "gen-d" || ev.target.id === "gen-h") {
+    if (!$("composer").hidden) readout();
+    return;
+  }
+  const piece = current();
+  if (!piece) return;
+  if (ev.target.id === "piece-name") {
+    piece.name = ev.target.value;
+    scheduleSave(false);
+    return;
+  }
+  const colorInput = ev.target.closest("input[data-color]");
+  if (colorInput) {
+    const color = piece.colors.find((c) => c.id === colorInput.dataset.color);
+    if (color) color.hex = colorInput.value.toUpperCase();
+    paint($("stage"), piece, yaw);
+    scheduleSave(false);
+    return;
+  }
+  const nameInput = ev.target.closest("input[data-name]");
+  if (nameInput) {
+    const color = piece.colors.find((c) => c.id === nameInput.dataset.name);
+    if (color) color.name = nameInput.value;
+    scheduleSave(false);
+  }
+});
+
+document.body.addEventListener("change", (ev) => {
+  if (ev.target.id === "kind") {
+    applyKind();
+    return;
+  }
+  const piece = current();
+  if (!piece) return;
+  if (ev.target.id === "dim-w" || ev.target.id === "dim-d" || ev.target.id === "dim-h") {
+    piece.real.w = Number($("dim-w").value);
+    piece.real.d = Number($("dim-d").value);
+    piece.real.h = Number($("dim-h").value);
+    scheduleSave(true);
+    return;
+  }
+  const sel = ev.target.closest("select[data-part]");
+  if (!sel) return;
+  const part = piece.parts.find((p) => p.name === sel.dataset.part);
+  if (!part) return;
+  part.colorId = sel.value;
+  drawMenu(piece);
+  paint($("stage"), piece, yaw);
+  scheduleSave(false);
+});
+
+$("new-piece").addEventListener("click", showComposer);
+$("search").addEventListener("input", () => { if (!$("list").hidden) showList(); });
+load();
+</script>
+</body>
+</html>

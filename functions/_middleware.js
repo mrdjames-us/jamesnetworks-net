@@ -20,6 +20,7 @@ const LAB_PREFIXES = [
   "/cipherladder",
   "/netnudge",
   "/flowscout",
+  "/dollhouse",
   "/mocks",
 ];
 

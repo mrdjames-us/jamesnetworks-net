@@ -65,7 +65,7 @@ Always run `node journal/build.mjs` before deploy.
 | `/msp/prompts/` `/msp/skills/` `/msp/videos/` | Libraries |
 | `/rss.xml` | Feed |
 
-Lab apps (`/pool`, `/flowscout`, `/netnudge`, `/cipherladder`) still live on this host.
+Lab apps (`/pool`, `/flowscout`, `/netnudge`, `/cipherladder`, `/dollhouse`) still live on this host.
 
 ## Posting / updating (Grok Bot or human)
 

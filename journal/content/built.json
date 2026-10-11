@@ -99,6 +99,16 @@
       "alt": "Connected brass nodes",
       "blurb": "New website or a redesign of the one that isn't working. We build a real site first. Free to see. $79/month if you keep it.",
       "tags": ["Websites", "Clinton", "See it first"]
+    },
+    {
+      "title": "Doll House Furniture 3D Builder",
+      "badge": "Live",
+      "domain": "jamesnetworks.net/dollhouse",
+      "href": "/dollhouse/",
+      "image": "/assets/app-dollhouse.svg",
+      "alt": "A small green chair on a paper bench",
+      "blurb": "1:12 dollhouse furniture for the Creality K2. Each piece has its own color menu. A print holds four colors, and the files are already sized for a 260 mm bed.",
+      "tags": ["1:12 scale", "Creality K2", "Four colors"]
     }
   ],
   "msp": []
